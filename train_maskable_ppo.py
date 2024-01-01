@@ -3,7 +3,7 @@ import os
 from typing import Optional, Tuple
 from datetime import datetime
 import fire
-
+from qlib.data import D
 import numpy as np
 from sb3_contrib.ppo_mask import MaskablePPO
 from stable_baselines3.common.callbacks import BaseCallback
@@ -12,12 +12,12 @@ from alphagen.data.calculator import AlphaCalculator
 from alphagen.data.expression import *
 from alphagen.models.alpha_pool import AlphaPool, AlphaPoolBase
 from alphagen.rl.env.wrapper import AlphaEnv
-from alphagen.rl.policy import LSTMSharedNet
+from alphagen.rl.policy import LSTMSharedNet, TransformerSharedNet
 from alphagen.utils.random import reseed_everything
 from alphagen.rl.env.core import AlphaEnvCore
 from alphagen_qlib.calculator import QLibStockDataCalculator
 
-
+LOGDIR = '/Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen'
 class CustomCallback(BaseCallback):
     def __init__(self,
                  save_freq: int,
@@ -90,27 +90,32 @@ class CustomCallback(BaseCallback):
 
 
 def main(
-    seed: int = 0,
-    instruments: str = "csi300",
-    pool_capacity: int = 10,
-    steps: int = 200_000
-):
+        seed: object = 0,
+        instruments: object = "csi300",
+        pool_capacity: object = 10,
+        steps: object = 200_000
+) -> object:
     reseed_everything(seed)
 
-    device = torch.device('cuda:0')
+    # device = torch.device('cuda:0')
+    # device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+    device = torch.device("cpu")
     close = Feature(FeatureType.CLOSE)
     target = Ref(close, -20) / close - 1
 
     # You can re-implement AlphaCalculator instead of using QLibStockDataCalculator.
     data_train = StockData(instrument=instruments,
-                           start_time='2010-01-01',
-                           end_time='2019-12-31')
+                           start_time='2015-01-01',
+                           end_time='2018-12-31',
+                           device=device)
     data_valid = StockData(instrument=instruments,
-                           start_time='2020-01-01',
-                           end_time='2020-12-31')
+                           start_time='2019-01-01',
+                           end_time='2019-12-31',
+                           device=device)
     data_test = StockData(instrument=instruments,
-                          start_time='2021-01-01',
-                          end_time='2022-12-31')
+                          start_time='2020-01-01',
+                          end_time='2023-06-30',
+                          device=device)
     calculator_train = QLibStockDataCalculator(data_train, target)
     calculator_valid = QLibStockDataCalculator(data_valid, target)
     calculator_test = QLibStockDataCalculator(data_test, target)
@@ -127,34 +132,68 @@ def main(
     timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
 
     checkpoint_callback = CustomCallback(
-        save_freq=10000,
-        show_freq=10000,
-        save_path='/path/for/checkpoints',
+        save_freq=100,
+        show_freq=100,
+        save_path=LOGDIR,
         valid_calculator=calculator_valid,
         test_calculator=calculator_test,
         name_prefix=name_prefix,
         timestamp=timestamp,
-        verbose=1,
+        verbose=2,
     )
 
+    # model = MaskablePPO(
+    #     'MlpPolicy',
+    #     env,
+    #     policy_kwargs=dict(
+    #         features_extractor_class=LSTMSharedNet,
+    #         features_extractor_kwargs=dict(
+    #             n_layers=2,
+    #             d_model=128,
+    #             dropout=0.1,
+    #             device=device,
+    #         ),
+    #     ),
+    #     gamma=1.,
+    #     ent_coef=0.01,
+    #     batch_size=128,
+    #     tensorboard_log=LOGDIR,
+    #     device=device,
+    #     verbose=1,
+    # )
     model = MaskablePPO(
         'MlpPolicy',
         env,
         policy_kwargs=dict(
-            features_extractor_class=LSTMSharedNet,
+            features_extractor_class=TransformerSharedNet,
+            # features_extractor_kwargs=dict(
+            #     n_layers=2,
+            #     d_model=128,
+            #     dropout=0.1,
+            #     device=device,
+            # ),
             features_extractor_kwargs=dict(
-                n_layers=2,
+                n_encoder_layers=6,
                 d_model=128,
+                n_head=4,
+                d_ffn=2048,
                 dropout=0.1,
-                device=device,
+                device=device
             ),
         ),
-        gamma=1.,
-        ent_coef=0.01,
-        batch_size=128,
-        tensorboard_log='/path/for/tb/log',
+        n_steps=2048,
+        n_epochs=10,
+        batch_size=256,
+        gamma=1,
+        gae_lambda=0.95,
+        clip_range=0.2,
+        ent_coef=0.1,
+        vf_coef=0.5,
+        max_grad_norm=0.5,
+        learning_rate=0.001,
+        tensorboard_log=LOGDIR,
         device=device,
-        verbose=1,
+        verbose=2,
     )
     model.learn(
         total_timesteps=steps,
@@ -165,7 +204,7 @@ def main(
 
 def fire_helper(
     seed: Union[int, Tuple[int]],
-    code: str,
+    code: Union[str, List[str]],
     pool: int,
     step: int = None
 ):

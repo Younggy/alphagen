@@ -47,7 +47,6 @@ class BacktestResult(dict):
     annual_excess_return: float
     excess_max_drawdown: float
 
-
 class QlibBacktest:
     def __init__(
         self,
@@ -141,14 +140,68 @@ class QlibBacktest:
             excess_max_drawdown=loc(excess, "max_drawdown"),
         )
 
-
 if __name__ == "__main__":
     qlib_backtest = QlibBacktest()
 
-    data = StockData(instrument='csi300',
-                     start_time='2020-01-01',
-                     end_time='2021-12-31')
+    """ Example code
     expr = Mul(EMA(Sub(Delta(Mul(Log(open_),Constant(-30.0)),50),Constant(-0.01)),40),Mul(Div(Abs(EMA(low,50)),close),Constant(0.01)))
     data_df = data.make_dataframe(expr.evaluate(data))
+    qlib_backtest.run(data_df)
+    """
 
+    """ hs300"""
+    code = "hs300"
+    file_path = "/Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_hs300_200_5_20231230134354/30720_steps_pool.json"
+
+
+    """ zz500
+    code = "zz500"
+    file_path = "/Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942/30720_steps_pool.json"
+    """
+
+    data = StockData(instrument=code,
+                     start_time='2020-01-01',
+                     end_time='2021-12-31',
+                     device=torch.device("cpu"))
+
+
+    expr_map = {
+        "$high": "high",
+        "$low": "low",
+        "$volume": "volume",
+        "$open": "open_",
+        "$close": "close",
+        "$vwap": "vwap",
+        "$target": "target"
+    }
+
+    def load_alpha_exprs(file_path):
+        import json
+        import copy
+        with open(file_path, "r") as f:
+            rslt = json.load(f)
+            exprs = rslt.pop("exprs")
+            _exprs = []
+            for expr in exprs:
+                e = copy.deepcopy(expr)
+                for k, v in expr_map.items():
+                    e = e.replace(k, v)
+                print(e)
+                _exprs.append(eval(e))
+            rslt["exprs"] = _exprs
+            return rslt
+
+    rslt = load_alpha_exprs(file_path)
+    exprs = rslt["exprs"]
+    weights = rslt["weights"]
+
+    dfs = []
+    for expr in exprs:
+        e = expr.evaluate(data)
+        _data_df = data.make_dataframe(e)
+        dfs.append(_data_df)
+
+    data_df = pd.concat(dfs, axis=1)
+    weighted_sum = data_df.mul(weights).sum(axis=1)
+    data_df['Weighted_Sum'] = weighted_sum
     qlib_backtest.run(data_df)

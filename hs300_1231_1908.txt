@@ -1,0 +1,2334 @@
+[38915:MainThread](2023-12-31 19:09:30,275) INFO - qlib.Initialization - [config.py:416] - default_conf: client.
+[38915:MainThread](2023-12-31 19:09:30,530) INFO - qlib.Initialization - [__init__.py:74] - qlib successfully initialized based on client settings.
+[38915:MainThread](2023-12-31 19:09:30,530) INFO - qlib.Initialization - [__init__.py:76] - data_path={'__DEFAULT_FREQ': PosixPath('/Users/yangguangyu/.qlib/qlib_data/cn_data_rolling')}
+instruments: zz500
+df before:                            $open     $close  ...     $volume      $vwap
+datetime   instrument                        ...                       
+2014-08-06 SH600004     8.307771   8.341090  ...   6336207.0   8.309727
+           SH600008     7.192367   7.282695  ...  17231532.0   7.234063
+           SH600021     5.087012   5.097929  ...  15339707.0   5.072914
+           SH600022     1.710000   1.760000  ...  48746768.0   1.732763
+           SH600038    29.092564  29.606203  ...   7746911.0  29.574198
+...                          ...        ...  ...         ...        ...
+2019-02-19 SZ300677    17.250000  17.030001  ...   2757779.0  17.104454
+           SZ300682    17.350000  16.940001  ...   2699528.0  17.019033
+           SZ300699    43.000000  41.980000  ...   2948226.0  42.132790
+           SZ300724    35.870033  36.704685  ...   6178623.0  37.283585
+           SZ300748    25.578068  25.149940  ...   9887938.0  25.262917
+
+[403977 rows x 6 columns]
+df: instrument              SH600004      SH600008  ...      SZ300724      SZ300748
+datetime                                        ...                            
+2014-08-06 $open    8.307771e+00  7.192367e+00  ...           NaN           NaN
+           $close   8.341090e+00  7.282695e+00  ...           NaN           NaN
+           $high    8.341090e+00  7.293986e+00  ...           NaN           NaN
+           $low     8.263344e+00  7.135912e+00  ...           NaN           NaN
+           $volume  6.336207e+06  1.723153e+07  ...           NaN           NaN
+...                          ...           ...  ...           ...           ...
+2019-02-19 $close   2.311332e+01  8.662580e+00  ...  3.670469e+01  2.514994e+01
+           $high    2.455562e+01  8.805763e+00  ...  3.902978e+01  2.576724e+01
+           $low     2.280295e+01  8.590988e+00  ...  3.585016e+01  2.472182e+01
+           $volume  1.927252e+07  1.302961e+07  ...  6.178623e+06  9.887938e+06
+           $vwap    2.345888e+01  8.676533e+00  ...  3.728358e+01  2.526292e+01
+
+[6630 rows x 410 columns]
+features: ['$open', '$close', '$high', '$low', '$volume', '$vwap']
+dates: DatetimeIndex(['2014-08-06', '2014-08-07', '2014-08-08', '2014-08-11',
+               '2014-08-12', '2014-08-13', '2014-08-14', '2014-08-15',
+               '2014-08-18', '2014-08-19',
+               ...
+               '2019-01-30', '2019-01-31', '2019-02-01', '2019-02-11',
+               '2019-02-12', '2019-02-13', '2019-02-14', '2019-02-15',
+               '2019-02-18', '2019-02-19'],
+              dtype='datetime64[ns]', name='datetime', length=1105, freq=None)
+stock ids: Index(['SH600004', 'SH600008', 'SH600021', 'SH600022', 'SH600038', 'SH600056',
+       'SH600060', 'SH600062', 'SH600066', 'SH600079',
+       ...
+       'SZ300568', 'SZ300595', 'SZ300601', 'SZ300604', 'SZ300676', 'SZ300677',
+       'SZ300682', 'SZ300699', 'SZ300724', 'SZ300748'],
+      dtype='object', name='instrument', length=410)
+values: [[[8.30777073e+00 7.19236708e+00 5.08701181e+00 ...            nan
+              nan            nan]
+  [8.34109020e+00 7.28269529e+00 5.09792852e+00 ...            nan
+              nan            nan]
+  [8.34109020e+00 7.29398632e+00 5.10884476e+00 ...            nan
+              nan            nan]
+  [8.26334381e+00 7.13591242e+00 5.05426311e+00 ...            nan
+              nan            nan]
+  [6.33620700e+06 1.72315320e+07 1.53397070e+07 ...            nan
+              nan            nan]
+  [8.30972672e+00 7.23406267e+00 5.07291412e+00 ...            nan
+              nan            nan]]
+
+ [[8.34109020e+00 7.27140427e+00 5.08701181e+00 ...            nan
+              nan            nan]
+  [8.25223732e+00 7.15849447e+00 4.99968147e+00 ...            nan
+              nan            nan]
+  [8.35219669e+00 7.31656837e+00 5.10884476e+00 ...            nan
+              nan            nan]
+  [8.21891689e+00 7.14720345e+00 4.98876524e+00 ...            nan
+              nan            nan]
+  [9.54703200e+06 1.18975440e+07 1.53017460e+07 ...            nan
+              nan            nan]
+  [8.28307915e+00 7.22755098e+00 5.04704809e+00 ...            nan
+              nan            nan]]
+
+ [[8.27562428e+00 7.20365810e+00 4.99968147e+00 ...            nan
+              nan            nan]
+  [8.25224686e+00 7.18107605e+00 4.99968147e+00 ...            nan
+              nan            nan]
+  [8.27562428e+00 7.21494913e+00 5.02151394e+00 ...            nan
+              nan            nan]
+  [8.20549107e+00 7.12462139e+00 4.96693230e+00 ...            nan
+              nan            nan]
+  [4.99138150e+06 6.62202950e+06 9.06656000e+06 ...            nan
+              nan            nan]
+  [8.23570728e+00 7.16596985e+00 4.99197149e+00 ...            nan
+              nan            nan]]
+
+ ...
+
+ [[2.28394661e+01 8.44780540e+00 1.03435202e+01 ... 4.20600014e+01
+   3.50453224e+01 2.46023369e+01]
+  [2.22187290e+01 8.42394161e+00 1.03200388e+01 ... 4.12900009e+01
+   3.44491463e+01 2.52295933e+01]
+  [2.28942375e+01 8.54326057e+00 1.05078888e+01 ... 4.20600014e+01
+   3.51546211e+01 2.55681114e+01]
+  [2.21457024e+01 8.40007782e+00 1.03200388e+01 ... 4.10000000e+01
+   3.44292717e+01 2.40248642e+01]
+  [6.99981300e+06 7.33082700e+06 4.06813900e+06 ... 2.04459200e+06
+   2.69383825e+06 1.18215000e+07]
+  [2.23820534e+01 8.46454620e+00 1.03812494e+01 ... 4.13894501e+01
+   3.48067169e+01 2.45664291e+01]]
+
+ [[2.23282719e+01 8.42394161e+00 1.03082981e+01 ... 4.12000008e+01
+   3.44491463e+01 2.47915096e+01]
+  [2.32411194e+01 8.68644333e+00 1.04961481e+01 ... 4.26500015e+01
+   3.55719452e+01 2.55880241e+01]
+  [2.35514889e+01 8.71030712e+00 1.04961481e+01 ... 4.26800003e+01
+   3.59594612e+01 2.57373695e+01]
+  [2.23100147e+01 8.42394161e+00 1.03082981e+01 ... 4.12000008e+01
+   3.40616302e+01 2.46023369e+01]
+  [8.41206500e+06 1.19269280e+07 5.74048800e+06 ... 3.13235600e+06
+   4.17131225e+06 1.26086230e+07]
+  [2.30862522e+01 8.61146832e+00 1.04341698e+01 ... 4.21681557e+01
+   3.52032013e+01 2.52673721e+01]]
+
+ [[2.40991974e+01 8.71030712e+00 1.04609261e+01 ... 4.30000000e+01
+   3.58700333e+01 2.55780678e+01]
+  [2.31133213e+01 8.66257954e+00 1.03200388e+01 ... 4.19799995e+01
+   3.67046852e+01 2.51499405e+01]
+  [2.45556221e+01 8.80576324e+00 1.04609261e+01 ... 4.30000000e+01
+   3.90297775e+01 2.57672405e+01]
+  [2.28029518e+01 8.59098816e+00 1.02613354e+01 ... 4.15999985e+01
+   3.58501625e+01 2.47218151e+01]
+  [1.92725220e+07 1.30296110e+07 7.51254300e+06 ... 2.94822600e+06
+   6.17862300e+06 9.88793800e+06]
+  [2.34588814e+01 8.67653275e+00 1.03526945e+01 ... 4.21327896e+01
+   3.72835846e+01 2.52629166e+01]]], (1105, 6, 410)
+instruments: zz500
+df before:                             $open      $close  ...     $volume       $vwap
+datetime   instrument                          ...                        
+2018-08-03 SH600004     25.194616   24.172226  ...   6206928.5   24.381304
+           SH600008      9.664862    9.569407  ...   3469384.0    9.655462
+           SH600021      8.793753    8.699828  ...   1655615.0    8.745275
+           SH600022      2.624022    2.624022  ...         0.0         NaN
+           SH600038     37.060635   37.281734  ...   5782578.0   37.531361
+...                           ...         ...  ...         ...         ...
+2020-02-20 SZ300682     29.265469   29.165039  ...   9146530.0   28.974852
+           SZ300699     77.293953   78.296852  ...   4544343.5   77.657623
+           SZ300724     81.930000   78.629997  ...   6004891.0   78.835892
+           SZ300748     35.549999   35.799999  ...  15108567.0   35.430748
+           SZ300776    145.149994  148.220001  ...   1501384.0  146.671127
+
+[154458 rows x 6 columns]
+df: instrument              SH600004      SH600008  ...      SZ300748      SZ300776
+datetime                                        ...                            
+2018-08-03 $open    2.519462e+01  9.664862e+00  ...           NaN           NaN
+           $close   2.417223e+01  9.569407e+00  ...           NaN           NaN
+           $high    2.530416e+01  9.736453e+00  ...           NaN           NaN
+           $low     2.380709e+01  9.521679e+00  ...           NaN           NaN
+           $volume  6.206928e+06  3.469384e+06  ...           NaN           NaN
+...                          ...           ...  ...           ...           ...
+2020-02-20 $close   3.135888e+01  7.984433e+00  ...  3.580000e+01  1.482200e+02
+           $high    3.180133e+01  7.984433e+00  ...  3.594000e+01  1.486000e+02
+           $low     2.923879e+01  7.862347e+00  ...  3.480000e+01  1.433800e+02
+           $volume  1.869171e+07  9.470020e+06  ...  1.510857e+07  1.501384e+06
+           $vwap    3.088849e+01  7.928983e+00  ...  3.543075e+01  1.466711e+02
+
+[2244 rows x 423 columns]
+features: ['$open', '$close', '$high', '$low', '$volume', '$vwap']
+dates: DatetimeIndex(['2018-08-03', '2018-08-06', '2018-08-07', '2018-08-08',
+               '2018-08-09', '2018-08-10', '2018-08-13', '2018-08-14',
+               '2018-08-15', '2018-08-16',
+               ...
+               '2020-02-07', '2020-02-10', '2020-02-11', '2020-02-12',
+               '2020-02-13', '2020-02-14', '2020-02-17', '2020-02-18',
+               '2020-02-19', '2020-02-20'],
+              dtype='datetime64[ns]', name='datetime', length=374, freq=None)
+stock ids: Index(['SH600004', 'SH600008', 'SH600021', 'SH600022', 'SH600038', 'SH600056',
+       'SH600060', 'SH600062', 'SH600066', 'SH600079',
+       ...
+       'SZ300595', 'SZ300601', 'SZ300604', 'SZ300676', 'SZ300677', 'SZ300682',
+       'SZ300699', 'SZ300724', 'SZ300748', 'SZ300776'],
+      dtype='object', name='instrument', length=423)
+values: [[[2.5194616e+01 9.6648617e+00 8.7937527e+00 ...           nan
+             nan           nan]
+  [2.4172226e+01 9.5694065e+00 8.6998281e+00 ...           nan
+             nan           nan]
+  [2.5304157e+01 9.7364531e+00 8.8289747e+00 ...           nan
+             nan           nan]
+  [2.3807085e+01 9.5216789e+00 8.6880875e+00 ...           nan
+             nan           nan]
+  [6.2069285e+06 3.4693840e+06 1.6556150e+06 ...           nan
+             nan           nan]
+  [2.4381304e+01 9.6554623e+00 8.7452755e+00 ...           nan
+             nan           nan]]
+
+ [[2.4080940e+01 9.5694065e+00 8.6998281e+00 ...           nan
+             nan           nan]
+  [2.3898371e+01 9.4978151e+00 8.4650145e+00 ...           nan
+             nan           nan]
+  [2.4263510e+01 9.6171341e+00 8.7233086e+00 ...           nan
+             nan           nan]
+  [2.3551489e+01 9.4500875e+00 8.3006449e+00 ...           nan
+             nan           nan]
+  [5.3321480e+06 3.8694082e+06 3.8409780e+06 ...           nan
+             nan           nan]
+  [2.4043062e+01 9.5368280e+00 8.4575605e+00 ...           nan
+             nan           nan]]
+
+ [[2.4026169e+01 9.4978151e+00 8.5119772e+00 ...           nan
+             nan           nan]
+  [2.4683420e+01 9.6887255e+00 8.5941620e+00 ...           nan
+             nan           nan]
+  [2.4738192e+01 9.6887255e+00 8.6059027e+00 ...           nan
+             nan           nan]
+  [2.3551489e+01 9.4978151e+00 8.4180517e+00 ...           nan
+             nan           nan]
+  [5.0258335e+06 3.7071322e+06 3.5935550e+06 ...           nan
+             nan           nan]
+  [2.4346334e+01 9.6152735e+00 8.5257187e+00 ...           nan
+             nan           nan]]
+
+ ...
+
+ [[2.9496887e+01 7.9600158e+00 8.8687992e+00 ... 7.1290001e+01
+   3.5180000e+01 1.4895000e+02]
+  [2.9275660e+01 7.9355989e+00 8.8078032e+00 ... 7.8540001e+01
+   3.7610001e+01 1.5242000e+02]
+  [2.9589064e+01 7.9600158e+00 8.8931971e+00 ... 7.8540001e+01
+   3.8230000e+01 1.5438000e+02]
+  [2.9054434e+01 7.8623471e+00 8.7834044e+00 ... 7.1099998e+01
+   3.5150002e+01 1.4760001e+02]
+  [5.9859350e+06 7.7745535e+06 5.1978940e+06 ... 8.8661700e+06
+   2.8351976e+07 1.6958960e+06]
+  [2.9245659e+01 7.9091525e+00 8.8149290e+00 ... 7.5085403e+01
+   3.7034927e+01 1.5092297e+02]]
+
+ [[2.9201918e+01 7.9355989e+00 8.7590065e+00 ... 7.6320000e+01
+   3.6790001e+01 1.5238000e+02]
+  [2.9201918e+01 7.9111814e+00 8.8687992e+00 ... 7.9050003e+01
+   3.5919998e+01 1.4600000e+02]
+  [2.9570629e+01 7.9844332e+00 8.9541931e+00 ... 8.2209999e+01
+   3.7820000e+01 1.5264999e+02]
+  [2.8999126e+01 7.8623471e+00 8.7468071e+00 ... 7.5070000e+01
+   3.5799999e+01 1.4564999e+02]
+  [5.6578070e+06 6.6870550e+06 3.8869542e+06 ... 6.0739680e+06
+   2.1802236e+07 1.9485530e+06]
+  [2.9285927e+01 7.9277716e+00 8.8555193e+00 ... 7.9247391e+01
+   3.6557499e+01 1.4871439e+02]]
+
+ [[2.9275660e+01 7.9111814e+00 8.8687992e+00 ... 8.1930000e+01
+   3.5549999e+01 1.4514999e+02]
+  [3.1358877e+01 7.9844332e+00 8.9785919e+00 ... 7.8629997e+01
+   3.5799999e+01 1.4822000e+02]
+  [3.1801331e+01 7.9844332e+00 9.0151892e+00 ... 8.2099998e+01
+   3.5939999e+01 1.4860001e+02]
+  [2.9238789e+01 7.8623471e+00 8.8200026e+00 ... 7.5959999e+01
+   3.4799999e+01 1.4338000e+02]
+  [1.8691708e+07 9.4700200e+06 5.1952725e+06 ... 6.0048910e+06
+   1.5108567e+07 1.5013840e+06]
+  [3.0888494e+01 7.9289832e+00 8.9054499e+00 ... 7.8835892e+01
+   3.5430748e+01 1.4667113e+02]]], (374, 6, 423)
+instruments: zz500
+/Users/yangguangyu/anaconda3/envs/quant_dev/lib/python3.9/site-packages/torch/nn/modules/transformer.py:282: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.activation_relu_or_gelu was not True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+df before:                             $open      $close  ...       $volume       $vwap
+datetime   instrument                          ...                          
+2019-08-06 SH600004     30.762991   30.909046  ...  6.262742e+06   30.876188
+           SH600008      8.082102    8.057685  ...  9.020674e+06    8.046897
+           SH600021     10.466890   10.393696  ...  4.354388e+06   10.387161
+           SH600022      2.000492    1.948531  ...  6.655098e+07    1.954593
+           SH600038     46.020203   46.083767  ...  7.299040e+06   46.189671
+...                           ...         ...  ...           ...         ...
+2023-08-11 SZ300776    248.121368  243.200638  ...  3.093064e+05  245.189056
+           SZ300850     56.715649   55.674210  ...  1.454371e+06   56.167614
+           SZ300861     55.460552   54.920792  ...  1.265189e+06   54.875118
+           SZ300866     81.220703   79.983841  ...  1.585986e+06   80.425598
+           SZ300888     62.004658   61.026020  ...  6.075645e+05   61.496777
+
+[419250 rows x 6 columns]
+df: instrument              SH600004      SH600008  ...      SZ300866       SZ300888
+datetime                                        ...                             
+2019-08-06 $open    3.076299e+01  8.082102e+00  ...           NaN            NaN
+           $close   3.090905e+01  8.057685e+00  ...           NaN            NaN
+           $high    3.112813e+01  8.155354e+00  ...           NaN            NaN
+           $low     3.052565e+01  7.911181e+00  ...           NaN            NaN
+           $volume  6.262742e+06  9.020674e+06  ...           NaN            NaN
+...                          ...           ...  ...           ...            ...
+2023-08-11 $close   2.676552e+01  8.671384e+00  ...  7.998384e+01      61.026020
+           $high    2.755109e+01  8.848955e+00  ...  8.219988e+01      62.311394
+           $low     2.672812e+01  8.671384e+00  ...  7.963339e+01      60.996807
+           $volume  1.771415e+07  1.558017e+07  ...  1.585986e+06  607564.500000
+           $vwap    2.719884e+01  8.749313e+00  ...  8.042560e+01      61.496777
+
+[5856 rows x 432 columns]
+features: ['$open', '$close', '$high', '$low', '$volume', '$vwap']
+dates: DatetimeIndex(['2019-08-06', '2019-08-07', '2019-08-08', '2019-08-09',
+               '2019-08-12', '2019-08-13', '2019-08-14', '2019-08-15',
+               '2019-08-16', '2019-08-19',
+               ...
+               '2023-07-31', '2023-08-01', '2023-08-02', '2023-08-03',
+               '2023-08-04', '2023-08-07', '2023-08-08', '2023-08-09',
+               '2023-08-10', '2023-08-11'],
+              dtype='datetime64[ns]', name='datetime', length=976, freq=None)
+stock ids: Index(['SH600004', 'SH600008', 'SH600021', 'SH600022', 'SH600038', 'SH600056',
+       'SH600060', 'SH600062', 'SH600066', 'SH600079',
+       ...
+       'SZ300677', 'SZ300682', 'SZ300699', 'SZ300724', 'SZ300748', 'SZ300776',
+       'SZ300850', 'SZ300861', 'SZ300866', 'SZ300888'],
+      dtype='object', name='instrument', length=432)
+values: [[[3.07629910e+01 8.08210182e+00 1.04668903e+01 ...            nan
+              nan            nan]
+  [3.09090462e+01 8.05768490e+00 1.03936958e+01 ...            nan
+              nan            nan]
+  [3.11281300e+01 8.15535355e+00 1.05644836e+01 ...            nan
+              nan            nan]
+  [3.05256500e+01 7.91118145e+00 1.02473059e+01 ...            nan
+              nan            nan]
+  [6.26274200e+06 9.02067400e+06 4.35438850e+06 ...            nan
+              nan            nan]
+  [3.08761883e+01 8.04689693e+00 1.03871613e+01 ...            nan
+              nan            nan]]
+
+ [[3.11646442e+01 8.08210182e+00 1.04546919e+01 ...            nan
+              nan            nan]
+  [3.12924423e+01 8.03326797e+00 1.03936958e+01 ...            nan
+              nan            nan]
+  [3.20774918e+01 8.13093662e+00 1.06132812e+01 ...            nan
+              nan            nan]
+  [3.09455605e+01 8.00885010e+00 1.03692970e+01 ...            nan
+              nan            nan]
+  [5.77378350e+06 4.00795725e+06 2.00925750e+06 ...            nan
+              nan            nan]
+  [3.15554008e+01 8.06359386e+00 1.04688559e+01 ...            nan
+              nan            nan]]
+
+ [[3.14750118e+01 8.00885010e+00 1.03936958e+01 ...            nan
+              nan            nan]
+  [3.20409775e+01 8.00885010e+00 1.05034885e+01 ...            nan
+              nan            nan]
+  [3.25521736e+01 8.10651970e+00 1.05278864e+01 ...            nan
+              nan            nan]
+  [3.14750118e+01 7.98443317e+00 1.03936958e+01 ...            nan
+              nan            nan]
+  [6.51536800e+06 4.84106350e+06 1.70991262e+06 ...            nan
+              nan            nan]
+  [3.21411324e+01 8.03267860e+00 1.04841585e+01 ...            nan
+              nan            nan]]
+
+ ...
+
+ [[2.59425449e+01 8.81935978e+00 1.27958889e+01 ... 5.48962555e+01
+   8.77142334e+01 6.20484772e+01]
+  [2.59425449e+01 8.81935978e+00 1.26568031e+01 ... 5.50434647e+01
+   8.49312897e+01 6.22091484e+01]
+  [2.61295853e+01 8.87855053e+00 1.27958889e+01 ... 5.56322937e+01
+   8.80852966e+01 6.26035233e+01]
+  [2.58864326e+01 8.78976440e+00 1.26441593e+01 ... 5.44668999e+01
+   8.48179169e+01 6.15226402e+01]
+  [4.51918050e+06 1.00504000e+07 1.87062800e+07 ... 7.11817250e+05
+   1.35901762e+06 5.37508750e+05]
+  [2.59826660e+01 8.84497738e+00 1.26834717e+01 ... 5.50482101e+01
+   8.56933517e+01 6.21718636e+01]]
+
+ [[2.59051361e+01 8.81935978e+00 1.26694479e+01 ... 5.50434647e+01
+   8.49312897e+01 6.22237549e+01]
+  [2.69151573e+01 8.84895515e+00 1.26947355e+01 ... 5.53624153e+01
+   8.08084106e+01 6.18147736e+01]
+  [2.70086765e+01 8.84895515e+00 1.27453127e+01 ... 5.59389763e+01
+   8.49312897e+01 6.25450974e+01]
+  [2.59051361e+01 8.76016998e+00 1.26315155e+01 ... 5.46263733e+01
+   8.01693649e+01 6.13911819e+01]
+  [1.91913760e+07 1.02599340e+07 1.23373800e+07 ... 8.43085562e+05
+   2.99187500e+06 5.00189125e+05]
+  [2.65964603e+01 8.82187271e+00 1.26849957e+01 ... 5.54816132e+01
+   8.16918182e+01 6.17795944e+01]]
+
+ [[2.69151573e+01 8.84895515e+00 1.26947355e+01 ... 5.54605522e+01
+   8.12207031e+01 6.20046577e+01]
+  [2.67655239e+01 8.67138386e+00 1.25303621e+01 ... 5.49207916e+01
+   7.99838409e+01 6.10260201e+01]
+  [2.75510941e+01 8.84895515e+00 1.27200241e+01 ... 5.54605522e+01
+   8.21998825e+01 6.23113937e+01]
+  [2.67281151e+01 8.67138386e+00 1.25177174e+01 ... 5.45282364e+01
+   7.96333923e+01 6.09968071e+01]
+  [1.77141540e+07 1.55801720e+07 1.99175220e+07 ... 1.26518912e+06
+   1.58598625e+06 6.07564500e+05]
+  [2.71988411e+01 8.74931335e+00 1.25790453e+01 ... 5.48751183e+01
+   8.04255981e+01 6.14967766e+01]]], (976, 6, 432)
+Using cpu device
+Wrapping the env with a `Monitor` wrapper
+Wrapping the env in a DummyVecEnv.
+Logging to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942_1
+/Users/yangguangyu/anaconda3/envs/quant_dev/lib/python3.9/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.action_masks to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.action_masks` for environment variables or `env.get_wrapper_attr('action_masks')` that will search the reminding wrappers.[0m
+  logger.warn(
+/Users/yangguangyu/anaconda3/envs/quant_dev/lib/python3.9/site-packages/stable_baselines3/common/save_util.py:283: UserWarning: Path '/Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942' does not exist. Will create it.
+  warnings.warn(f"Path '{path.parent}' does not exist. Will create it.")
+Ref(Mul($high,Greater($close,Constant(0.5))),40)
+Add(Sub(Constant(-5.0),Sub($low,Greater(Constant(10.0),$vwap))),Constant(0.01))
+Abs(Add(WMA(Corr($volume,Sub($vwap,Div(Constant(0.5),Log(Add($vwap,Greater(Abs($close),Constant(-2.0)))))),40),40),Constant(0.5)))
+Sub($close,$vwap)
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942/2048_steps
+---------------------------------
+| pool/              |          |
+|    best_ic_ret     | 0.0451   |
+|    eval_cnt        | 4        |
+|    significant     | 4        |
+|    size            | 4        |
+| rollout/           |          |
+|    ep_len_mean     | 19.6     |
+|    ep_rew_mean     | -0.959   |
+| test/              |          |
+|    ic              | 0.0131   |
+|    rank_ic         | 0.0225   |
+| time/              |          |
+|    fps             | 278      |
+|    iterations      | 1        |
+|    time_elapsed    | 7        |
+|    total_timesteps | 2048     |
+---------------------------------
+/Users/yangguangyu/anaconda3/envs/quant_dev/lib/python3.9/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.action_masks to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.action_masks` for environment variables or `env.get_wrapper_attr('action_masks')` that will search the reminding wrappers.[0m
+  logger.warn(
+Ref($volume,20)
+Mul(Constant(-10.0),$open)
+Add(Constant(-5.0),$low)
+Mul($vwap,Constant(5.0))
+$high
+$low
+Add($low,Div(Mul(Mul(Add(Div(Constant(30.0),Div($low,Constant(-5.0))),Constant(2.0)),Greater(Constant(-0.01),$low)),Less(Constant(-5.0),$low)),Constant(-1.0)))
+Log($high)
+Max($vwap,10)
+Greater(Mul(Med(Add(Less($volume,Greater(Add(Less(Constant(5.0),$volume),$volume),Constant(-0.5))),$high),10),Constant(-5.0)),Div($low,Constant(-0.5)))
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942/4096_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.0945      |
+|    eval_cnt             | 10          |
+|    significant          | 8           |
+|    size                 | 10          |
+| rollout/                |             |
+|    ep_len_mean          | 18.7        |
+|    ep_rew_mean          | -0.895      |
+| test/                   |             |
+|    ic                   | 0.0459      |
+|    rank_ic              | 0.0752      |
+| time/                   |             |
+|    fps                  | 69          |
+|    iterations           | 2           |
+|    time_elapsed         | 58          |
+|    total_timesteps      | 4096        |
+| train/                  |             |
+|    approx_kl            | 0.013337573 |
+|    clip_fraction        | 0.179       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.99       |
+|    explained_variance   | -0.437      |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.264      |
+|    n_updates            | 10          |
+|    policy_gradient_loss | -0.0172     |
+|    value_loss           | 0.212       |
+-----------------------------------------
+$high
+Less(Med($low,20),$low)
+Add(Greater(Mul(Mul(Add($close,$volume),Constant(1.0)),Sub(Sub(Constant(-0.5),$vwap),Greater(Greater($vwap,Constant(5.0)),$low))),Constant(5.0)),$vwap)
+$vwap
+Mean(Div(Add(Constant(-2.0),Greater($low,$vwap)),Mul($high,Greater(Mul(Div(Constant(5.0),Add($low,Constant(-5.0))),$volume),Constant(1.0)))),10)
+Min(Std(Mul(Mad(Less($close,Div(Mul(Mul($vwap,Greater(Constant(-10.0),$low)),Constant(10.0)),Constant(1.0))),10),Constant(-0.5)),40),40)
+Add(Sub(Constant(-5.0),$high),$low)
+$close
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942/6144_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.0978      |
+|    eval_cnt             | 13          |
+|    significant          | 10          |
+|    size                 | 13          |
+| rollout/                |             |
+|    ep_len_mean          | 19.2        |
+|    ep_rew_mean          | -0.917      |
+| test/                   |             |
+|    ic                   | 0.0421      |
+|    rank_ic              | 0.0755      |
+| time/                   |             |
+|    fps                  | 55          |
+|    iterations           | 3           |
+|    time_elapsed         | 111         |
+|    total_timesteps      | 6144        |
+| train/                  |             |
+|    approx_kl            | 0.013423216 |
+|    clip_fraction        | 0.179       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -3          |
+|    explained_variance   | 2.74e-06    |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.306      |
+|    n_updates            | 20          |
+|    policy_gradient_loss | -0.0195     |
+|    value_loss           | 0.0328      |
+-----------------------------------------
+Sum(Mean($vwap,10),50)
+Mul(Abs(Sub(Constant(-10.0),Mad($low,30))),Constant(-0.01))
+Greater(Less(Max(Add(Div(Greater(Constant(5.0),Std($vwap,20)),$vwap),Constant(2.0)),10),Mul(Max($open,40),Constant(5.0))),$close)
+Div(Constant(5.0),$high)
+Sub(Constant(0.01),$close)
+Sub(Add(Constant(-1.0),Add($vwap,Add(Constant(10.0),Div(Greater(Div($close,Med(Add(Constant(1.0),$low),10)),Constant(-2.0)),$low)))),Constant(5.0))
+Abs(Mul(Constant(0.01),Add(Add(Cov($high,$open,20),Constant(5.0)),Sum(Std(Div($close,Less($vwap,Constant(30.0))),10),40))))
+$vwap
+Add(Cov(Greater($volume,$high),Log($vwap),20),Constant(1.0))
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942/8192_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.105       |
+|    eval_cnt             | 19          |
+|    significant          | 18          |
+|    size                 | 19          |
+| rollout/                |             |
+|    ep_len_mean          | 19.3        |
+|    ep_rew_mean          | -0.915      |
+| test/                   |             |
+|    ic                   | 0.0404      |
+|    rank_ic              | 0.0799      |
+| time/                   |             |
+|    fps                  | 48          |
+|    iterations           | 4           |
+|    time_elapsed         | 167         |
+|    total_timesteps      | 8192        |
+| train/                  |             |
+|    approx_kl            | 0.014945299 |
+|    clip_fraction        | 0.287       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.97       |
+|    explained_variance   | 1.01e-06    |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.311      |
+|    n_updates            | 30          |
+|    policy_gradient_loss | -0.0214     |
+|    value_loss           | 0.0234      |
+-----------------------------------------
+Mul(Sub(Delta(Add($low,Constant(-0.5)),50),Constant(-30.0)),Sub(Sum($close,50),Greater(Div(Constant(1.0),Div($close,Constant(5.0))),Constant(-0.5))))
+Add(Std(Add(Constant(-5.0),$low),10),Constant(1.0))
+Add(Mul($volume,Constant(-0.01)),Constant(-5.0))
+Med(Sum(Mul(Constant(1.0),Mul($volume,Less(Constant(5.0),$vwap))),40),40)
+Med(Mul(Div(Greater(Constant(-1.0),$close),Add($close,Mul(Div(Constant(5.0),$open),Greater($open,Constant(-0.01))))),Constant(-0.5)),20)
+Add(Constant(0.01),Sub(Cov(Add(Greater(Mul(Log(Less($vwap,$high)),Constant(5.0)),Constant(-0.5)),WMA($low,40)),$high,20),Constant(-10.0)))
+Div(Less(Constant(0.5),$high),$low)
+Div(Div(Constant(-0.01),Add($high,Constant(-5.0))),Constant(-0.5))
+Sum(Ref(Sub(Add(Constant(-1.0),$low),Add(Sub(Mul(Mul($close,Constant(-10.0)),WMA($open,20)),Constant(-0.5)),Constant(-5.0))),10),20)
+Abs(Add(Log(Sub(Less(Add(Constant(2.0),Div($volume,Sub(Constant(2.0),Div(Mul($volume,Constant(1.0)),Constant(2.0))))),Constant(-5.0)),$vwap)),Constant(-0.01)))
+Sum(Div(Med($open,20),Greater($open,Sub(Med(Div(Add(Constant(0.01),$high),$vwap),40),Constant(-0.5)))),30)
+Add(Log($vwap),Constant(30.0))
+Div(Greater(Greater(Constant(-5.0),$volume),$high),Add(Min(Mul($close,Div(Mul(Div($vwap,Constant(1.0)),Constant(5.0)),Constant(-10.0))),10),Constant(1.0)))
+Div(Div(Constant(5.0),$vwap),Constant(-10.0))
+$vwap
+$volume
+Mul(Mul(Div(Less($vwap,Constant(5.0)),$close),Constant(5.0)),Constant(5.0))
+Add(Constant(2.0),Add(Mean($open,20),Constant(-10.0)))
+$vwap
+Mean(Log(Sub(Med($volume,50),Med($high,10))),40)
+Abs(Sub($close,Constant(-0.5)))
+Max(Sum(Div(Abs($close),Constant(-0.01)),30),20)
+Std($low,30)
+$volume
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942/10240_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.129       |
+|    eval_cnt             | 37          |
+|    significant          | 27          |
+|    size                 | 37          |
+| rollout/                |             |
+|    ep_len_mean          | 18          |
+|    ep_rew_mean          | -0.783      |
+| test/                   |             |
+|    ic                   | 0.0667      |
+|    rank_ic              | 0.0986      |
+| time/                   |             |
+|    fps                  | 41          |
+|    iterations           | 5           |
+|    time_elapsed         | 247         |
+|    total_timesteps      | 10240       |
+| train/                  |             |
+|    approx_kl            | 0.014660386 |
+|    clip_fraction        | 0.24        |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.95       |
+|    explained_variance   | 7.15e-07    |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.316      |
+|    n_updates            | 40          |
+|    policy_gradient_loss | -0.0178     |
+|    value_loss           | 0.0285      |
+-----------------------------------------
+Abs(Sub(Add(Mul(Mean(Add(Less($low,Constant(-5.0)),Sub($vwap,Constant(1.0))),30),Min(Abs($low),40)),Constant(5.0)),Constant(5.0)))
+Mul(Corr(Sum(Sub(Log($low),Constant(-0.01)),10),$high,50),Constant(-0.5))
+Add(Mul(Mean(Add($volume,Greater(Constant(10.0),Sum($high,30))),10),Constant(-0.5)),Sub(Constant(5.0),$vwap))
+Mul($volume,Add(Constant(-1.0),$high))
+Mul(Constant(0.01),$vwap)
+Add(Mean(Add(Constant(-5.0),Ref(Min($open,10),10)),50),Constant(-10.0))
+Add(Div(Constant(-2.0),Add(Add(Greater($high,Constant(-0.5)),Std($open,10)),Constant(-0.5))),WMA(Div(Constant(10.0),Mul($vwap,Constant(0.5))),40))
+Ref(Div($high,Constant(-5.0)),10)
+Sub(Mul(Log(Std(Div(Constant(1.0),$close),20)),Constant(-30.0)),Constant(-0.01))
+Less(Mul(Med(Mul(Greater(Sub(Add(Max(Div(Constant(30.0),$low),20),Constant(-0.01)),Constant(0.5)),Constant(-5.0)),$open),50),Constant(5.0)),$vwap)
+Less(Mad($high,40),$volume)
+Mad(Med(Div(Constant(30.0),Div(Greater($close,Less(Div(Add(Constant(-1.0),$high),Constant(-5.0)),Constant(-0.5))),Mul($open,Constant(5.0)))),50),20)
+Add(Constant(2.0),Sum($low,20))
+Add(Div(Constant(30.0),Ref($close,10)),Div($vwap,Constant(30.0)))
+Mean(Sub(Log(Abs(Sum($low,30))),Constant(1.0)),20)
+$low
+Abs($volume)
+Mul(Less(Constant(-0.5),Med($vwap,10)),$vwap)
+Ref(Mul(Constant(30.0),Div(Mul(Div(Max($volume,30),Constant(5.0)),Constant(-1.0)),Constant(-0.5))),10)
+Add(Min(Max($volume,10),10),Add(Mul($open,Mul(Constant(-0.5),Add(Sub(Med($low,50),Constant(-0.5)),$volume))),Constant(-0.5)))
+Add(Mul(Constant(5.0),Mul($volume,Constant(1.0))),Constant(-30.0))
+Div(Constant(-2.0),$close)
+Div(Constant(5.0),$close)
+Greater(Cov(Add(Less(Constant(0.01),Add($open,Constant(10.0))),Std($vwap,30)),$volume,20),Mul(Constant(-10.0),Sub(Log($open),Constant(-5.0))))
+Mul(Less(Div(Div(Less(Mul(Constant(1.0),$volume),Mad($open,40)),Constant(10.0)),Constant(0.5)),Constant(1.0)),$high)
+Mean(Div(Sub(Sub(Div(Constant(0.5),Med(Max($vwap,10),40)),Min($vwap,20)),Mean($vwap,10)),$high),20)
+Mul($vwap,Greater(Mul(Div(Constant(-0.5),Mul($vwap,$close)),Constant(-5.0)),Greater(Constant(-1.0),$low)))
+Max(Mul(Less(Constant(5.0),$close),Med($low,40)),30)
+Sub(Constant(5.0),Div($volume,Constant(1.0)))
+Mul(WMA(Sub(Constant(-10.0),Log(Sub($high,Greater($open,Constant(-1.0))))),50),$close)
+Max(Div(Constant(1.0),Mul(Add($vwap,Greater(Constant(2.0),Div(Greater($volume,Constant(0.5)),Mul(Greater($vwap,$vwap),Constant(1.0))))),$open)),40)
+Sub(Constant(2.0),Std(Mul(Log($open),Constant(-0.01)),10))
+Mul(Constant(-0.5),Max(Abs(Mul(Mad($volume,40),Constant(-5.0))),50))
+Mul(Sub(Greater(Greater(Less($high,Constant(-0.5)),Mul($low,$volume)),$high),$low),Constant(1.0))
+Log(Var(Div(Delta(Mean($vwap,20),20),Greater(Constant(1.0),$open)),20))
+Add(Constant(5.0),Med(Mean($open,10),40))
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942/12288_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.152       |
+|    eval_cnt             | 62          |
+|    significant          | 41          |
+|    size                 | 62          |
+| rollout/                |             |
+|    ep_len_mean          | 17.5        |
+|    ep_rew_mean          | -0.671      |
+| test/                   |             |
+|    ic                   | 0.0902      |
+|    rank_ic              | 0.105       |
+| time/                   |             |
+|    fps                  | 31          |
+|    iterations           | 6           |
+|    time_elapsed         | 391         |
+|    total_timesteps      | 12288       |
+| train/                  |             |
+|    approx_kl            | 0.015531404 |
+|    clip_fraction        | 0.253       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.95       |
+|    explained_variance   | 0           |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.293      |
+|    n_updates            | 50          |
+|    policy_gradient_loss | -0.0263     |
+|    value_loss           | 0.0724      |
+-----------------------------------------
+Div(Sub(WMA(Div(Max(Sub(Add(Sub(Constant(-0.5),$open),Constant(-5.0)),Constant(0.5)),20),Constant(-5.0)),10),Constant(-2.0)),Constant(1.0))
+Div(Log(Abs(Add(Greater(Constant(5.0),$volume),Cov($close,Cov(Sum(Add($open,Constant(10.0)),40),$open,30),40)))),Constant(1.0))
+Log(Div(Constant(-5.0),$open))
+$low
+Div(Sum(Add(Greater(Greater(Log($high),Constant(0.5)),Abs(Sub(Less(Ref($open,40),Constant(-0.5)),$low))),$low),20),$high)
+Ref(Mean(Add(Less(Constant(2.0),Mad(Greater(Med($volume,30),Max(Sub(Constant(1.0),$close),40)),20)),$close),40),20)
+Sub(Add(Less(Log(Ref($high,20)),Constant(-0.5)),Ref($close,40)),Constant(5.0))
+$volume
+Mad(Sub($volume,Constant(2.0)),10)
+Div(Div(Constant(-0.5),Div(Ref(Mul(Mean(Med($close,10),20),Constant(-0.5)),50),Med(Sub($volume,$high),30))),Constant(1.0))
+Div(Log(Sub(Constant(-1.0),Sum($high,10))),Constant(2.0))
+$vwap
+Add(Mul(Add($close,$vwap),Constant(-10.0)),Constant(0.01))
+Div(Max(Div(Add($close,Add(Add(Div($high,Constant(-30.0)),Less($volume,Constant(5.0))),Constant(5.0))),Constant(2.0)),40),Mul($close,Constant(-2.0)))
+EMA(Sub(Add(Var(Sub(Std($low,10),Constant(1.0)),30),Var($low,40)),$vwap),20)
+Max(Ref(Mul(Greater($low,Constant(-30.0)),$open),10),10)
+Add(Ref(Max(Sum(Sub(Constant(-1.0),$low),40),50),30),Constant(-1.0))
+Mul(Mean(Add($volume,Div(Constant(2.0),Log(Mean(Add(Abs($open),Constant(1.0)),30)))),30),Constant(-2.0))
+Sum(Mul(Mad(Max(Mul(Mul(Log($vwap),Log(Mul(Constant(5.0),$low))),Constant(-1.0)),40),50),Constant(-2.0)),20)
+$vwap
+Mul(Min(Sub(Constant(-1.0),Var(Mean($vwap,40),40)),50),Constant(-0.5))
+Corr(Med(Add($close,Constant(10.0)),20),Abs(Mean($vwap,40)),40)
+Ref(Min(Add(Min(Div(Sub(Div(Add(Med($low,40),Constant(-1.0)),$open),$volume),Constant(-1.0)),10),Constant(0.5)),40),10)
+Sub(Mul(Add(Constant(5.0),$volume),Constant(-1.0)),$low)
+Mul(Greater(Log(Div(Greater(Constant(5.0),Log(Add(Med($open,10),Log(Div(Log($high),Constant(1.0)))))),$high)),Constant(-0.01)),$high)
+Mul(Mad(Sub(Add(Sub(Div(Constant(-0.5),$open),Constant(-0.5)),$low),Constant(5.0)),30),Constant(5.0))
+Mul(Constant(0.5),$volume)
+Add($close,Constant(2.0))
+Med(Div(Div(Greater(Sum(Sub(Constant(-1.0),$vwap),40),$high),Mul(Add(Constant(2.0),Sub($high,$high)),Constant(1.0))),Constant(-2.0)),30)
+Mul(Mean(Div(Greater(Div(Constant(-0.5),$close),Mul($volume,Mul($vwap,Constant(-0.5)))),Sum(Sub($low,Constant(-10.0)),20)),10),Constant(-2.0))
+Delta(Log(Std(Ref(Mul(Constant(1.0),$high),40),30)),40)
+Sub(Div(Add(Sum(Div(Var($open,10),Constant(10.0)),40),Constant(1.0)),Constant(-30.0)),Constant(5.0))
+Mean(Log(Log(Mul(Constant(1.0),$high))),40)
+Std(Sub(Sub(Sub(Constant(5.0),$low),Constant(-1.0)),Constant(1.0)),10)
+Med(Mul(Constant(-0.01),Div(Greater(Sub($vwap,Constant(1.0)),Mul(Add(Constant(30.0),$volume),Constant(-2.0))),Log($low))),40)
+Sum(Mul(Sub(Sub(EMA(Mul($volume,Constant(-1.0)),20),Constant(-30.0)),$vwap),Mul($vwap,Constant(1.0))),30)
+Sub(Less(Mul(Min(Mul(Less(Std($vwap,50),Constant(-10.0)),Add(Less($vwap,Constant(5.0)),$vwap)),40),Constant(-2.0)),Constant(-10.0)),$vwap)
+Max(Mul(Div(Constant(-5.0),$low),Constant(-0.5)),30)
+Sub(Greater(Constant(-0.5),$vwap),$high)
+Ref(Sub(Constant(-0.01),$volume),20)
+Mul(EMA(Sum(Div(Constant(5.0),Std($volume,50)),40),20),Div($volume,Greater($open,Constant(-10.0))))
+Med(Sub(Constant(-5.0),Min($volume,40)),10)
+Cov(Sum(Mul(Std(Mul(Constant(-0.5),WMA(Mul($close,Constant(0.5)),10)),20),Mul(Constant(5.0),Abs($low))),20),$high,10)
+$close
+Abs(Add(Constant(2.0),$vwap))
+Mul(Constant(-0.5),Med(Abs(Std(Std(Mean($low,20),30),20)),40))
+Div(Log(Add(Sub($close,$vwap),$volume)),Constant(-2.0))
+Mul(Div(Add(Greater(Sum($volume,20),Constant(0.01)),$vwap),Constant(-0.01)),Ref(Mul(Constant(-10.0),$high),30))
+Less(Mean(Log(Mul(Greater(Greater($close,Constant(-5.0)),Log($vwap)),$low)),10),$high)
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942/14336_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.216       |
+|    eval_cnt             | 92          |
+|    significant          | 63          |
+|    size                 | 92          |
+| rollout/                |             |
+|    ep_len_mean          | 16.5        |
+|    ep_rew_mean          | -0.526      |
+| test/                   |             |
+|    ic                   | 0.0697      |
+|    rank_ic              | 0.0884      |
+| time/                   |             |
+|    fps                  | 23          |
+|    iterations           | 7           |
+|    time_elapsed         | 611         |
+|    total_timesteps      | 14336       |
+| train/                  |             |
+|    approx_kl            | 0.012075236 |
+|    clip_fraction        | 0.178       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.89       |
+|    explained_variance   | 4.77e-07    |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.249      |
+|    n_updates            | 60          |
+|    policy_gradient_loss | -0.0244     |
+|    value_loss           | 0.113       |
+-----------------------------------------
+Mul(Sub(Constant(-5.0),Sub($close,Sub($open,Constant(-5.0)))),Greater(Div(Mul(Abs($volume),Constant(-0.01)),Constant(-2.0)),Constant(-30.0)))
+Med(Add(Constant(-2.0),$low),20)
+Div(Mul($low,$volume),Sub(Constant(-1.0),Med(Log($vwap),40)))
+Add(Constant(10.0),Div(Div(Med(Ref(Max($low,20),40),20),Constant(-2.0)),Constant(1.0)))
+Div(Sum(Mul(Abs(Mul(Constant(1.0),Ref($volume,10))),Constant(-10.0)),10),Constant(-5.0))
+Mul($vwap,Constant(-0.5))
+Add(Cov(Add(Mul(EMA(Add(Constant(-0.5),Log(Mul($vwap,Div(Constant(10.0),$open)))),40),Constant(-1.0)),$low),$volume,50),$close)
+Corr($vwap,Mul(Mul(Mul($volume,Constant(-1.0)),$close),Constant(-30.0)),40)
+Div(Constant(-0.01),$high)
+Mul(Log(Sub(Less(Constant(-0.5),Add($volume,$vwap)),Max($high,40))),$volume)
+Cov(Var(Sub(Greater(Constant(-0.01),$low),$open),30),$low,10)
+Mul(Constant(-10.0),Abs(Add($volume,Sub(Med($low,50),Constant(0.5)))))
+Log(Log(EMA(Sub(Constant(-2.0),Div(Add(Mean(Div($close,Div($volume,$open)),50),Sub(Constant(5.0),$low)),Constant(-0.5))),40)))
+Sub(Var(Sub(Constant(-2.0),Min(Max(Std(Sum($open,30),20),30),20)),20),Add($open,$open))
+Log(Med(Sub(Greater(Constant(30.0),Mul(Mul(Less($low,Constant(-0.01)),$vwap),Constant(-0.5))),$high),10))
+Add(Sub(Constant(5.0),Sum($low,40)),Std(Mul(Div($close,Mad($vwap,40)),Div(Constant(-30.0),Mul($vwap,Constant(-30.0)))),20))
+Greater(Med(Sum(Div($close,Constant(2.0)),40),20),$volume)
+Mean($open,10)
+Abs(Min(Mad(Mul(Sub(Mul(Div(Constant(-0.01),Med($close,20)),Mul($open,Constant(-1.0))),Constant(0.01)),Constant(-5.0)),20),40))
+Add(Constant(-2.0),Med($open,20))
+Div(Max(Mul(Sum(Div(EMA(Div(Log(Abs(Add(Constant(-1.0),$close))),Constant(1.0)),50),Constant(30.0)),10),Constant(30.0)),40),$volume)
+Max(Med(Ref(Med(Sub(Greater($volume,Constant(0.5)),$low),20),20),40),40)
+WMA(Add(Mul(Med(Log(Sum(Med(Log(Log(Med($high,50))),50),20)),10),Constant(0.5)),Constant(-5.0)),10)
+Sub(Constant(-5.0),$volume)
+Div(Mul(Max(Max(Div(Constant(2.0),$open),10),40),Constant(-2.0)),Constant(0.5))
+Mul(Delta(Sub(Mul(Constant(-5.0),Log($low)),Constant(-1.0)),30),$low)
+Sub(Med(WMA($volume,20),10),Constant(-0.5))
+Add(Div(WMA(Mul(Add(Constant(5.0),$high),Constant(1.0)),40),Constant(-1.0)),Constant(2.0))
+$vwap
+Med(Log(Add(Less(Constant(0.5),$low),Ref($open,20))),20)
+Var(Div(Constant(1.0),$vwap),40)
+WMA(Div(Constant(0.5),Add($vwap,$volume)),20)
+Mul(Add(Max(Mul(Mul(Constant(-5.0),Sum(Add(Less($close,Constant(-0.01)),$low),20)),Greater($low,$volume)),40),Constant(5.0)),$vwap)
+Mul(Constant(1.0),Add($volume,Mul(Add(Greater($open,Constant(-0.01)),Abs(Add($volume,Log(Mul(Mul($volume,Constant(-5.0)),Constant(-0.01)))))),$low)))
+Mean(Add(Constant(1.0),$high),10)
+Div($volume,Var(EMA(Mul($vwap,Constant(-10.0)),30),10))
+Min(Delta(Ref($open,10),10),20)
+Mul(Log(Var(Log(Add(Add(Constant(-1.0),$close),Constant(10.0))),40)),Constant(10.0))
+Sum($close,40)
+Add(Constant(0.5),Sub($vwap,$low))
+Mad(Log(Mean($close,20)),40)
+Add(Log($low),Div(Add(Constant(1.0),Mul(Sub(Max(Log(Less(Div($vwap,Constant(-0.5)),$high)),20),Constant(30.0)),Constant(2.0))),Constant(1.0)))
+EMA(Sub(Mean(Div(Sum(Mul(Constant(2.0),$volume),40),Less(Div(Constant(5.0),$low),Constant(-5.0))),20),Constant(-2.0)),40)
+Var(Add(Sub(Constant(0.5),Abs(Std(Add(Add(Div(Greater($vwap,Constant(-0.01)),$close),Constant(0.01)),$high),10))),$volume),40)
+Mean(Sum(Log(Log(Mul(Less(Constant(5.0),Min($low,40)),Mean(Min(Less($vwap,$low),30),40)))),40),20)
+Var(WMA(Div(Add(Mul($open,Constant(30.0)),$open),Constant(5.0)),10),30)
+Add(Constant(-1.0),Sub($volume,$high))
+Med(WMA(Std($vwap,40),30),40)
+Sub(Constant(-0.01),Log(Div(Delta($high,10),Constant(2.0))))
+Add(Std(Sub(Constant(-0.01),$vwap),20),Constant(-0.5))
+Add(Log(Div(Div(Mul(Constant(-1.0),Sub(Div(Ref(Log($low),10),Sub($volume,Constant(10.0))),Constant(-0.5))),Constant(-0.5)),Constant(-0.5))),$vwap)
+Log(Var(Div(Sum(Add(Sub(Greater($volume,Constant(-2.0)),Sub(Log(Mean($low,20)),Constant(-5.0))),Constant(1.0)),40),Constant(2.0)),30))
+$volume
+Add(Greater(Constant(-30.0),$open),$high)
+Ref(Add(Greater(Mad(Div(Constant(-5.0),$low),40),Mul(Mean($close,40),Sub(Less($volume,Constant(-0.01)),$low))),$high),20)
+Abs(Add(Div(Div(Constant(5.0),$low),$high),Constant(-1.0)))
+Min(Add(Div(EMA($high,10),Constant(10.0)),Med(Mean(Add(Sum(Div($open,Constant(-10.0)),10),Constant(-0.01)),40),10)),10)
+Min(Ref(Max(Mul(Mul(Constant(-0.01),Sum($volume,30)),Constant(-30.0)),10),20),20)
+Sum(Min(Sub(Greater(Constant(-0.01),$close),$volume),20),10)
+$high
+$vwap
+$vwap
+Med(Med(Add(Constant(30.0),$high),30),30)
+Mul($low,Ref(Div(Constant(1.0),Mul(Add($high,Constant(-0.5)),Constant(-0.01))),30))
+Div(Add(Less(Sum($high,40),Add($volume,Constant(1.0))),Add($open,Max($open,10))),Div(Constant(10.0),Ref($high,10)))
+Mul(Mean(Var(Add(Sub(Greater(Constant(-5.0),$vwap),Div(Less($low,Constant(2.0)),Add($vwap,$high))),Constant(-10.0)),40),20),Constant(-1.0))
+Ref(Add(Less(Sum(Add(Constant(-30.0),Med(Std($high,50),30)),10),Constant(-10.0)),Less(Div($volume,Constant(0.01)),$open)),10)
+Mean(Log(Sub(Constant(-5.0),Med(Log(Abs(Mul(Add($vwap,Constant(-10.0)),Constant(-10.0)))),30))),30)
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942/16384_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.231       |
+|    eval_cnt             | 136         |
+|    significant          | 89          |
+|    size                 | 136         |
+| rollout/                |             |
+|    ep_len_mean          | 16          |
+|    ep_rew_mean          | -0.452      |
+| test/                   |             |
+|    ic                   | 0.0753      |
+|    rank_ic              | 0.0886      |
+| time/                   |             |
+|    fps                  | 15          |
+|    iterations           | 8           |
+|    time_elapsed         | 1061        |
+|    total_timesteps      | 16384       |
+| train/                  |             |
+|    approx_kl            | 0.013610298 |
+|    clip_fraction        | 0.201       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.86       |
+|    explained_variance   | 1.19e-07    |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.235      |
+|    n_updates            | 70          |
+|    policy_gradient_loss | -0.0291     |
+|    value_loss           | 0.136       |
+-----------------------------------------
+Mean(Div(Mul(Constant(-0.5),$vwap),Div(Sub(Constant(0.01),Mul($high,Add(Constant(-10.0),Log(Abs($volume))))),Constant(0.01))),30)
+Max(Div(Add($low,$low),Constant(-0.01)),40)
+Mul(Mean(Abs($high),40),Constant(1.0))
+Div(Add(Div(Log($vwap),Constant(-0.5)),$high),$close)
+Cov($open,Mad(Mul(Constant(-0.5),$open),10),40)
+Sub(Max($vwap,20),Constant(0.01))
+Mean(Add(Constant(-0.5),$vwap),40)
+Add(Mul(Add($open,Constant(0.5)),$vwap),Abs($volume))
+Mad(Var(Mean(Div(Var(Less(Add(Constant(2.0),$high),Div(Constant(2.0),$high)),40),Sub($volume,Constant(-5.0))),20),30),20)
+Mul(Max(Mean(Sub(Med(Sub(Mul(Div(Constant(-10.0),Div($volume,Constant(-2.0))),Constant(-30.0)),Constant(1.0)),40),$close),30),20),Constant(5.0))
+Med(Mean(Med($high,40),40),10)
+Med(Mul(Add(Constant(5.0),$volume),$volume),40)
+Add(Corr(Mul(Mul(Greater($open,Constant(0.5)),Abs($close)),$vwap),Mul($vwap,Add(Mean($vwap,10),Constant(-0.5))),40),$open)
+Sub(Greater(Add(Constant(-5.0),$low),Constant(-0.5)),$low)
+Ref(Sub(Abs(Mul(Constant(1.0),$close)),Abs(Med($high,50))),30)
+Med(Less(Max(Var(Sub(Sub(Add(Constant(0.5),EMA($vwap,10)),Constant(1.0)),Constant(5.0)),20),40),Sub($low,$high)),20)
+Abs(Add(Constant(-1.0),$volume))
+Med(Sub(Greater(Constant(-0.01),$high),$vwap),40)
+Div(Ref(Mul(Constant(-0.5),$close),20),WMA(Ref($volume,10),10))
+$volume
+EMA(Sub(Max(Sub(Add(Constant(-5.0),$open),Greater(Constant(10.0),Sub($close,$volume))),10),Greater(Add(Constant(30.0),$volume),Constant(10.0))),10)
+Add(Constant(1.0),Max($open,20))
+Div(Cov(Add(Mean(Sub(Mul(Constant(2.0),Max($vwap,10)),$high),40),Constant(30.0)),Log($vwap),30),Add($open,Constant(-5.0)))
+Std(Sub(Constant(-0.01),Add($high,Add(Less($high,Constant(10.0)),$high))),30)
+Med(Cov(Div(Add(Greater(Constant(1.0),$low),$vwap),Constant(5.0)),Std(Mul(Constant(-2.0),Cov($vwap,$volume,30)),20),40),40)
+Med(Add(Ref(Div(Std(Div(Div(Sub($volume,Constant(10.0)),Constant(-5.0)),Constant(-0.5)),20),Less($volume,Constant(-0.5))),30),Constant(2.0)),20)
+Sub(Constant(5.0),$vwap)
+Sub(Add(Add(Mul(Add(Less(Constant(-2.0),$volume),$high),$close),Constant(1.0)),Constant(-10.0)),Constant(-0.01))
+Sub(Log(Add(Constant(-10.0),$vwap)),$close)
+Div(Constant(0.5),$vwap)
+Mul(Constant(10.0),$open)
+Div(Sub(Sub(Min(Sub(Add($volume,Constant(-1.0)),$vwap),10),$high),Constant(-5.0)),Constant(5.0))
+Med(Add(Mul(Med(Mul(Sub(Less(Div(Mul(Constant(-0.5),$low),$low),$volume),$low),Constant(-5.0)),40),Constant(10.0)),$volume),10)
+Add(Div(Constant(-0.01),$close),Constant(5.0))
+Sum(Log(Mul(Abs(Sum(WMA(Sub(Sub(Constant(-2.0),Ref(Mul($close,Constant(-30.0)),40)),Constant(1.0)),40),50)),Constant(-0.5))),30)
+Max(EMA(Div(Less(Div(Constant(-30.0),Log(Mul($high,Div($vwap,Constant(1.0))))),Add(Constant(-10.0),$low)),$volume),10),40)
+Sub(Add(Max($high,50),Abs($close)),Greater($volume,Constant(5.0)))
+WMA(Log(Div(Ref(Cov(Mul(EMA($volume,10),Constant(10.0)),Mul(Med($vwap,20),Constant(-0.01)),40),40),$open)),10)
+Mul(Constant(1.0),Sub($high,Constant(2.0)))
+Max(Sub(Sub(Mul(Sub(Constant(-10.0),Add(Min($open,20),Constant(10.0))),Constant(5.0)),$open),Constant(1.0)),10)
+Mul(Constant(-1.0),Add(Mul(Add($close,Constant(2.0)),Constant(-2.0)),Constant(-5.0)))
+Mul(Add(Div(Constant(1.0),$vwap),Constant(-0.5)),Add(Div(Add($low,Add(Add(Constant(-0.01),$volume),$high)),Constant(-10.0)),$low))
+$vwap
+Corr(Log(Sub(Constant(5.0),$low)),$volume,30)
+Abs(Mul(Constant(2.0),Mul(Greater($low,Constant(2.0)),Add(Med(Mul($low,Sub(Constant(-0.5),Abs(EMA($open,30)))),40),Constant(-2.0)))))
+Mean($high,20)
+Var(Div($close,Constant(10.0)),20)
+$vwap
+Div(Constant(-30.0),$open)
+$volume
+Add(Mul(Constant(-1.0),Div(Less(Greater(Ref($vwap,50),Log(WMA($open,40))),Constant(30.0)),Div($low,Constant(-1.0)))),Constant(-0.01))
+Mul(Greater(Mul(Constant(-10.0),Greater(Sum(Greater($open,Ref($open,10)),50),$vwap)),Greater(Constant(30.0),$high)),$open)
+Sub(Constant(30.0),$open)
+Mul(Mean(EMA(Abs(Corr($low,$vwap,10)),30),40),Mean($volume,20))
+Div(Constant(1.0),$vwap)
+Add(Constant(30.0),$close)
+Add(Constant(-5.0),Abs(Std(Med(Log(Abs(Sub(Log(Std(Add($close,Less(Constant(2.0),$open)),10)),$open))),20),50)))
+Sub(Constant(-0.01),Abs(Mul($high,Constant(10.0))))
+Mul($vwap,Med($vwap,10))
+Sub(Add(Greater(Log(Sub(Greater(Mul(Constant(1.0),$volume),Add($volume,$vwap)),Log($volume))),Constant(-30.0)),$low),Constant(-1.0))
+Add(Constant(-0.5),Ref(Var(Mul(Add(Abs(Std(Div(Div($low,Constant(-0.5)),Constant(0.01)),10)),Constant(-10.0)),Constant(-0.5)),40),20))
+Mul(Div(Mean(Var(Div(Add(Log($close),Mul($high,Log(Mul(Constant(-1.0),$high)))),Constant(-5.0)),40),40),$high),Constant(-2.0))
+Med($vwap,30)
+Log(Sub(Greater(Mul(Constant(-0.5),Sum(Log($volume),30)),Constant(1.0)),Sub($high,Constant(30.0))))
+EMA(Add(Sum(Med(WMA(Sub(Constant(10.0),$low),40),20),20),Constant(2.0)),20)
+Delta(Sub(Constant(-2.0),Log($vwap)),10)
+Mul(Div(Constant(5.0),Log($open)),$vwap)
+Mad(Div(Div(Constant(2.0),Max($volume,40)),Constant(-2.0)),20)
+Add(Med(Add(Ref(Mul(Div(Add(Div(Constant(5.0),$volume),Constant(5.0)),Constant(-2.0)),Less($volume,Constant(0.01))),40),Constant(2.0)),10),Constant(-0.5))
+Mul($volume,Sub($close,Constant(1.0)))
+Min(Med(Add($low,$low),40),10)
+Add($open,Div(Mul($open,Less(Add(Constant(-5.0),Sum(Mean(Abs(WMA($volume,20)),10),20)),$volume)),Constant(10.0)))
+Mul(Mul(Mul(Min($low,20),Constant(10.0)),Add($volume,Constant(-0.5))),Constant(10.0))
+Ref(Mul(Constant(30.0),Div(Sub($high,$vwap),Constant(-0.01))),10)
+WMA(Mul(Constant(5.0),Sub($vwap,Constant(30.0))),40)
+Mul(Constant(-0.01),$high)
+Div(Constant(0.01),Std($close,40))
+Med(Mul(Add(Constant(10.0),$low),Constant(-0.01)),40)
+Delta(Mul(Mean($volume,20),Mul($high,Constant(-0.5))),10)
+Add(Mul(Sub(Mul(Constant(-0.01),Sub($volume,Constant(-0.5))),Constant(-0.01)),$open),Div(Constant(1.0),Less(Div(Div($high,$high),Constant(-5.0)),$vwap)))
+Add($low,Add(Greater(Constant(0.01),$volume),$vwap))
+Div(Sub(Sub(Div(Sub($high,$close),Constant(-0.5)),$volume),Constant(-0.5)),Constant(-0.5))
+Log(Mul(Add(Constant(30.0),$vwap),Constant(-0.5)))
+Mean(Div(Constant(2.0),Mul(Add($low,$open),Greater(Mul(Sub(Constant(-0.5),Mul(Ref($high,30),Constant(2.0))),Constant(-0.5)),Constant(-10.0)))),10)
+Add(Constant(1.0),$high)
+Div(Sum(Greater(Log(Log($open)),Sub(Constant(0.5),Min($vwap,10))),20),Sub(Sub(Add($close,Constant(-0.5)),Constant(-0.01)),$close))
+Sum(Sub(Div(Med(Sub(Div(Add(Add(Add(Constant(-5.0),$close),Constant(-1.0)),Constant(-0.5)),Constant(2.0)),Constant(0.01)),10),Constant(-2.0)),Constant(5.0)),20)
+Sub(Constant(10.0),Add($open,Constant(-0.5)))
+Add(Less(Max(Mul(Constant(5.0),$close),40),Constant(-2.0)),Max(Ref($vwap,20),20))
+Div(Constant(-30.0),Min(Ref($vwap,10),30))
+Ref(Mul(Add(Sub(Mul(WMA(Log(Ref($volume,20)),30),Constant(0.5)),$close),Constant(10.0)),Constant(1.0)),20)
+Sub(Sub(Add(Mean($volume,10),Abs(Div($volume,Constant(5.0)))),Constant(0.5)),Constant(-0.5))
+$close
+$vwap
+$volume
+Med(Sub(Mean(Log(Mul(Constant(-5.0),Add($open,Log(Div($open,Constant(5.0)))))),30),Sub(Add(Constant(2.0),$volume),Constant(0.01))),50)
+Ref(Log(Log(Mul(Add(Constant(30.0),$volume),Constant(0.5)))),20)
+Var(Med(Add(Constant(1.0),$high),40),10)
+Mul(Mul($volume,Greater(Constant(-5.0),Div(Add($volume,Constant(-2.0)),Constant(-30.0)))),Constant(0.5))
+$low
+Mul(Ref(Var($low,10),10),Div(Mul(Add(Constant(-0.5),$open),Add($volume,$low)),Min(Abs(Abs($high)),10)))
+Mean(Mean(Div(Greater(Constant(-0.5),Log($volume)),Add($close,Log(Std(Min(Add(Constant(-0.5),$low),10),50)))),10),10)
+Min(Abs(WMA(Log(Add(Var(Add(Constant(-2.0),$open),10),$high)),10)),30)
+Mul(Constant(1.0),$high)
+Less(Add(Constant(30.0),$low),Mul(Constant(-0.5),Sub(Greater($high,Constant(-0.01)),Mul(Greater($vwap,Less(Constant(-0.5),$volume)),Ref($volume,10)))))
+Ref(Med(Mul(Constant(-30.0),$volume),40),40)
+Mul(Constant(5.0),$close)
+Sub(Sum(Mul(Constant(5.0),Div($open,Constant(-0.5))),20),Constant(30.0))
+Add(Less($high,Constant(-0.01)),Mean(Add(Add(Mad($volume,10),Div($high,Constant(-0.5))),Mad(Div($vwap,Constant(-10.0)),20)),10))
+Mad(Min(Div(Less(Log(Log(Mul(Abs(Div(Constant(-1.0),$low)),Less($high,Constant(5.0))))),Constant(-0.01)),Abs($vwap)),30),30)
+$volume
+Mad(Add(Constant(-0.01),Mad(Std($high,20),40)),30)
+WMA(Div(Add(Constant(0.5),$volume),Constant(-0.01)),20)
+Mad(Div(Log(Mean(Mul(Greater(Greater(Med($volume,30),Constant(0.5)),$volume),$volume),10)),Constant(2.0)),20)
+Log(Add(Constant(10.0),$close))
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942/18432_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.24        |
+|    eval_cnt             | 200         |
+|    significant          | 113         |
+|    size                 | 200         |
+| rollout/                |             |
+|    ep_len_mean          | 13.3        |
+|    ep_rew_mean          | -0.185      |
+| test/                   |             |
+|    ic                   | 0.0768      |
+|    rank_ic              | 0.0891      |
+| time/                   |             |
+|    fps                  | 9           |
+|    iterations           | 9           |
+|    time_elapsed         | 1977        |
+|    total_timesteps      | 18432       |
+| train/                  |             |
+|    approx_kl            | 0.012230798 |
+|    clip_fraction        | 0.191       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.81       |
+|    explained_variance   | 5.96e-08    |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.23       |
+|    n_updates            | 80          |
+|    policy_gradient_loss | -0.0281     |
+|    value_loss           | 0.176       |
+-----------------------------------------
+EMA(Add(Med($high,20),Std($volume,30)),10)
+Add(Constant(-30.0),Add(Log(Mean($low,40)),Constant(-0.01)))
+Max(EMA(Std(Corr(Div(Min(Sum(Div($high,Constant(-0.5)),10),40),Constant(-5.0)),$volume,10),50),30),10)
+Sub(Mul(Med(Ref(EMA(Mul(Constant(-10.0),Add($vwap,Mul(Constant(30.0),Add($close,$low)))),10),40),50),Constant(-10.0)),$vwap)
+$vwap
+Sum(Mul(Sub(Constant(-1.0),$close),Constant(5.0)),20)
+Abs(Greater(Add(Log(Ref(Div(Add(Mul(Constant(1.0),$volume),Ref($volume,50)),Constant(0.5)),40)),Constant(10.0)),Sub(Constant(-5.0),$vwap)))
+Min(Add(Add(Constant(-0.5),Mean(Var(Med($vwap,40),40),20)),Abs($volume)),20)
+Div(Constant(-1.0),Mul($open,Constant(-0.01)))
+Sub(Constant(-0.01),$close)
+Mean(Mul(Constant(-0.5),$high),20)
+Std(Add($close,Constant(2.0)),40)
+Var($open,30)
+$vwap
+Sub(Constant(-5.0),Mul($open,Constant(30.0)))
+WMA(Ref(Add(Sub(Constant(0.01),$open),Constant(-1.0)),20),10)
+Mad(WMA(Sub(Less(Add(Log(Div(Constant(-1.0),$low)),Constant(2.0)),Constant(1.0)),$low),50),50)
+Sub(Sub(Div($volume,Div(Less($close,Constant(10.0)),$volume)),$close),Constant(-0.01))
+Log(Add(Div(Div(Less(Constant(0.5),$low),$volume),Add(Mul(Constant(-1.0),$open),Constant(-2.0))),Constant(0.01)))
+Std(Sum(Mul(Add(Sub(Constant(5.0),Delta(Div($close,Mul($open,Constant(30.0))),20)),Constant(1.0)),Add($low,Constant(-0.5))),20),10)
+EMA(Mean(Log(Mul(Mean(Min(Med(Mean(Log($volume),40),20),40),40),Constant(-5.0))),20),10)
+Mul(Std(Ref(Med(Add(Sub(Sub($volume,Constant(-0.5)),Add(Constant(2.0),$vwap)),Constant(0.5)),40),40),10),Constant(-0.5))
+Max(Mul(Greater(Constant(-0.01),$vwap),$open),40)
+Add(Greater(Mul(Constant(-2.0),$volume),Constant(-0.01)),Sub($volume,$high))
+Greater(Sub(Add(Mean(Min(Mul(Constant(-5.0),$volume),40),40),Constant(5.0)),Constant(10.0)),Log($volume))
+Abs(Mul(Constant(-5.0),Div($volume,Mul(Constant(30.0),Add(Max(Mul(Greater($vwap,Constant(0.5)),$volume),10),Constant(30.0))))))
+Add(Add(Constant(-0.01),Add(Mul(Mul(Add(Med($volume,30),Add(Add($volume,$low),Constant(0.5))),Constant(-1.0)),Constant(-10.0)),Constant(-0.01))),$high)
+Mul(Mul(Constant(-2.0),Sub(Div($volume,Constant(5.0)),$low)),$volume)
+Mul(Add(Constant(0.01),$low),Constant(30.0))
+Div(Mul(Constant(-0.01),WMA($high,20)),Constant(0.5))
+Div(Max(Sub($open,Sub(Mul(Div($volume,Constant(-1.0)),Constant(-0.5)),Constant(0.5))),20),Constant(-2.0))
+Mul(Sub(Mul(Abs(Mul($open,Greater(Div(Constant(10.0),Add($open,Mul(Constant(-1.0),$vwap))),Constant(5.0)))),Constant(-1.0)),Constant(30.0)),Constant(2.0))
+Mul(Add(Std(Sub(Div(Constant(2.0),$volume),Div($open,$low)),10),Mul($open,Sum($open,50))),Constant(0.01))
+Std(Mul(Constant(10.0),Add(Max($volume,10),Constant(10.0))),30)
+Mean($volume,20)
+Sub($close,Constant(2.0))
+EMA(Sub(Constant(-1.0),Ref(Max($volume,30),20)),20)
+Med($low,20)
+Mul(Constant(-1.0),Corr(Corr($vwap,Mul($close,Add($volume,Mul($high,Constant(0.01)))),40),Mul(Greater($high,Constant(5.0)),$vwap),40))
+Mul(Mean(Log(Ref(Sub(Mul($high,Add(Sub($volume,$low),Constant(-0.01))),Constant(-0.01)),40)),10),Constant(10.0))
+Sub(Add(Constant(1.0),Sub(Mul(Greater(Sum(Add(Sub($high,Ref($high,10)),Constant(1.0)),10),Constant(0.5)),$high),$volume)),$open)
+$volume
+Ref(Ref(Var(Max(Div(Constant(-2.0),Mad($high,10)),20),40),30),40)
+$open
+$volume
+Mean(Min(Max(Log(Add(Abs(Delta(Sub(Std($vwap,50),$volume),10)),Max($high,20))),10),10),20)
+Mean(Min(Mul(Constant(-0.01),Log($volume)),10),10)
+Log($volume)
+Less(Med(Sub(Constant(-1.0),$low),20),$volume)
+Cov(WMA(Std(Sub(Mad(Add(Constant(2.0),Var($volume,10)),10),Constant(-0.5)),10),40),Abs(Div($high,Constant(1.0))),40)
+Add(Mul(Sum($open,10),Greater(Med(Mul(Constant(0.5),$volume),40),Constant(10.0))),Mul($vwap,$low))
+WMA(Mean(Abs(Greater(Mul(Constant(-5.0),Ref($open,40)),Add(Constant(1.0),$volume))),40),40)
+Add(Constant(10.0),Min($open,10))
+$close
+Cov(Add(Med(Add(Constant(-30.0),$volume),10),Sub($high,Add($vwap,Constant(-5.0)))),Log($volume),40)
+Div(Constant(-0.5),$close)
+Med(Mul(Constant(-30.0),$low),20)
+Sub(Mul(EMA(EMA(Min($high,10),10),40),Constant(0.01)),Constant(-0.01))
+Abs(Sub(Log(Add(Less(Sub(Greater(Add($open,Constant(-5.0)),Add(Constant(-0.5),$high)),Constant(-5.0)),Constant(1.0)),Log($close))),$high))
+Abs(Ref(Sum(Mul(Constant(-0.01),Max(Ref($high,10),10)),10),40))
+Sum(Mul(Sum(Ref(Sub(Constant(-0.5),$volume),10),30),Constant(-0.5)),40)
+Div($open,Constant(-1.0))
+Mul(Mul(Less($volume,Max(WMA(Max($volume,10),20),40)),Constant(-1.0)),Constant(-5.0))
+Std(Max(Mul($volume,Constant(5.0)),20),10)
+Add(Greater(Mean($volume,20),Constant(-30.0)),$vwap)
+Mul(Add(Ref(Sub(Greater(EMA(Sub(Constant(-2.0),Std($vwap,10)),40),Constant(-0.01)),$close),30),$volume),Mul(Constant(-5.0),$low))
+Div(Constant(5.0),$volume)
+Add(Sub(Std($volume,10),Constant(-0.01)),$high)
+Add(Constant(-0.5),Div($low,Add(Constant(-30.0),$low)))
+Mean(Mul($volume,$volume),20)
+EMA(Med(Max(Mul(Mul($low,Sum(Add($volume,Ref($close,30)),20)),Constant(-1.0)),20),10),40)
+Mul(Constant(30.0),Std(Std(Mul(Mul($volume,Ref($volume,10)),Constant(-0.5)),10),30))
+Abs(Div(Constant(2.0),$volume))
+Mul(Log(Div(Sub(Constant(-0.01),Sub($high,Constant(10.0))),Greater(Constant(-1.0),Std($volume,50)))),Constant(-1.0))
+Sub(Add(Constant(-10.0),Log(Abs(Ref($vwap,10)))),Log($low))
+Add(Constant(0.01),$high)
+$open
+Sub(Mul(Constant(2.0),$high),Constant(0.01))
+Mul(Constant(2.0),$high)
+Add(Delta($volume,10),Div(Add(Max($close,20),Constant(5.0)),Constant(5.0)))
+Sub(Abs(Sub(Mul(Med(Greater($open,Med(Mul(Constant(0.5),Log($high)),20)),40),Constant(-0.01)),Add($open,Constant(1.0)))),$volume)
+Div(Constant(5.0),$vwap)
+Mul(Constant(1.0),Add(Mean(Mean($open,30),10),Add(Less($high,Constant(1.0)),Mul(Sub($high,$vwap),Constant(1.0)))))
+Sub(Med(Sub(Sub(Constant(-0.5),$open),Mean(Mul($vwap,Sum(Add(Mul($high,Constant(-5.0)),$low),10)),40)),40),Constant(-30.0))
+EMA(Mean(Mul($close,$high),30),10)
+Abs(Std(Log(EMA(Mad(Mul(Less(Constant(5.0),Add(Mul($close,$low),Constant(5.0))),Div($volume,Constant(0.01))),20),40)),20))
+Mul(Greater(Abs(Mul(Constant(-5.0),$volume)),Add(Less(Constant(5.0),$volume),$low)),Constant(10.0))
+Log(Add(Greater(Constant(-10.0),Sub(Add($volume,Constant(-5.0)),Constant(-0.5))),Cov($vwap,Mul($high,Div(Var($high,50),Constant(10.0))),40)))
+Sub(Add(Constant(1.0),Sub(Add($open,Constant(-30.0)),Constant(-0.5))),$open)
+EMA(Sub(Less(Constant(-1.0),Mul(Less(Mean($low,20),Constant(-2.0)),Sub(Delta($high,30),Constant(0.01)))),$vwap),40)
+Mul(Min(Mean(Mul(Div(Constant(30.0),Sub(EMA($close,20),Sub($close,$volume))),Constant(-5.0)),40),10),Mul(Constant(-5.0),$volume))
+Ref(Div(Constant(30.0),$low),10)
+Mad(Div(Constant(-10.0),$open),40)
+$close
+Abs($high)
+Med($volume,20)
+Min($open,40)
+Div(Constant(-0.5),$volume)
+Div(Ref(Var(Abs(Med(Mul($high,$open),40)),10),10),$open)
+$high
+Sub(Mean(Mean(Mul(Sub(Add(Add(Div(Constant(-0.5),$low),$open),Constant(-0.5)),$vwap),Constant(1.0)),10),20),Constant(5.0))
+Sub(Div(Mul(Add(Constant(5.0),Log(Div($high,Min(Div(Constant(0.5),$vwap),50)))),Constant(-0.5)),Constant(-2.0)),$vwap)
+Min(Cov(WMA(Sub(Sub(Constant(-0.5),$vwap),Constant(-5.0)),20),Sub(Var($close,30),Constant(-10.0)),10),30)
+Min(Sub($open,Constant(-0.5)),10)
+Ref(Med(Add(Constant(-5.0),Max($open,40)),10),40)
+Mul(Mul(Constant(-2.0),$vwap),Div(Constant(1.0),Mean($open,40)))
+Mul(Constant(1.0),Greater($volume,$high))
+Std(Add(Sub(Div(Constant(5.0),$open),Constant(2.0)),$volume),40)
+Div(Corr(Sub(Mul(Mul(Constant(-5.0),EMA($low,20)),Less(Constant(-1.0),$open)),Constant(-0.5)),Abs(WMA($vwap,20)),50),Constant(10.0))
+Div(Min(Med(Div(Mul(Constant(-0.01),WMA(Sum(Div($close,Constant(2.0)),10),20)),$high),40),40),Add(Constant(2.0),$high))
+Add(Div(Min(Sum(Mul($volume,Constant(1.0)),10),40),Div($low,Constant(30.0))),Constant(-10.0))
+Ref(Sub(Greater(Sub(Less(Min(Div(Constant(1.0),Med(EMA($close,40),10)),40),$high),Constant(2.0)),$volume),$low),10)
+WMA(Sub(Constant(-2.0),$low),40)
+Max(Mul(Ref(Med(Std(Sub(Add(Constant(-0.01),$open),Constant(-1.0)),10),30),20),$high),40)
+Mean(Log(Mean(Max(Med(Mul(Constant(-2.0),Add(Greater($vwap,Constant(0.01)),$vwap)),10),40),10)),40)
+Add(Sub(Constant(-0.5),$vwap),$low)
+$vwap
+Med(Div(Less(Constant(-2.0),Mul($vwap,Greater(Constant(2.0),$volume))),$vwap),20)
+Add($vwap,Constant(1.0))
+Add(Constant(-2.0),$high)
+Med(Mad(Std(Std(Sub(Constant(-30.0),Mad(Less(Ref($low,10),Mean($volume,30)),20)),40),10),20),10)
+Sub(Mean(Add(Max(Sum($open,40),10),Constant(-0.01)),20),Constant(-2.0))
+Mul(Add(Constant(5.0),Add($high,$high)),$volume)
+Med(Div(Less(Constant(-0.5),$open),Div(Sub(Add(Div(Div(Greater($volume,Constant(0.5)),$low),Constant(-0.5)),Constant(-0.5)),$high),Constant(10.0))),10)
+Log(Less(Sub(Less(Less(Constant(-0.01),$open),$close),$high),Div(Ref(Sub(Med($close,40),Constant(-1.0)),40),Constant(-0.5))))
+Div(Constant(0.5),Var(Add(Sub(Div($low,$vwap),Mul($low,Mean(Min($open,40),10))),Add($vwap,Constant(-2.0))),10))
+Sum(Mul(Med(Mul(Constant(-10.0),$low),10),Constant(-2.0)),20)
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942/20480_steps
+------------------------------------------
+| pool/                   |              |
+|    best_ic_ret          | 0.293        |
+|    eval_cnt             | 271          |
+|    significant          | 129          |
+|    size                 | 200          |
+| rollout/                |              |
+|    ep_len_mean          | 12.5         |
+|    ep_rew_mean          | -0.0321      |
+| test/                   |              |
+|    ic                   | 0.0946       |
+|    rank_ic              | 0.0978       |
+| time/                   |              |
+|    fps                  | 6            |
+|    iterations           | 10           |
+|    time_elapsed         | 3281         |
+|    total_timesteps      | 20480        |
+| train/                  |              |
+|    approx_kl            | 0.0155113675 |
+|    clip_fraction        | 0.156        |
+|    clip_range           | 0.2          |
+|    entropy_loss         | -2.77        |
+|    explained_variance   | 5.96e-08     |
+|    learning_rate        | 0.001        |
+|    loss                 | -0.236       |
+|    n_updates            | 90           |
+|    policy_gradient_loss | -0.0256      |
+|    value_loss           | 0.175        |
+------------------------------------------
+Add(Less(Div(Mul(Constant(-0.01),Less(EMA($high,50),Add($low,Constant(-2.0)))),Mean($vwap,20)),Constant(0.01)),Mean($high,20))
+Add(Greater(Constant(10.0),$low),WMA(EMA($volume,40),40))
+Sub(Min(Add(Div(Mean(Div(Sub($volume,Constant(1.0)),$high),10),Constant(1.0)),Constant(-5.0)),20),Constant(2.0))
+WMA(Mean(Add(Less(Greater(Log($close),Constant(-2.0)),Sub(Add(Mul($volume,Constant(0.5)),Constant(2.0)),Constant(-0.01))),Log($low)),20),10)
+Mean(Log(Med(Div(Mul(Constant(0.5),$vwap),Constant(-2.0)),50)),20)
+Mul(Less(Constant(10.0),Add($close,Mean($open,10))),$low)
+Log(Sub(Add(Max(Med(Div(Log(Sub($high,Constant(1.0))),$high),40),10),$open),Constant(0.01)))
+Log(Abs(WMA(Add(Log(Div(Greater(Constant(5.0),$close),EMA($vwap,40))),$open),20)))
+$low
+Med(Log(Add(Div(Constant(0.5),$low),Constant(-10.0))),30)
+Max(Min(Div(Div(Constant(-0.5),$vwap),$vwap),40),30)
+EMA(Add(Sub(Constant(1.0),Delta($open,50)),Mul(Constant(5.0),$volume)),50)
+Div(Add(Min(Add(Constant(0.01),$open),10),Constant(-5.0)),Constant(5.0))
+$open
+Sub(Constant(5.0),Abs(Mean($close,20)))
+Add(Constant(5.0),Mul(Mul(Div($low,Med(Div($close,$volume),10)),Constant(10.0)),Constant(2.0)))
+Div(Constant(-5.0),Add(Ref($close,10),Constant(-1.0)))
+Log(Corr(Ref(Div(Constant(-1.0),Mean($vwap,30)),10),$high,10))
+Add(Constant(-5.0),Add(Mean(Add(Max($vwap,10),$volume),40),$volume))
+Mul(Constant(-2.0),$open)
+Add(Sub(Constant(10.0),Mul(Abs(Sub($open,Less($close,$volume))),Constant(-30.0))),Constant(-2.0))
+WMA(Sub(Greater(Log(Mean(Sub(Sub(Constant(1.0),Min(Med($volume,30),30)),$volume),20)),Constant(-1.0)),Abs($open)),20)
+$close
+Mul(WMA(Div(Add(Abs(Mul($high,Constant(-1.0))),Add($vwap,Constant(0.01))),Constant(2.0)),10),Constant(5.0))
+Var($low,50)
+Mul(Add($low,Constant(-0.5)),$vwap)
+Var(Div(Constant(-10.0),$vwap),10)
+Abs(Mul(Constant(1.0),Log($low)))
+$low
+Mean(Std(Add(Sub(Constant(5.0),$volume),EMA($vwap,10)),20),40)
+Div(Mul(Sub($volume,Mul(Constant(-2.0),Mul($high,Constant(-2.0)))),Less($volume,Constant(-10.0))),$close)
+Add(Constant(-10.0),$close)
+Med($vwap,10)
+Ref(Add(Div(Constant(5.0),$close),Constant(-0.5)),10)
+Sub(Sum(Mul(Constant(1.0),$open),40),Constant(30.0))
+$vwap
+Sub(Greater(Mad(Abs(Abs(Sub($volume,$high))),20),Constant(-1.0)),$high)
+Sub(Add(Constant(-0.01),$vwap),$open)
+Sub(Constant(-0.5),Mul(Div($vwap,Constant(1.0)),$vwap))
+Add(Min(Mad(Mul(Ref(Add(Med(Add(Constant(-2.0),Add($vwap,Constant(-30.0))),30),$close),20),Constant(-0.5)),40),10),$close)
+Div(Mul(Mean(Sub(Ref(Sub(Constant(2.0),Std($high,40)),20),Constant(-1.0)),10),Constant(-10.0)),Constant(-0.5))
+Add(Constant(-1.0),Add(WMA(Log(Mean($high,10)),10),Constant(-5.0)))
+Mul(Sub(Greater(Constant(30.0),$volume),$volume),Constant(2.0))
+Add(Add(Constant(-10.0),Log(Sub(Abs($vwap),Constant(10.0)))),Constant(5.0))
+$low
+Med(Add(Less(Add(Constant(-30.0),$close),Constant(0.5)),$volume),30)
+$high
+Add(Constant(-30.0),Sub($volume,$low))
+Abs(Mean(Mul(WMA(Add(Abs(Sub(Constant(5.0),$volume)),Constant(-0.5)),20),Constant(-30.0)),10))
+$volume
+Sub(Std(WMA(Log(Add(Constant(-10.0),$high)),20),40),Div(Constant(0.01),Div(Med(Mul($high,Constant(-0.5)),40),Constant(1.0))))
+Abs(Add(Constant(-0.5),$vwap))
+Mean(Sub(Delta(Mul(Mul(EMA(Sub(Constant(-30.0),Mul($high,$vwap)),10),$volume),Constant(-0.01)),10),Mad($volume,10)),20)
+Sum(Mul($high,Constant(1.0)),40)
+Add(Add(Greater(Constant(30.0),$open),$low),Std(Mad(Mul(Add(Sub(Constant(2.0),$high),$volume),Constant(0.5)),10),30))
+$open
+Ref(Add(Constant(10.0),Mul(Add(Log(Abs($volume)),Constant(-2.0)),Add(Sub($high,Ref($volume,10)),Constant(0.01)))),10)
+Min(Div(Constant(-10.0),$high),40)
+Sub(Constant(-1.0),Mul(Ref($open,40),Constant(-2.0)))
+Mul(Constant(-1.0),$close)
+Mean(Add(Constant(-30.0),Log(Delta(Mean($high,20),30))),40)
+Mul(Sub(Constant(-0.5),Sum($close,10)),Constant(-1.0))
+Log(Add(Sub(Constant(-1.0),$volume),Constant(-1.0)))
+Var(Add(Less(Add(Constant(10.0),Add($high,$volume)),Constant(1.0)),Add(Add($vwap,Constant(-5.0)),Constant(0.5))),40)
+Add(Greater(Less(Sum(Div(Constant(-0.01),$low),50),Add(Constant(-30.0),$low)),Constant(30.0)),Max($volume,20))
+Sub(Div(Constant(1.0),$open),Add(Add($close,$high),Constant(-30.0)))
+Var(Add(Sub(Constant(1.0),Mul($vwap,Constant(1.0))),Constant(-5.0)),10)
+Add(Constant(10.0),$volume)
+Sub(Sub(Constant(-5.0),$vwap),Constant(1.0))
+Log(Div(Log(Div(Constant(-1.0),Add(Sub($open,Mul($open,Constant(5.0))),Constant(0.5)))),Constant(-1.0)))
+Log(Min($close,40))
+Less(Less(Mul(Constant(10.0),Div($volume,Constant(1.0))),Abs(Log(Max(Sub(Constant(-1.0),Div($low,$volume)),10)))),$volume)
+$low
+Cov(Mean(Med(Max(Add(Less(Greater(Constant(-1.0),$vwap),Ref($high,20)),$volume),40),10),40),$close,20)
+Div(Greater(Constant(-10.0),$vwap),$vwap)
+Delta(Sub(Greater(Add($open,$vwap),$close),$low),40)
+Mean(Ref(Mul(Mean(Sub($high,Sub(Constant(-0.01),Div($volume,Constant(-0.01)))),40),Constant(1.0)),20),10)
+Sub(Constant(-1.0),Greater($close,$low))
+$open
+$low
+Sub(Mul(Med(Sub(Add(Sub(Add(Constant(-0.5),$vwap),Constant(-30.0)),Constant(-0.01)),Constant(0.5)),10),Constant(-10.0)),Sum(Div(Constant(1.0),$open),10))
+Mul(Less(Ref(Mean(Mul(Constant(1.0),$close),20),40),$low),Constant(0.01))
+Mul(Constant(-2.0),$low)
+$vwap
+WMA($vwap,40)
+Div(Div(Add(Mul(Constant(30.0),Sub($volume,$high)),Constant(-0.01)),Ref(Add(Add($vwap,Constant(-0.5)),Constant(1.0)),50)),Constant(-1.0))
+Med(Sub(Constant(-0.5),Med($low,20)),40)
+Sub(Add(Add(Less(Constant(30.0),$open),Mul(Add(Sub($volume,Constant(0.01)),$close),Constant(-1.0))),Constant(-1.0)),Constant(-1.0))
+Var(Mean(Mul(Constant(30.0),$vwap),30),40)
+Mean(Add(Log(Add(Div(Greater($open,Constant(-0.01)),Log(WMA(Min($high,10),10))),Std($open,10))),Constant(2.0)),40)
+Max(Add(Div(Greater(Delta(Mul(Constant(-0.01),Add($vwap,Constant(-10.0))),20),Constant(10.0)),Med(EMA($open,50),10)),Constant(30.0)),30)
+Ref($close,40)
+Ref(Sub(Constant(0.5),Mean(Med($high,50),40)),10)
+Mul(Sub(Mul(Div(Med(Abs(Div(Constant(2.0),$open)),20),Constant(-10.0)),Constant(1.0)),$volume),Mean(Abs(Med($volume,10)),10))
+EMA(Mul(Constant(-5.0),Mean(Mul(Sub(Med($close,10),Constant(-0.01)),Constant(-5.0)),10)),10)
+Ref($vwap,20)
+Div(Sub(Abs(Mul(Med(Sub(Med(Add(Constant(0.01),$low),20),Constant(-2.0)),50),Log($open))),Constant(1.0)),Constant(-0.01))
+Add(Sub(Ref(Mean(Min(Div(Constant(30.0),$close),10),30),40),Constant(-0.01)),Add(Constant(5.0),$volume))
+Div(Less(Constant(-1.0),$close),Less($open,Mul(Sub(Constant(-1.0),Log($close)),Constant(-0.5))))
+Add($close,Constant(-0.01))
+Div(Div(Add(Constant(-5.0),Corr($vwap,Mean(Div($vwap,Constant(1.0)),20),20)),Constant(1.0)),Constant(2.0))
+Mul(Max($high,40),$high)
+Sub(Constant(-0.5),$vwap)
+Div(Log(Corr($close,$close,40)),Constant(-5.0))
+Add(Constant(10.0),$high)
+$low
+Sub(Sub(Abs(Med(Div(Greater(Div(Constant(10.0),$open),Constant(-30.0)),Min($volume,40)),30)),$vwap),$volume)
+Add(Constant(-10.0),Min(Div(Corr($open,$vwap,10),Add(Mean($close,50),Constant(1.0))),10))
+$vwap
+Mad(Sub(Constant(2.0),Cov($low,$high,20)),10)
+$high
+Mul(Constant(-10.0),Mad(Mul($volume,Add($high,Constant(-1.0))),20))
+Ref(Abs(Add(Constant(5.0),$volume)),30)
+Mul(Constant(5.0),$vwap)
+Sub(Mean(EMA(Add($high,Constant(0.01)),40),30),Constant(-0.01))
+WMA(Sub(Div(Constant(30.0),Abs(Greater($vwap,Mul(Sub(Constant(0.01),$high),Constant(10.0))))),Constant(1.0)),30)
+Sub(Med(Med(Mul(Add(Constant(0.01),Max(Abs($volume),40)),$open),10),10),Constant(-1.0))
+Mul(Constant(10.0),$close)
+Ref(Sub(Div(WMA(Sub(Constant(-10.0),$high),20),Mad(Div(Add(Constant(-5.0),$vwap),Add(Constant(1.0),$volume)),50)),Constant(1.0)),40)
+Sub(Max(EMA(Max(Sub(Constant(5.0),Std($vwap,30)),40),10),20),Less(Constant(1.0),Sub(EMA($low,20),Constant(-0.01))))
+Mean(Sub(Med(Add(Constant(1.0),$vwap),20),Constant(-5.0)),40)
+Sub(Constant(-2.0),Mul($open,Ref(Max($vwap,40),20)))
+Mul(Add(Add(Add(Sub($high,Constant(5.0)),Greater(Constant(0.5),$high)),Constant(-5.0)),Log($low)),Constant(-5.0))
+Add(Add(Min(Std(Div(Constant(-1.0),Mean(Sum(EMA($volume,30),10),30)),20),20),Constant(-0.5)),Less(Constant(-2.0),$vwap))
+Div(Med(Add(Add(Constant(-10.0),$open),Constant(10.0)),10),Constant(-0.5))
+Sub(Constant(0.5),$close)
+$volume
+Log(Max(Mean($vwap,40),10))
+Mul(Sub(Sub(Greater(Med(Add(Sub(Add($open,Constant(-5.0)),Constant(30.0)),Constant(-5.0)),10),Constant(5.0)),$volume),Add($volume,Constant(10.0))),Constant(-0.5))
+Max(Abs(Add(Constant(5.0),$vwap)),10)
+Mul(Sum($vwap,40),Constant(5.0))
+Sub(Ref(Abs(Sub(Constant(-2.0),$high)),10),$volume)
+Div(Med(Mean(Mul(Constant(1.0),$open),10),10),Div(Sub(Constant(-0.01),$high),Log(Log($volume))))
+Add($vwap,Sub($close,Constant(1.0)))
+Sub(Greater(Min(Add(Sub(Add(Constant(1.0),Sub($high,$high)),Constant(-1.0)),Constant(-5.0)),40),Constant(-1.0)),$high)
+Greater(Add($close,Std(Sum(Div(Add($high,$open),Constant(30.0)),20),20)),Max($high,40))
+Add(Mul(Constant(-2.0),Corr($volume,Div(Sub(Sub(Div(Constant(-10.0),$low),Constant(10.0)),Constant(-5.0)),$high),10)),Constant(5.0))
+Sub(Constant(-0.5),$volume)
+Med(Med(Delta(Add(Constant(30.0),Div(Div(Mul(Add(Std($vwap,10),Constant(-5.0)),Constant(10.0)),$high),Constant(0.5))),40),10),40)
+$volume
+Mul(Div(Constant(5.0),Mul(Add(Abs(Sub($vwap,Constant(-2.0))),Constant(1.0)),$high)),$high)
+Add(Constant(1.0),$volume)
+Sub(Ref(Add(Mul(Mul(Sub(Mul(Constant(1.0),$vwap),Constant(-30.0)),Constant(2.0)),$vwap),Constant(-10.0)),20),Constant(1.0))
+Mul(Constant(-10.0),Mul($close,Sub(Mul($volume,Constant(-5.0)),Constant(1.0))))
+Add(Log(WMA(Sub(Constant(-0.5),$volume),20)),Constant(0.5))
+Mad(Max(Add(Constant(2.0),Log(Add(Sub($open,Constant(0.5)),Constant(30.0)))),40),20)
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942/22528_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.294       |
+|    eval_cnt             | 353         |
+|    significant          | 144         |
+|    size                 | 200         |
+| rollout/                |             |
+|    ep_len_mean          | 11.9        |
+|    ep_rew_mean          | -0.0191     |
+| test/                   |             |
+|    ic                   | 0.0955      |
+|    rank_ic              | 0.0977      |
+| time/                   |             |
+|    fps                  | 4           |
+|    iterations           | 11          |
+|    time_elapsed         | 4733        |
+|    total_timesteps      | 22528       |
+| train/                  |             |
+|    approx_kl            | 0.012532206 |
+|    clip_fraction        | 0.188       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.71       |
+|    explained_variance   | 1.19e-07    |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.224      |
+|    n_updates            | 100         |
+|    policy_gradient_loss | -0.0254     |
+|    value_loss           | 0.158       |
+-----------------------------------------
+Add(Mean(Mean(Abs(Add(Constant(1.0),Sub(Div(Mean($volume,20),$volume),Constant(-2.0)))),20),10),Constant(0.5))
+Mul(Abs(Add(Constant(5.0),Max(Log(Log($volume)),30))),$low)
+Sub(Constant(10.0),$high)
+Div(Div(Constant(0.5),$volume),Constant(-10.0))
+Div(Constant(2.0),$high)
+$vwap
+Mul(Constant(-0.01),$close)
+Log(Std(Mul(Constant(1.0),Add($open,$low)),50))
+Mul(Constant(10.0),$high)
+Corr(Div(Constant(-10.0),$volume),$close,30)
+Add(Constant(-0.5),EMA($vwap,10))
+Div(Mul(Add(Constant(-2.0),Div(Add(Corr($close,$close,20),Constant(-0.5)),Add(Constant(2.0),Mean($low,40)))),Constant(2.0)),Log($open))
+Abs(Add(Greater(Abs(WMA(Div(Div(Constant(0.5),$volume),Constant(2.0)),40)),Constant(-0.5)),Add($low,$open)))
+Min($volume,10)
+Log(Max(Var($volume,20),10))
+Sub(Div(Constant(-1.0),$low),Constant(2.0))
+Mean($open,30)
+Sub(Ref(Mul(Constant(1.0),$close),40),Constant(0.01))
+Sub(Constant(-0.01),$volume)
+Add(Constant(30.0),$high)
+Mean(Abs(Mul(Constant(10.0),Cov($high,$close,10))),20)
+Corr(Sub(Div(Constant(-0.5),Ref(Add(Mul(Std(Ref($vwap,10),20),Constant(5.0)),Constant(2.0)),20)),$vwap),$low,10)
+Div(Constant(-2.0),$low)
+Abs(Mul(Add(Div(Constant(-30.0),$high),Mul(Constant(5.0),Mean($open,40))),Constant(-30.0)))
+Min(Add(Constant(-2.0),Add($high,Constant(10.0))),20)
+Abs(Sub(Less(Constant(10.0),$close),Mul($vwap,Constant(30.0))))
+Mul(Delta(Mean(Mad(Mul(Delta(Sub(Sum(Sub(Constant(-0.5),$low),10),Constant(10.0)),10),Constant(-30.0)),40),10),20),Constant(-0.01))
+Add(Greater(Constant(0.5),$low),Log(Log(Mul($high,$low))))
+Med(Log($vwap),20)
+WMA(Mul(Std(Div($open,Less(Constant(-0.5),$open)),10),Abs($close)),10)
+Med(Std(Div(Constant(-10.0),Min($open,40)),30),10)
+Min(Min(Delta(Add(Mul($close,Constant(10.0)),Constant(-10.0)),10),20),40)
+Var(Mul($vwap,Constant(0.01)),50)
+Sub(Constant(-0.5),$vwap)
+Add(Sub(Greater(Greater($open,Constant(-0.01)),$close),$close),Add(Div(Constant(1.0),$open),Constant(30.0)))
+Mul(Mul(Constant(-1.0),$volume),Constant(-30.0))
+WMA(Mul(Constant(0.01),WMA(Max($volume,20),20)),20)
+Add(Min(Sub(Constant(-1.0),Div($low,Constant(-1.0))),50),$high)
+Med(Mul(Less(Abs(Div(Constant(5.0),$volume)),Greater(Log($low),Constant(-0.01))),Med($close,10)),20)
+Sub(Mad(Ref(Div(Less(Div($close,Constant(2.0)),Constant(-2.0)),Add(Add($volume,Constant(-2.0)),Constant(-0.01))),40),20),Constant(2.0))
+Med($open,10)
+Mul(Sub(Constant(10.0),$open),Constant(5.0))
+Min(Div(Mean($open,50),Mul($close,Constant(0.5))),40)
+Sub(Delta($close,20),Constant(10.0))
+Sub(Add(Constant(-2.0),$open),$vwap)
+WMA(Med(Div(Mul(Constant(-0.01),$volume),Constant(10.0)),40),50)
+$vwap
+Mean(Mul(Ref(Div(EMA(Add(Div(Constant(-10.0),$volume),Sub($vwap,Constant(-5.0))),40),Constant(-2.0)),10),Constant(-10.0)),40)
+Mul(Add(Constant(-0.5),$vwap),Constant(-0.5))
+Div(Constant(-0.5),$low)
+$vwap
+Log(Mean(Mul(Less(Constant(-10.0),Mean(Div($volume,Constant(-1.0)),50)),Sub($close,Constant(2.0))),10))
+Sub(Greater(Constant(-5.0),Add(Div($open,Min(Mul($open,Add(Add(Constant(-2.0),Mean($volume,20)),Constant(2.0))),20)),Constant(-5.0))),$volume)
+Add(Constant(10.0),$high)
+Sub(Constant(-10.0),Sum($volume,40))
+Div(Constant(5.0),$high)
+Delta(Mul(Sub(EMA(Corr(Add(Greater(Constant(1.0),$close),$low),$close,20),10),Constant(-2.0)),Constant(30.0)),40)
+Add(Abs(Div($vwap,$volume)),$open)
+Mul(Constant(-5.0),WMA($open,20))
+Add(Less(Constant(-10.0),Sub(Add(Abs($open),Greater($volume,Constant(-10.0))),Constant(1.0))),Delta(WMA($volume,40),10))
+Div(Constant(1.0),Log(Sub($vwap,Constant(1.0))))
+Mul(Constant(5.0),$high)
+Div(WMA(Div(Med(Add(Mul(Constant(-1.0),Min($open,10)),Constant(10.0)),30),Constant(-10.0)),40),Constant(10.0))
+Mean(Mul(Log(Abs(Add(Constant(-5.0),$open))),Mean($high,20)),20)
+Div(Constant(-10.0),Sub(Greater(Mean($vwap,50),Constant(-30.0)),Mean(Max($volume,40),40)))
+Mul(Constant(2.0),Log($low))
+Mul(Div(Add(Constant(-30.0),Med(Div(Add($high,Greater(Constant(-5.0),Add($volume,$volume))),Less($close,Constant(-5.0))),40)),Constant(30.0)),Constant(0.5))
+Div(Sub(Add(Add(Mean(Sum(EMA(Sub(Constant(1.0),$close),20),10),50),$vwap),Constant(10.0)),Constant(5.0)),$vwap)
+$open
+Log(Mul(Constant(30.0),$volume))
+Div(Constant(-5.0),Max($vwap,30))
+Div(Sub(Constant(1.0),$open),Mul($high,Constant(1.0)))
+Add(Constant(0.01),$volume)
+Sub(Constant(-0.01),Mul(Sub(Min(Std(Mean($vwap,30),40),40),$vwap),Div($volume,$volume)))
+Mul(Div(Mean(Div(Sub(Constant(-30.0),$open),Constant(-10.0)),10),$high),Constant(1.0))
+Sum(Add(Constant(-2.0),$vwap),20)
+Delta(Var(Delta(Med(Add(Mul(Mul(Constant(-30.0),$vwap),Mean(Sub($low,Constant(5.0)),10)),$close),10),40),40),20)
+Div(Add($volume,Cov($volume,$close,20)),Sub(Constant(-0.5),$low))
+Add(Constant(10.0),$open)
+Sub(Abs(Add(Less(Constant(-0.5),Div($close,Constant(-0.5))),$close)),Constant(5.0))
+Log($close)
+Max(Mul(Abs(Greater(Add(Add(Constant(-30.0),$volume),Constant(10.0)),Sub(Sub($volume,Constant(-0.01)),Constant(0.01)))),Constant(1.0)),30)
+Mean(Greater($close,Div($open,Constant(2.0))),10)
+$close
+Log(Add(Log(Mean(EMA(Add(Add(Constant(-10.0),$high),Constant(0.01)),30),30)),$close))
+Mul(Constant(-10.0),Mean($open,20))
+Div(Constant(-1.0),Med($low,50))
+Mul(Less(Constant(-5.0),$high),$low)
+Mul(Greater(Abs(Log($low)),$low),$high)
+Sub(Constant(-30.0),Mean(Mean($low,20),20))
+Div(Mul(Constant(10.0),Mean($volume,40)),Mul($high,Constant(0.01)))
+Min(Mul(Max(Cov(Log(Add(Med($open,20),$vwap)),Add($vwap,Constant(-2.0)),10),20),Add($volume,Constant(-0.5))),20)
+$high
+Min(Div(Div(Mul(Constant(-0.5),$open),Constant(-2.0)),Ref($high,30)),10)
+Mul(Constant(5.0),$low)
+Add(Mul(Constant(0.01),$open),Add(Div(Constant(10.0),$low),Constant(2.0)))
+Sub(EMA($close,20),Constant(0.01))
+Add($open,Abs(Div(Abs($high),$low)))
+Sub(Constant(-0.01),$open)
+Add($volume,$low)
+Std(Mul(Div($close,Constant(-0.01)),$volume),20)
+$high
+Sub(Constant(2.0),$vwap)
+Div(Constant(-0.5),$high)
+Med(Less(Mean(Sub(Constant(10.0),$high),20),$volume),50)
+Sub(Constant(1.0),$high)
+Min(Add(Constant(1.0),Div($volume,Div(Med(Div(Constant(-0.01),Min($vwap,20)),20),$low))),20)
+Med(Add($open,Constant(2.0)),30)
+Sub(Sub(Less(Constant(2.0),Div(Mean($vwap,10),Min($vwap,20))),Div($vwap,Constant(-1.0))),Constant(-0.01))
+Std(Add(Sub(Constant(-30.0),$close),Constant(-0.5)),10)
+Add(Mul(Less($high,Constant(-5.0)),$close),Constant(-5.0))
+Div(Med($open,40),Constant(5.0))
+$open
+Add(Constant(-10.0),$vwap)
+Sub(Constant(10.0),$low)
+Max(Add(Add(Sub(Mul(Mean($close,40),Sub($open,Constant(-1.0))),Constant(-2.0)),WMA(Mean($high,30),40)),Constant(1.0)),10)
+Ref(Add(Constant(-1.0),Min($low,40)),10)
+Mad($high,20)
+Log(EMA(Mul($close,Constant(1.0)),10))
+Add(Ref(Log(Mul(Max($volume,30),Constant(1.0))),30),Constant(-5.0))
+Std(Sub(Constant(-1.0),$vwap),50)
+Log(Ref(Mean(Sub(Add(Constant(-0.01),WMA($vwap,20)),Constant(10.0)),20),40))
+Mul(Less(Constant(-1.0),Max($vwap,10)),$vwap)
+Less(Ref(Sub(Constant(5.0),$vwap),20),$high)
+Ref(Sub(Constant(0.5),$vwap),20)
+Mul(Sub(Constant(-1.0),$low),Constant(-10.0))
+Div(Constant(2.0),$volume)
+Var(Mul(Constant(30.0),Mean($high,10)),20)
+Add(Abs($high),Constant(-10.0))
+Div(Constant(-5.0),$vwap)
+Mean(Sum(Mul(Constant(-10.0),Abs(Mul($open,Constant(5.0)))),20),40)
+Add(Constant(-30.0),Med(Std($close,20),20))
+Sub(Constant(30.0),$high)
+Sub(Constant(-0.5),$close)
+Mul(Sub(Sub(Constant(-5.0),Min($volume,30)),Constant(10.0)),$low)
+Mul(Less(Less(Constant(1.0),$open),$high),Mad($close,20))
+Sub(Constant(0.5),$vwap)
+Add(Sub(Constant(2.0),$vwap),Mean($low,30))
+Mul(WMA(Med(Med(Mul(Less(WMA($high,10),Constant(-0.5)),Std(Mean($close,40),10)),20),20),10),Constant(-2.0))
+Sub(Constant(-0.5),$vwap)
+Div(Constant(-0.5),$volume)
+WMA(Mul(Sub(Add(Log(Add(Constant(-1.0),Div($vwap,Constant(0.5)))),Log(Add(Constant(-5.0),$volume))),Constant(-2.0)),Constant(-5.0)),10)
+Add(Log(Med(Add(Sub(Mul($close,Constant(-30.0)),Constant(1.0)),Constant(-0.01)),20)),Constant(-0.01))
+Sub(Add(Div(Constant(10.0),$vwap),Constant(-0.5)),Mul(Constant(-0.5),$high))
+Sub(Constant(-0.5),Mad($vwap,10))
+Add(Constant(10.0),Mean(Delta($high,50),20))
+Max(Log(Add(Less(Mean(Add(Constant(-0.01),Ref($open,40)),20),Constant(10.0)),Mean($volume,20))),10)
+Add(Constant(30.0),Mean($vwap,30))
+Add(Constant(-5.0),Div($volume,Constant(-0.01)))
+Log(Mul(Mul(Constant(2.0),$vwap),Constant(-1.0)))
+Max(EMA(Abs(Add(Add(Constant(-5.0),$open),Constant(30.0))),20),20)
+Add(Constant(5.0),$vwap)
+Add(Constant(2.0),Log($high))
+Add(Constant(-2.0),Med(Mul($open,Constant(-0.01)),10))
+Sum(Div(Constant(-0.5),$vwap),10)
+$low
+Sub(Constant(0.5),Sum(Add($vwap,Constant(5.0)),30))
+Mul(Log(Add(Constant(-10.0),$vwap)),Constant(-30.0))
+Sub(Greater(Greater(Sub(Div(Mul(Mul(Constant(2.0),$vwap),Constant(-0.5)),Sub($open,Constant(-0.5))),$volume),Constant(-1.0)),$open),Max($high,10))
+Add(Var($high,10),Constant(-1.0))
+Med(Div(Add(Constant(30.0),Mean(Std(Add($volume,Constant(-0.01)),20),10)),$low),20)
+$volume
+Add(Constant(-2.0),$open)
+Div(Mul(Add(Div($volume,Div($volume,Constant(10.0))),$low),$open),Constant(-2.0))
+Add(Constant(1.0),$volume)
+Add(Constant(-10.0),$high)
+Med(Div(Div(Constant(30.0),Add(Sub(Med($vwap,10),$high),Constant(-2.0))),Constant(30.0)),20)
+$close
+Ref(Max(Delta(Mul(Min(Mul(Constant(0.5),$high),10),Constant(-0.01)),10),20),40)
+Sum(Std(Sub(Add(Constant(5.0),$volume),Constant(10.0)),30),30)
+Add($vwap,Constant(-1.0))
+Abs(Mul(Constant(1.0),Add(Mean($open,10),Constant(-2.0))))
+Div($high,Mul($close,Constant(-1.0)))
+Add(Delta(Add(Constant(10.0),$volume),20),Constant(-0.01))
+Less(Sub(Constant(-1.0),$volume),Add(Constant(-1.0),Greater(Mul($low,$vwap),$high)))
+Mad(Log(Med(Mul(Mean(Mul(Sub(Constant(-1.0),$close),Sum($vwap,30)),10),Constant(-2.0)),20)),10)
+Div(Sub(Constant(-5.0),Div(Log(Med(Sub($low,Constant(-2.0)),10)),Constant(0.5))),$vwap)
+Mul($low,$high)
+Var(Sub(Mul(Div(Constant(2.0),Var($open,20)),Constant(-30.0)),Constant(-0.01)),20)
+$vwap
+Greater(Add(Constant(-2.0),$open),$close)
+Log(Add(Constant(-10.0),$low))
+Sub(Constant(-5.0),$vwap)
+Max($close,20)
+Abs(Mul(Constant(-0.01),$open))
+Abs(Sub(Constant(-0.5),Abs($open)))
+Sub(Constant(0.5),$vwap)
+Add(Min(WMA(EMA(Min(Sum(Sub(Less(Less($volume,Constant(-10.0)),$vwap),$high),50),20),10),20),10),Constant(-1.0))
+Mul(Mean(Ref($high,50),40),Constant(-2.0))
+Mul(Constant(-0.01),Delta($volume,20))
+Mean(Mul(Constant(-30.0),$vwap),40)
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942/24576_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.299       |
+|    eval_cnt             | 450         |
+|    significant          | 161         |
+|    size                 | 200         |
+| rollout/                |             |
+|    ep_len_mean          | 8.64        |
+|    ep_rew_mean          | 0.067       |
+| test/                   |             |
+|    ic                   | 0.0916      |
+|    rank_ic              | 0.0919      |
+| time/                   |             |
+|    fps                  | 3           |
+|    iterations           | 12          |
+|    time_elapsed         | 6427        |
+|    total_timesteps      | 24576       |
+| train/                  |             |
+|    approx_kl            | 0.013625213 |
+|    clip_fraction        | 0.172       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.63       |
+|    explained_variance   | 1.19e-07    |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.213      |
+|    n_updates            | 110         |
+|    policy_gradient_loss | -0.0247     |
+|    value_loss           | 0.15        |
+-----------------------------------------
+Mul(Sub(Constant(-30.0),$volume),$low)
+Add(Constant(-2.0),$high)
+Add(Mad($close,40),Log(Less(Div(Constant(0.5),$vwap),$open)))
+Add(EMA(Add(Add(Greater(Div($low,Constant(10.0)),Constant(-10.0)),Log(Log($high))),Constant(1.0)),20),$high)
+Div(Mul(Constant(-0.01),$vwap),Constant(5.0))
+Add(Constant(-2.0),Var($low,10))
+$vwap
+$vwap
+Mean(Div(Constant(1.0),$volume),10)
+Sum(Max(Add(Add(Constant(-5.0),Log($low)),Constant(5.0)),30),50)
+Log(Std(Mul(Med($volume,30),Constant(5.0)),40))
+Max(Mad($vwap,20),50)
+Min(Sub(Constant(-10.0),Mad(Min(Log($volume),40),10)),10)
+Greater(Var(Mul(Constant(-0.01),$close),40),$vwap)
+Mul($open,Constant(10.0))
+Corr(Sub(Constant(10.0),$close),Add(Constant(-2.0),Std(Sum(Mean($vwap,50),30),10)),10)
+Sub($close,$volume)
+Mul(Constant(0.5),$high)
+$volume
+Add(Mean(Add(Sum(Mul(Constant(-2.0),Ref(Add($low,Constant(-0.01)),20)),30),Constant(-0.01)),10),Constant(-10.0))
+Div(Constant(0.01),$close)
+Std(Sub(Constant(-5.0),$vwap),20)
+Div(Constant(1.0),Mul(Less(Mean($high,10),Constant(0.01)),$low))
+Add(Constant(-1.0),$open)
+Mul(Div(Min(Med(Std(Mul($vwap,Constant(-0.5)),20),20),50),Constant(-30.0)),Constant(-0.5))
+Add(Constant(10.0),$open)
+Sub(Constant(-2.0),$open)
+WMA(Mean(Mul(Constant(-5.0),Med($vwap,20)),40),40)
+Log($close)
+Add(Max(EMA(Mul(Constant(5.0),$open),20),50),Sum(Mul(Constant(-30.0),$vwap),20))
+Add(Div(Constant(-5.0),$low),Constant(10.0))
+Add(Mul(Add(Constant(-5.0),$low),Ref($low,40)),Constant(10.0))
+Log(EMA(Div(Constant(1.0),Sub($high,Constant(-0.01))),10))
+Div(Greater(Med($vwap,10),Constant(-2.0)),$close)
+WMA($close,20)
+Std(Add(Constant(-30.0),$volume),10)
+Mean(Abs(Mul($volume,Constant(-0.01))),40)
+Mul(Mul(Add(Less(Constant(-10.0),Sum($high,40)),Add($close,Constant(1.0))),Mul($high,Constant(30.0))),Constant(0.5))
+Add(Constant(-0.5),$close)
+Sub(Constant(-0.5),$close)
+Sub(Div(Constant(0.01),Add($open,Constant(0.01))),$vwap)
+Add(Constant(-10.0),$volume)
+Med($close,40)
+Add(Mean(Add(Sub(Constant(30.0),$vwap),Add($volume,$volume)),20),Constant(-1.0))
+Mean($low,40)
+Div(Div(Add(Constant(-10.0),Log($volume)),Constant(-0.01)),Constant(-0.01))
+Mean(Add(Cov(Mul(Div(Constant(2.0),Mean($close,40)),Constant(-0.5)),$close,10),Constant(-1.0)),10)
+Ref(Sub(Mean(EMA(Log(Log(Div(Div(Constant(5.0),$volume),Add(Mul($vwap,$close),Constant(1.0))))),10),50),Constant(30.0)),20)
+Delta(Add(Mul(Greater(Constant(1.0),$open),$high),Constant(-5.0)),20)
+Log(Add(Mul(Constant(-10.0),$high),Mul($vwap,Constant(1.0))))
+Std(Div(Constant(0.5),Abs($vwap)),10)
+Add(Add(Constant(-0.5),$volume),Add($low,Med(Add(Add(Constant(1.0),$vwap),Constant(-2.0)),20)))
+Sub(Mul(Max(Min($volume,30),20),Constant(-1.0)),Constant(0.01))
+Div(Constant(30.0),Add(Sub(Log(Max(Div($volume,Constant(-10.0)),10)),Log($vwap)),Mul($low,Sub($close,Constant(-10.0)))))
+Mul(Constant(-0.5),Min(Mul($low,Constant(-10.0)),50))
+Div(Constant(-0.01),$high)
+Mul(Sub(Constant(10.0),Abs(Div($close,Constant(-10.0)))),Constant(10.0))
+Add(Add(Constant(-0.5),$vwap),Less(Constant(-0.5),$open))
+Div(Sub(Mul(Greater(Div(Less(Constant(-1.0),$low),$vwap),Constant(-2.0)),$high),$close),Constant(-1.0))
+Mean(Add(Constant(-2.0),Div(Mean(Sum($vwap,10),20),$volume)),10)
+Mul(Div(Add(Sub(Mul(Constant(5.0),Sub($vwap,$low)),$vwap),Constant(5.0)),$high),Constant(-0.5))
+Sub(Constant(30.0),$close)
+Mul(Constant(2.0),Div($low,Constant(5.0)))
+WMA(Log(Add(Constant(1.0),$close)),10)
+Add(Less($volume,EMA(WMA(Mul(Add(Constant(-30.0),$close),$vwap),20),40)),$vwap)
+Min(Add($high,$close),20)
+Div($high,Constant(10.0))
+Sum(Std(Div(Greater(Constant(-10.0),$close),$low),40),10)
+Div(Med(Log(Sum(Div(EMA(Sub(Div($close,Add(Constant(-5.0),$vwap)),Constant(10.0)),50),Constant(30.0)),20)),10),Constant(5.0))
+Add(Div(Sub(Less(Less($volume,Constant(-5.0)),Mad($low,20)),$close),Constant(-2.0)),Constant(-2.0))
+Std(Abs(Mul(Constant(10.0),$volume)),30)
+Div(EMA($low,20),Constant(-1.0))
+Div(Constant(-10.0),Log(Log($close)))
+Mul(Constant(-30.0),Div($close,Constant(-0.01)))
+Std(Sub(Constant(-1.0),Div(Add(Min($vwap,30),Abs($low)),$vwap)),40)
+Add(Greater(Mul(Add(Constant(0.01),$volume),$vwap),Constant(-10.0)),$volume)
+$low
+Mul(Constant(-5.0),Sub($vwap,$open))
+Mul(Add(Greater(Constant(-0.01),Div($vwap,$vwap)),Max($high,20)),Constant(-10.0))
+Sub(Constant(5.0),Add(Log(Div($vwap,Div(Constant(-10.0),$volume))),Constant(1.0)))
+$vwap
+Med(Std(Med(Std(Max(Mean(Med(Delta($high,10),10),20),30),20),40),20),50)
+Sub(Less(Std(Mul(Constant(0.01),$high),50),Constant(-5.0)),$close)
+Div(Constant(-30.0),$vwap)
+Add(Constant(-1.0),$high)
+WMA($volume,10)
+$volume
+Ref(Div(Constant(-30.0),$vwap),10)
+Sub(Add(Sum($close,10),Constant(2.0)),$high)
+Med(Mean(Std(Min(Mul(Constant(-5.0),$low),50),10),30),40)
+Max(Max(Mul(Constant(-1.0),$close),30),40)
+Mul(Std($high,20),$close)
+Var(Mul(WMA(Add(Constant(0.5),$high),10),$low),10)
+Add(Constant(-0.01),$close)
+Add(Constant(2.0),Mean(Var(Div($volume,$high),30),10))
+$high
+Add(Var(Mul(Constant(2.0),Div(Sub($close,Constant(5.0)),Less(Sub($volume,Constant(30.0)),Constant(10.0)))),10),Ref($low,40))
+Mul($close,Constant(-0.01))
+Div(Constant(-30.0),$close)
+Add(Constant(-0.5),$vwap)
+Max(Abs(Add(Std(Div(Less(Mul(Constant(-1.0),Mul(Greater($vwap,Constant(-0.01)),$low)),Constant(0.5)),$open),10),Constant(2.0))),40)
+$low
+Div(Constant(-0.01),Mul(Std(Delta(Mad($open,40),10),20),Constant(-30.0)))
+$volume
+Mul(Mul(Greater(Constant(10.0),$vwap),Max($vwap,10)),Constant(-0.01))
+Log(Log($volume))
+Less(Add(Constant(30.0),$open),Add(Constant(-10.0),Sub(Max($vwap,10),Div($vwap,Add($open,Constant(0.5))))))
+Div(Sub($vwap,Min($volume,30)),Constant(2.0))
+Sub(Log(Med(Var(Mean(Mul(Constant(5.0),Div($volume,Constant(-0.01))),20),30),10)),Constant(2.0))
+$open
+Div(Greater(Constant(0.5),Med($close,50)),Delta($close,40))
+Log(Add(Add(Constant(0.01),$vwap),Constant(30.0)))
+Mul(Log($volume),$volume)
+Add(Greater(Constant(-30.0),$volume),$volume)
+Mean(Mul(Mul(Constant(-10.0),$open),Constant(-1.0)),30)
+Div(Constant(-0.5),Add($high,$vwap))
+Sub(Div(Mul(Greater(Greater(Constant(1.0),$vwap),Log(Div($volume,Constant(-5.0)))),$vwap),Constant(0.01)),Constant(-10.0))
+Div(Constant(-0.01),Min(Log($low),40))
+Log(Std(Add(Constant(2.0),Std($close,10)),10))
+Mul(Min(Sum(Max(Log($volume),20),40),30),Constant(2.0))
+Add($low,Constant(30.0))
+Sub(Add(Mul(Constant(1.0),$high),Abs(Sub(Constant(2.0),$open))),Constant(-0.01))
+Add(Constant(-10.0),Abs(Min($low,10)))
+EMA(Div(Constant(-0.5),Std($high,10)),30)
+Sub(Constant(1.0),$high)
+Add(Constant(0.01),$volume)
+Mul(Constant(-5.0),Add($low,$volume))
+Log(Std(Abs(Add(Add(Constant(-0.01),Abs($volume)),Constant(5.0))),20))
+Add(Greater(Sub(Mul(Constant(30.0),Log($volume)),$close),Constant(-1.0)),$high)
+Min(Mul($vwap,Constant(-5.0)),10)
+Med(Ref($close,40),30)
+Add(Constant(-5.0),$vwap)
+Log(Min(Mul(Constant(2.0),$vwap),40))
+Mad(Add(Less(Add(Constant(-2.0),Add(Min(Med($vwap,10),50),$open)),Constant(2.0)),Div($high,Less($vwap,Constant(-0.5)))),50)
+Ref(Ref(Less(Div(Constant(-5.0),$low),$low),20),10)
+Min($vwap,50)
+Div(Constant(0.01),Sum($volume,20))
+Add(Constant(-2.0),$close)
+Mul(Div(Add(Add(Greater($vwap,Constant(-0.01)),Div($vwap,$vwap)),Constant(1.0)),Constant(10.0)),$close)
+Add(Div(Less(Div(Log(Log(Div(Add(Constant(5.0),$volume),Constant(-0.5)))),Constant(-10.0)),Constant(-5.0)),Var($low,10)),Constant(-10.0))
+Mul(Constant(-10.0),Sub(Add(Add($volume,Constant(10.0)),$low),$close))
+Mean(Std($high,50),40)
+Log(Delta(Greater(WMA(Add(Constant(-0.5),$volume),30),Corr($volume,Std(Add(Log($high),Constant(-0.5)),20),40)),20))
+Mul(Sub(Constant(5.0),$open),$vwap)
+Max(Mean(Add(Constant(1.0),$vwap),30),50)
+Std(Med(Add(Div($low,Constant(-2.0)),Constant(-2.0)),10),10)
+Sum(Add(Constant(-1.0),$volume),10)
+Mean(Sub($low,Less(Constant(10.0),$open)),50)
+$volume
+Log(Add(Mean(Var(Sub(Add(Constant(-0.01),Mad($vwap,10)),Constant(-10.0)),20),20),$vwap))
+WMA(Add(Constant(-10.0),$high),20)
+Sub(Greater(Constant(-2.0),$vwap),$close)
+Add(Add(Sub(Less(Constant(-0.5),$volume),$volume),$vwap),$vwap)
+Add(Constant(-0.01),Delta($volume,10))
+$volume
+Div(Constant(-1.0),Add($low,Constant(-5.0)))
+Mul(Constant(-0.01),$volume)
+Div(Constant(-1.0),$open)
+Add(Constant(0.5),$close)
+$close
+Add(Constant(-30.0),$high)
+$open
+Add(Sub(Add(Constant(-0.01),Min(Min(WMA(Add($volume,Constant(-0.01)),20),20),40)),Constant(0.5)),Log(Add($high,$high)))
+Abs(Med(Sub(Sub(Constant(30.0),$close),Constant(-0.01)),40))
+Abs(Ref(Mul(Constant(-0.01),$close),10))
+$volume
+Div(Div(Constant(-0.01),$low),Constant(-1.0))
+Med(Div(Log(Div(Add(Mul(Constant(-10.0),$volume),Constant(-30.0)),Constant(-0.01))),Constant(1.0)),20)
+Sum($volume,10)
+Add(Add(Div(Constant(-30.0),$low),$vwap),Mean(Sum($volume,10),20))
+Add(Div(Constant(-0.01),Sum(Add($open,Constant(-2.0)),10)),Constant(-5.0))
+Div(Div(Less(Less(Div(Add(Add(Constant(0.5),$vwap),Less($high,Div($low,Constant(-0.5)))),Constant(-2.0)),Constant(-0.01)),$low),$close),Constant(-10.0))
+$vwap
+Add(Ref(Abs(Mean(Add(Constant(0.01),Abs($low)),30)),40),Constant(-1.0))
+Mul(Constant(5.0),$close)
+Add(Less(Constant(-1.0),Sub(Med(Add($low,Constant(5.0)),10),Constant(1.0))),$open)
+$low
+Delta(Sum(Add(Constant(-0.01),Sum($volume,10)),10),30)
+Add(Constant(0.5),Log(Med($low,50)))
+Add(Mean(Div(Div(Constant(-10.0),$vwap),$high),50),Constant(1.0))
+Abs(Add(Constant(5.0),$vwap))
+Sub(Abs(Mean(Add($close,Constant(10.0)),40)),Constant(-0.01))
+Div(Mad(Log(Mul(Mul(Constant(-1.0),$volume),Constant(0.5))),10),$close)
+Add(Div(Constant(0.01),$vwap),Constant(-10.0))
+Add(Ref(Min(Div(Cov($close,Mul(WMA(Std($volume,40),20),Constant(-0.5)),50),Constant(1.0)),30),40),$vwap)
+Log(Div(Less(Constant(-0.01),$vwap),Add($close,$low)))
+EMA(Add(Var(Sub(Constant(0.01),Var($vwap,20)),20),Constant(-1.0)),10)
+$volume
+Abs(Mean(Mul(Constant(1.0),$close),20))
+Sub(Mul(Div(Constant(-5.0),$close),Constant(-0.01)),Constant(0.5))
+Add(Sub(Constant(-1.0),Abs($volume)),Sub($low,Constant(-10.0)))
+Abs($close)
+$close
+Mul(Constant(-2.0),$close)
+WMA(Add(Greater(Constant(-0.5),$close),$low),10)
+Log(Mean(Sub(Add(Constant(-1.0),$vwap),Constant(2.0)),10))
+$open
+$vwap
+Less(Mul(Constant(1.0),Add(Add($high,Constant(-0.01)),Constant(10.0))),Sub(Constant(1.0),$volume))
+Div(Constant(0.5),$high)
+$vwap
+Add(Add(Constant(1.0),$low),Constant(-30.0))
+Mul(Add($volume,Constant(-2.0)),Constant(2.0))
+$volume
+Abs(Mul(Constant(1.0),$volume))
+Std(Mul(Less(Constant(-1.0),Max($open,50)),WMA($vwap,30)),20)
+$vwap
+$close
+Mul(Add(Add(Sub(Constant(10.0),Add(WMA(Div($high,Constant(-10.0)),10),Sum($close,20))),Constant(1.0)),Constant(-30.0)),Constant(-30.0))
+Add(Greater(Sum(Div($open,Constant(-0.5)),10),Constant(0.5)),$volume)
+Med(Mul(Add(Constant(-5.0),Div($high,$open)),Log(Div(Constant(-5.0),$low))),10)
+Sub(Sub(Add(Constant(5.0),$volume),Constant(1.0)),Constant(-10.0))
+Mean(Mul(Constant(-30.0),Mul(Mean($low,10),Constant(-10.0))),50)
+Add(Sub(Med(Div(Div(Add(Div(Constant(-5.0),$volume),$open),Constant(10.0)),$low),20),Constant(-10.0)),Constant(-0.5))
+Less(Div($open,Constant(-0.5)),$volume)
+$vwap
+Div(Abs(Add(Constant(0.5),$vwap)),Constant(-10.0))
+Sub(Greater(Ref(Mul(Div(Greater(Add($close,$open),Constant(-1.0)),Log($high)),Constant(-5.0)),40),Constant(-2.0)),Med($high,20))
+Mean(Div(Greater(Constant(-0.5),$volume),$vwap),10)
+Log(Min(Div(Less(Constant(-10.0),Add(Greater(Sub(Less($close,Constant(-10.0)),$vwap),Constant(10.0)),$volume)),$volume),40))
+Div(Min(Ref(Log(Mul(Constant(-1.0),$open)),40),30),Constant(5.0))
+Sub(Constant(0.5),$volume)
+Std(Mul(Constant(30.0),Mul(Med($vwap,20),$volume)),10)
+$low
+$high
+Add(Constant(-0.5),$vwap)
+Sub(Log(Max(Min(Cov(Log(Add(Constant(0.5),$volume)),$volume,10),20),10)),Constant(1.0))
+$high
+Mul(Div(Constant(-5.0),$low),Constant(1.0))
+Abs(Sub(Constant(30.0),Mean($volume,10)))
+WMA(Sum(Div(Sub(Constant(10.0),$low),$low),50),20)
+Add(Constant(10.0),Log(Delta(Ref($open,20),10)))
+Add(Sub(Constant(0.5),$volume),Add(Constant(-2.0),$close))
+Add(Constant(-10.0),Mul(Div(Less(Sub(Add(Greater($low,Constant(-30.0)),Add($volume,Constant(10.0))),Constant(0.5)),Constant(10.0)),Sub($open,Constant(-1.0))),Constant(-1.0)))
+Mul(Constant(-1.0),Less($volume,$low))
+Log(Add(Constant(30.0),$close))
+$open
+Mul(Add(Constant(0.5),Mean($volume,20)),Constant(5.0))
+Add(Mul(Mul(Constant(0.01),$vwap),Constant(-0.01)),Constant(1.0))
+$low
+Mean(Add(Add(Constant(30.0),$vwap),$vwap),10)
+$vwap
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942/26624_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.302       |
+|    eval_cnt             | 564         |
+|    significant          | 171         |
+|    size                 | 200         |
+| rollout/                |             |
+|    ep_len_mean          | 8.07        |
+|    ep_rew_mean          | 0.0433      |
+| test/                   |             |
+|    ic                   | 0.0888      |
+|    rank_ic              | 0.0917      |
+| time/                   |             |
+|    fps                  | 3           |
+|    iterations           | 13          |
+|    time_elapsed         | 8637        |
+|    total_timesteps      | 26624       |
+| train/                  |             |
+|    approx_kl            | 0.012633946 |
+|    clip_fraction        | 0.155       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.53       |
+|    explained_variance   | 1.19e-07    |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.209      |
+|    n_updates            | 120         |
+|    policy_gradient_loss | -0.0241     |
+|    value_loss           | 0.127       |
+-----------------------------------------
+Mul(WMA(Mul(Less(Less(Constant(1.0),$low),Mean($low,10)),$vwap),20),Mul($volume,Constant(2.0)))
+EMA($high,20)
+Div(Mul(Med(Mean(Ref(Div(Constant(5.0),$vwap),20),10),30),Constant(-5.0)),$high)
+Add(Add(Constant(-0.5),$low),Constant(-5.0))
+$volume
+Add(Constant(-5.0),Log(Add(Mad(Min($vwap,50),50),Sum($high,30))))
+Max(Sub(Constant(0.01),$close),40)
+Med(Div(Constant(5.0),WMA(Less($open,$open),10)),10)
+Sum(Add(Constant(-2.0),$volume),40)
+Div(Constant(5.0),Abs(Ref(Max(Mean(Mul($close,Constant(1.0)),40),10),50)))
+Add(Constant(0.5),$high)
+Mul(Constant(0.5),Abs(Log(Min($volume,40))))
+Div(Sub(Constant(-5.0),$volume),Add(Mad($volume,20),$open))
+Sub(Add(Add(Constant(-5.0),$open),$volume),Constant(-10.0))
+Med(Sub(Constant(-10.0),$volume),30)
+$volume
+Add(Constant(30.0),Min($high,10))
+Mul(Constant(-10.0),$volume)
+Add(Div(Div($close,Div(Constant(-2.0),Abs(Div(Abs($close),Constant(-1.0))))),Constant(30.0)),$open)
+Log(Div(Constant(-5.0),$vwap))
+$vwap
+Add(Abs(Div(Constant(1.0),Abs($close))),Constant(0.5))
+Sub(Constant(10.0),$vwap)
+Std(Div(EMA(Add(Constant(-30.0),$low),40),Constant(-5.0)),40)
+Add(Sub(Constant(-0.01),Ref($vwap,40)),Constant(30.0))
+Log($volume)
+$volume
+Div(Greater(Constant(-0.01),Sub(Std(Abs($vwap),30),Constant(0.5))),Mul(Mul(Med($high,20),Constant(-5.0)),$volume))
+Med(Sub(Div(Constant(-2.0),Min($high,10)),Constant(-1.0)),10)
+Sub(Constant(-2.0),$high)
+Add(Constant(10.0),Med(Max($vwap,40),30))
+Cov(Mul(Constant(0.5),$close),$volume,10)
+Add($high,Constant(5.0))
+$volume
+Div(Constant(10.0),$high)
+Add(Constant(2.0),$vwap)
+Mul(Constant(-30.0),Mul($vwap,$high))
+Mean(Add(Constant(-2.0),$close),10)
+Div(Constant(0.5),Mean($open,10))
+Std(Sub(Mad(Div(Constant(-30.0),$vwap),40),$vwap),10)
+Min(Sub(Max(Div($vwap,Constant(-0.01)),20),Sub(Mul(Mul(Div(Constant(-10.0),Mean($close,30)),$volume),Constant(-5.0)),Constant(-10.0))),10)
+Add(Add(Constant(-30.0),$vwap),Constant(-10.0))
+Add(Sub(Constant(30.0),Add(Add($volume,Constant(-30.0)),Constant(-0.01))),Constant(10.0))
+Div($volume,Constant(5.0))
+Mul(Constant(-30.0),Abs($close))
+$vwap
+Mul(Div(Mul(Greater(Delta($vwap,10),Constant(-5.0)),$high),Constant(0.01)),Constant(-5.0))
+Div(Mul(Constant(10.0),Var($high,40)),Constant(-5.0))
+Add(Constant(0.5),$volume)
+Div(Constant(-0.01),Mean($high,30))
+Mul(Greater(Constant(2.0),Std($vwap,40)),$volume)
+Mul(Constant(5.0),$volume)
+Sub(Constant(30.0),$volume)
+Div(Constant(-1.0),Max($close,40))
+Mul(Constant(2.0),Med($vwap,50))
+$vwap
+Sub(Constant(-2.0),$close)
+Div(Greater(Mean(Add(Mul(Div(Constant(10.0),$close),Constant(0.5)),Constant(-0.01)),10),Constant(-2.0)),Div($volume,Constant(-10.0)))
+Min($close,50)
+Var($close,20)
+$close
+$vwap
+Add(Less(Constant(5.0),$low),Max(Mean($close,40),20))
+Add(Constant(0.5),$close)
+$open
+Med(Div(Less(Add(Constant(-0.01),Add($low,Constant(10.0))),Constant(-30.0)),Med($vwap,20)),10)
+Min(Med($vwap,10),20)
+Add(Greater(Add($vwap,$volume),Constant(-30.0)),WMA($vwap,10))
+$volume
+Mul(Constant(-1.0),$volume)
+Min(Add(Add(Less(Constant(2.0),Div(Log($close),Constant(-1.0))),Mean($close,30)),Constant(-1.0)),10)
+Std(Min(Min($volume,10),10),10)
+Mul(Constant(10.0),$volume)
+$vwap
+Mean(Std(Ref(Div($low,Constant(0.01)),20),10),10)
+Mul(Constant(-10.0),Mul($close,Constant(-0.5)))
+Sub(Div(Constant(5.0),$high),Sub(Add(Log(Abs($volume)),$close),$volume))
+Min(Add(Add(Med(Add(Add(Constant(5.0),Mul($low,Constant(5.0))),Constant(5.0)),10),Constant(0.5)),Constant(-0.01)),10)
+$high
+Add(Sub(Constant(1.0),$volume),Constant(2.0))
+Add(Greater(Constant(0.5),$volume),Log($volume))
+Add(Constant(0.5),Max($vwap,20))
+Div($vwap,Ref(Mul($close,$vwap),10))
+Std(Div(Constant(-2.0),Ref($close,10)),50)
+Add(Constant(5.0),Log($volume))
+Mul(Sub(Constant(-5.0),Add($open,Constant(-0.01))),Constant(1.0))
+$vwap
+$volume
+$volume
+Add(Constant(10.0),$high)
+$close
+Mul(Constant(-10.0),$volume)
+Var(Std(Div(Constant(-0.01),Mul($low,Less(Constant(-1.0),Log($open)))),50),10)
+Med($high,40)
+Div(Constant(30.0),$vwap)
+$vwap
+Sub(Constant(-0.01),Mad(Add(Greater(Abs($volume),Constant(0.01)),$close),10))
+Med($vwap,40)
+WMA(Add(Constant(1.0),$close),30)
+Div(Constant(30.0),$vwap)
+Max($low,10)
+Med(Add(Constant(-0.01),Mul(Add($volume,Constant(-10.0)),Constant(0.5))),20)
+Sub(Constant(5.0),$vwap)
+$volume
+Max(Med(Log(Med($open,40)),10),20)
+Max(Sub(Mul(Log(Add(Div(Constant(-2.0),$high),Constant(10.0))),$close),Constant(-1.0)),10)
+Mul(Constant(-0.5),$low)
+Sub(Sum(Max($open,20),30),Mul(Min($open,40),$low))
+Sub(Constant(5.0),$volume)
+$vwap
+Std(Mul(Constant(0.01),Med(Cov($high,$close,10),50)),30)
+$high
+Add(Constant(5.0),Div(Mean($close,20),Constant(-5.0)))
+Mean(Ref(Add(Constant(-10.0),Mean($volume,40)),20),40)
+Sub(Sub(Mul(Constant(10.0),Log($vwap)),Constant(-2.0)),Constant(5.0))
+Std(Add(Log($open),Mul(Constant(-0.5),Mul(Min($open,40),Constant(-2.0)))),10)
+Add(Constant(-2.0),$vwap)
+Sub(Greater(Mul(Sub(Constant(-0.01),Add($low,Constant(5.0))),$volume),Constant(2.0)),$low)
+Sub(Add(Constant(1.0),$low),Constant(0.5))
+$high
+Mean(Add(Sub(Constant(-2.0),$close),$close),10)
+$high
+Min(Max(Add(Greater(Div(Div(Constant(30.0),$high),$volume),Constant(-1.0)),Std($high,30)),10),10)
+Min(Div(Corr(Div(Constant(-5.0),$volume),$volume,30),Constant(30.0)),40)
+$close
+Med(Div($vwap,$vwap),10)
+Mean(Std(Max(Sub(Div(Constant(-10.0),$volume),Div(Div(Constant(-0.5),$low),Constant(1.0))),40),10),20)
+$close
+Var(Sub(Constant(-0.01),Min($volume,30)),50)
+$open
+Add(Constant(2.0),Div(Std(Mean($open,20),10),Constant(-2.0)))
+$vwap
+Mean(Sum(Div(Constant(2.0),$close),50),10)
+Div(Greater(Constant(1.0),$volume),Ref($vwap,40))
+Med(Div(Constant(-2.0),$volume),10)
+Min(Sub(Mean(Mul(Constant(1.0),$volume),40),Div($high,Constant(1.0))),40)
+Var(Mean(Add(Less(Constant(10.0),$high),Log($volume)),50),40)
+Sub(Constant(1.0),$close)
+Add($high,$vwap)
+Mean(Med(Sub(Less(Mul(Constant(-10.0),$close),Constant(5.0)),Med($volume,10)),20),10)
+Ref($open,10)
+$vwap
+Add(Constant(2.0),$open)
+Mul(Max(Std(Min(Cov(Add(Constant(2.0),$vwap),$volume,50),10),10),40),$volume)
+Delta(Std(Sub(Constant(10.0),$close),30),10)
+Var(Sub(Constant(-10.0),$close),10)
+Mul(Div(Add($close,Sub(Constant(1.0),Mean($low,50))),Sum($close,50)),Constant(-2.0))
+Sub(Constant(-30.0),Abs($volume))
+Div(Greater(Greater(Constant(-0.5),Mad($close,10)),$volume),$vwap)
+Sub(Add(Sub(Add(Add(Constant(-2.0),Mean(Max($high,10),10)),Add(Constant(5.0),$vwap)),$volume),Constant(-30.0)),Div($open,$vwap))
+$vwap
+Div(Constant(-2.0),Corr(Delta($close,40),Mul(Med($vwap,50),Constant(-2.0)),10))
+Med(Mad(Abs(Mad(Add(Max(Add(Constant(-0.5),$volume),10),Div($open,Constant(1.0))),10)),10),30)
+Max(Add(Constant(-5.0),$close),40)
+$low
+$vwap
+Mul(Constant(-0.01),$volume)
+Add($vwap,Mul(Sum($volume,10),Constant(-5.0)))
+Med($high,20)
+Abs(WMA(Abs(Mul(Max(Div(Greater(Constant(-1.0),$high),$volume),30),Log(Mul($close,$volume)))),10))
+Div(Less(Constant(-5.0),$volume),$close)
+Div(Mul(Constant(-5.0),Add(Less($vwap,Constant(-0.01)),$open)),Constant(-5.0))
+Mul(Sub(Add(Mul(Constant(-1.0),$volume),Constant(-1.0)),Constant(-10.0)),Constant(-30.0))
+Mul(Mul(Mul(Div(Constant(-1.0),$close),Constant(-5.0)),Constant(0.5)),Constant(10.0))
+Add(Add(Log(Add(Div(Div(Constant(0.5),$high),Constant(2.0)),Constant(-0.5))),Constant(0.5)),$close)
+Div(Constant(30.0),Sub($close,$high))
+Add(Std(Med(Add(Constant(-0.01),$volume),10),50),Constant(-2.0))
+Mean(Add(Less(Constant(-30.0),$high),$low),20)
+Min(Div(Constant(-1.0),Std($open,20)),20)
+Div(Constant(0.01),$high)
+Mul(Constant(-30.0),Mad($vwap,30))
+Abs(Mul($close,Greater(Div(Constant(1.0),$vwap),Constant(5.0))))
+Med(Mean(Std($open,10),40),30)
+Min($low,20)
+Mul(Div(Constant(10.0),$low),Constant(30.0))
+WMA(Div(Add($close,Constant(-2.0)),Constant(5.0)),10)
+Div(Greater(Constant(1.0),$high),$vwap)
+Add(Log(Ref(Sub(Add(Log(Mul(Less(Constant(-0.01),$volume),Add($high,Constant(10.0)))),Constant(0.01)),Constant(-10.0)),50)),Constant(-0.5))
+Mul(Constant(-5.0),Div($volume,Constant(-1.0)))
+Mean(Div(Constant(1.0),$close),20)
+Add(Constant(2.0),Mad(Ref(Mul($high,Constant(-0.01)),30),10))
+Mul(Add(Less(Constant(0.5),Abs(Mul(Div($high,Constant(0.01)),Constant(-0.01)))),$high),Constant(-0.01))
+$volume
+Div(Greater(Mean(Mul(WMA(Max(Log(Abs(Std($volume,10))),20),40),$close),10),Constant(-0.5)),$close)
+$vwap
+Add(Add(Add(Max(Std(Min(Delta(WMA(Div(Constant(0.01),$open),20),50),50),10),50),Constant(10.0)),$close),Constant(-10.0))
+Std(Add(Std(Add(Constant(0.5),$volume),20),Constant(30.0)),30)
+Abs($high)
+Log(Abs(Sub(Add(Constant(-10.0),$close),Constant(0.5))))
+$volume
+Med(Add($volume,Constant(5.0)),40)
+Mean(Sub(Constant(-30.0),Add($close,Constant(5.0))),10)
+EMA(Add(Constant(-0.01),Mean($high,10)),20)
+Min(Div(Div(Add(Less(Constant(-1.0),$close),$vwap),Constant(-0.01)),$high),30)
+Mul($vwap,Constant(-2.0))
+$low
+$close
+$vwap
+$volume
+Var($volume,40)
+Div(Constant(30.0),$high)
+$high
+Mul(Less(Constant(-0.5),$vwap),Log(Max($low,30)))
+Med(Log($volume),40)
+Add(Div(Constant(5.0),$open),Constant(-5.0))
+Mul(Log($close),Constant(-1.0))
+Add(Constant(-5.0),$volume)
+Div(Div(Constant(-30.0),Sum($high,20)),Constant(0.5))
+Log(Mad(Var(Add(Constant(-10.0),Sub($open,Constant(10.0))),40),40))
+Div(Constant(2.0),Max($volume,40))
+$high
+Abs(Mean(Add(Add(Constant(5.0),$low),Std($close,10)),50))
+Add(Div(Greater(Constant(0.01),Mul($vwap,Constant(-5.0))),$volume),Constant(30.0))
+WMA(Sub(Mean(Mul(Constant(5.0),Med(Std($low,10),10)),40),Constant(30.0)),40)
+Add(Add(WMA(Var(Mad(Min(Add(Constant(-2.0),Div($close,Constant(-30.0))),10),40),10),20),Add(Constant(-0.5),$open)),Constant(-1.0))
+Mul(Mul(Less(Add(Greater(Greater(Constant(-10.0),Log(Max(Mul($vwap,Constant(-2.0)),10))),$vwap),$volume),Constant(5.0)),$high),Constant(-1.0))
+Add(Sub(Constant(-1.0),WMA(Add(Sub($close,Constant(-10.0)),Constant(-10.0)),10)),Constant(5.0))
+$close
+Mul(Med(Log(Mean(Log(Add(Constant(-5.0),$volume)),40)),20),Constant(0.01))
+Max(Max(Sub(WMA(Mad(Med(Sub(Constant(30.0),Ref($high,10)),10),20),10),Constant(-10.0)),10),30)
+Log(Mul(Constant(10.0),Min(Mean($vwap,30),10)))
+Sub(Corr(Sub(Constant(-1.0),WMA(Std(Max($vwap,10),10),40)),Log($vwap),50),EMA(Min($volume,30),50))
+Div(Sub(Constant(-1.0),$high),Sum($close,10))
+Add(Constant(-0.01),Sub($high,Constant(-0.01)))
+Add(Less(Div(Mul(Constant(-5.0),$vwap),Sum($volume,10)),Constant(5.0)),$volume)
+Mul(Greater(Constant(-2.0),$open),$vwap)
+Div(Greater(Mul(Constant(2.0),$close),Constant(1.0)),Div($low,Add($vwap,$low)))
+Mul(Greater(Constant(-0.01),Div($high,Add(Mul(Delta(Sub(Mul(Add($vwap,Constant(10.0)),Constant(0.5)),$volume),10),Constant(-10.0)),Constant(2.0)))),$vwap)
+Std(WMA($open,50),40)
+Sub(Constant(5.0),$vwap)
+Mul(Constant(1.0),Med($vwap,20))
+Mul(Div(Constant(5.0),$volume),$vwap)
+Mul(Constant(-0.5),$open)
+Sum($close,10)
+Med(Sub(Less(EMA(Div(Constant(1.0),Add($close,$volume)),10),Constant(0.5)),Mul(Med(WMA($close,10),40),Constant(-0.5))),40)
+Sub(Less(Add(Less(Constant(-10.0),$vwap),$high),Constant(0.5)),Max($volume,10))
+Add(Constant(1.0),Add($close,Constant(-10.0)))
+Add($volume,$low)
+Sum(Mean($low,10),10)
+Div(Add(Mul(Sub(Add(Constant(-2.0),$open),Constant(-2.0)),Constant(-0.01)),$close),Constant(10.0))
+Mul(Constant(-30.0),$high)
+Add(Constant(-5.0),$low)
+Sub(Constant(-30.0),$high)
+$vwap
+Add(Constant(-30.0),Div($volume,Constant(-0.01)))
+Med(Max(Min(Med(Add($close,$low),40),40),10),10)
+$high
+Cov(Log(Div(Constant(5.0),$high)),Min($vwap,50),10)
+Cov(Med(Div(Constant(1.0),Sum($vwap,30)),10),$high,10)
+Mul(Constant(-5.0),$volume)
+Div(Constant(1.0),$low)
+$low
+$low
+Mul(Div(Sum(Mean(Add(Constant(0.5),Corr($close,$volume,20)),30),10),Constant(5.0)),Constant(-2.0))
+Add(Add(Constant(2.0),$close),Constant(-30.0))
+Med(Min(Std(Log(Mean(Mul(Constant(1.0),$open),20)),50),30),10)
+Sub(Constant(0.5),$low)
+Mad(Min(Mad(Mean(Add(Sub(Constant(5.0),Mean($close,10)),Constant(2.0)),30),10),20),30)
+WMA(Max(Div($open,Constant(1.0)),40),10)
+Div(Constant(5.0),$volume)
+Mul(Div(Constant(0.5),$vwap),Constant(30.0))
+Max(Mul(Constant(-0.01),Add(Std(Abs($low),30),Div(Constant(-30.0),$open))),30)
+Add(Sum(Log(Mean(Div(Constant(-5.0),Min(Max($close,20),10)),20)),40),Add($vwap,$vwap))
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942/28672_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.304       |
+|    eval_cnt             | 687         |
+|    significant          | 172         |
+|    size                 | 200         |
+| rollout/                |             |
+|    ep_len_mean          | 8.23        |
+|    ep_rew_mean          | 0.11        |
+| test/                   |             |
+|    ic                   | 0.084       |
+|    rank_ic              | 0.0925      |
+| time/                   |             |
+|    fps                  | 2           |
+|    iterations           | 14          |
+|    time_elapsed         | 11492       |
+|    total_timesteps      | 28672       |
+| train/                  |             |
+|    approx_kl            | 0.014550183 |
+|    clip_fraction        | 0.182       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.52       |
+|    explained_variance   | 0           |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.245      |
+|    n_updates            | 130         |
+|    policy_gradient_loss | -0.015      |
+|    value_loss           | 0.0511      |
+-----------------------------------------
+WMA(Mul(Std(Mul(Add(Mul(Constant(-10.0),$low),Constant(-10.0)),Constant(-5.0)),50),$close),40)
+Std(Log($vwap),40)
+Log(Greater(Add(Less(Constant(5.0),Add(Mean(Mean(Add($high,Constant(5.0)),10),20),Constant(-1.0))),$low),$vwap))
+Mul(Constant(10.0),Mul(Mul($volume,$vwap),Constant(0.01)))
+Med(Sub(Constant(5.0),$low),10)
+Mul(Add(Div(Log($vwap),$high),Std($vwap,20)),Add(Constant(30.0),$low))
+Std(Add(Add(Constant(0.01),Abs($low)),Constant(5.0)),10)
+Sub(Constant(30.0),WMA($open,40))
+Div($open,$volume)
+Abs(Log(Mul(Constant(1.0),$volume)))
+Div(Constant(-1.0),$high)
+Mul(Constant(30.0),$high)
+Med($close,20)
+Max(Mul(Constant(30.0),$volume),40)
+Add(Constant(30.0),$low)
+Div(Std(Log(Sub(Less(Div(Div(Sub(Constant(5.0),$vwap),Constant(-0.5)),Constant(-10.0)),Constant(1.0)),Var(Log($close),40))),30),Constant(1.0))
+$vwap
+Div(Constant(-0.01),$close)
+$vwap
+Mad(Mean(Std(Sub(Constant(10.0),Var(Max($vwap,20),10)),20),30),50)
+Mul(Div($open,Constant(0.01)),$vwap)
+Add(Div(Mean($high,50),Constant(5.0)),Constant(-0.5))
+Div(Greater(Constant(2.0),$vwap),Add(Greater($vwap,Constant(-5.0)),Add(Med($volume,10),Constant(-0.01))))
+Mul(Constant(1.0),Mul($close,Constant(-0.5)))
+Mean(Div(Constant(-10.0),Mul(Std(Div(Mul(Greater(WMA($low,40),Constant(-10.0)),$vwap),$high),10),Constant(-0.5))),40)
+Div(Add(Constant(-10.0),Std(Mul(Mul($low,Constant(-0.01)),Constant(2.0)),50)),Constant(-2.0))
+Div(Constant(5.0),Min($vwap,50))
+Abs(Div(Constant(10.0),$vwap))
+Med(Add(Add(Constant(5.0),Var($high,50)),$open),40)
+Mean(Add(Constant(-0.01),$low),10)
+Add(Constant(-10.0),Div(Mul(Log(Max(Ref($open,20),40)),Mul(Constant(0.5),$vwap)),Constant(1.0)))
+$volume
+$open
+Delta(Add(Constant(2.0),$close),20)
+Mul(Constant(-10.0),$high)
+Sub(Ref(Mul(Constant(5.0),$high),40),Mul(Constant(2.0),Var($open,40)))
+Add(Constant(0.01),$close)
+Div(Greater(Div(WMA(Mul(Max($high,40),Constant(-30.0)),40),Constant(-1.0)),Constant(-30.0)),Max($high,20))
+Sub(Constant(-0.5),EMA($low,40))
+Med(Abs(Ref(Div(Div($volume,Constant(10.0)),Constant(-2.0)),30)),20)
+Add(Less(Mad(Add(Add(Constant(30.0),Mul($close,Constant(-0.01))),Constant(0.5)),50),Constant(5.0)),Mad(Sub($volume,Constant(-0.01)),10))
+Div(Mul(Div(Constant(0.5),Mul($vwap,Constant(-0.5))),$close),Constant(5.0))
+Add($low,Constant(5.0))
+Sum(Sub(Constant(30.0),$vwap),20)
+Med(Sub(Constant(10.0),Ref($close,20)),10)
+Abs(Mul(Constant(1.0),$vwap))
+Div(Div(Sub(Sum(Add(Mean(Add(Constant(30.0),Med($vwap,10)),50),Constant(0.5)),20),Constant(30.0)),Constant(-2.0)),Constant(2.0))
+Div(Constant(-0.01),$low)
+Log(Mul(Std($volume,50),Constant(0.5)))
+Max(Log(Log(Sub(Abs(Div(Constant(30.0),Mean($volume,10))),Constant(5.0)))),10)
+Div(Div(Mul(Less(Med(Sub(Div(Constant(5.0),$close),Constant(0.01)),30),Constant(5.0)),Add(Add($vwap,Constant(0.01)),Constant(0.5))),$vwap),Constant(10.0))
+Mul(Mul(Constant(-0.5),Mul($volume,Max($vwap,40))),$close)
+Corr(Mul(Add(Add(Constant(5.0),$vwap),Constant(-0.01)),Constant(1.0)),$volume,20)
+Add(Constant(2.0),$high)
+Div(Constant(5.0),Less(Sub($high,Constant(-0.5)),Sub($volume,Constant(0.01))))
+Ref(Mul(Constant(-0.5),Mul(Less($open,$high),Constant(-1.0))),30)
+Med(Abs(Log(Sub(Constant(-10.0),$high))),20)
+$vwap
+Med(Mul(Constant(2.0),Delta($open,10)),40)
+Med(Mul(Add(Var(Mul(Constant(10.0),$volume),40),Mul(Constant(0.01),Div($vwap,Constant(-0.5)))),Constant(-10.0)),40)
+Add(Greater(Log(Mul(Constant(-5.0),Add(Delta($high,10),Constant(2.0)))),Constant(10.0)),Sum(Abs(Div(Add($close,Constant(5.0)),Constant(-0.01))),40))
+Div(Greater(Constant(1.0),$volume),Med(WMA(Sub(Greater($volume,$open),$low),20),50))
+Div(Constant(5.0),Med($volume,40))
+Sub(Constant(0.5),Med($close,10))
+$volume
+Std(Div(Constant(30.0),WMA(Add($volume,Div(Constant(0.01),$high)),40)),10)
+Log(Abs(Div(Constant(0.5),$low)))
+Mad(Abs(Med(Div(Less(Constant(1.0),Delta(Add(Less($vwap,Constant(30.0)),$volume),40)),$vwap),10)),10)
+Mul(Constant(5.0),Add($high,$vwap))
+Mul(Constant(-0.01),$vwap)
+Div(Less(Constant(-0.01),$close),Add($low,Constant(-10.0)))
+Add(Mean(Add(Constant(-5.0),Add($vwap,$close)),40),Constant(-1.0))
+Mul(Div(Constant(-1.0),$volume),Constant(-0.5))
+Sub(Greater(Div(Div(Constant(-1.0),$close),Constant(0.01)),Constant(0.01)),$open)
+Mul(Constant(5.0),$volume)
+Greater(Log(WMA(Add(Constant(-2.0),$high),10)),$open)
+Sub(Mad(Div(Mean(Add(Less(Constant(2.0),$low),Abs(Max($volume,10))),10),Constant(30.0)),30),Constant(-30.0))
+Med(Med(Div(Min(Sub(Div(Constant(-0.01),$high),Constant(-0.5)),50),Mul($vwap,Log($vwap))),40),30)
+Sub(Constant(-5.0),Mul($low,Constant(-0.5)))
+Div(Constant(-30.0),Add(Add(Min(Log(Ref(Max($high,40),20)),30),Constant(-5.0)),Constant(0.01)))
+Div(Add(Constant(-30.0),Mean(Log($vwap),10)),Constant(-2.0))
+Add(Greater(Constant(5.0),$vwap),$open)
+Sub(Div($open,Constant(-0.01)),$vwap)
+Mul($close,Add($high,Constant(-0.01)))
+Mul($open,Constant(30.0))
+Sum(Max(Mean(Log(Mul(Constant(-30.0),$vwap)),30),10),20)
+Div(Less(Greater(Constant(1.0),Min($volume,10)),$close),$vwap)
+Div(Constant(0.01),$low)
+Div(Delta(Abs(Div(Constant(-5.0),Mul(Log(Mul($close,$vwap)),Constant(2.0)))),40),Constant(2.0))
+Log(Sum(EMA(Add(Sub(WMA(Add(Constant(0.5),$open),20),Constant(0.01)),$vwap),10),40))
+Med(Div(Sub(Constant(0.5),$close),Constant(-0.01)),50)
+Max($vwap,10)
+Med(Max($close,30),10)
+Div(Med(Mul(Constant(-2.0),$volume),10),Constant(-30.0))
+Log(WMA(Mul($vwap,$high),10))
+Mul(Div(Ref(Add(Constant(-5.0),Med($volume,10)),50),Constant(0.5)),Constant(-0.5))
+WMA(Div(Mean(Mad(Abs(Add(Constant(30.0),$close)),10),40),Constant(0.01)),40)
+Sum(Max(Sum(Add($vwap,Greater(Abs($vwap),Constant(0.01))),20),20),20)
+Mul(Less(Greater(Add(Ref(Add(Constant(-5.0),Mul($volume,Constant(2.0))),40),$high),Constant(0.01)),Max($open,10)),Ref($vwap,40))
+Abs(Add(Constant(-2.0),$vwap))
+Div(Constant(5.0),Mul(Ref(Div($high,Constant(-10.0)),40),Constant(30.0)))
+Div(Less(Constant(-30.0),$high),Abs($volume))
+Med(Mul(Constant(-30.0),Cov($low,Div($volume,$high),20)),10)
+Div(Constant(1.0),$close)
+Max(Greater(Div(Add(Constant(0.5),$open),Constant(5.0)),Abs(Add(Greater($high,Constant(1.0)),$open))),10)
+Mul(Constant(0.5),Med(Div(Cov($vwap,Add(Mean($vwap,30),Constant(-10.0)),40),Constant(-0.5)),20))
+Log(Std($volume,10))
+Mul(Constant(5.0),$volume)
+Div(Constant(30.0),Abs(Mean(Sub(Add(Greater(Min($volume,10),Constant(0.01)),Mul($high,Constant(5.0))),$open),10)))
+Add(Constant(-30.0),$vwap)
+Mul(Constant(-30.0),Sub(Less(Div($low,Constant(-5.0)),Constant(-10.0)),Div($low,$close)))
+Add(Mul(Constant(0.01),Abs($volume)),Constant(10.0))
+Delta(Mul(Mul(Constant(-0.01),$vwap),Constant(-5.0)),20)
+Add(Constant(-5.0),$high)
+$low
+Mul(Constant(0.5),$vwap)
+Med(Med(Mean(Mul(Add(Constant(2.0),Abs(Div(Med($volume,10),Constant(-30.0)))),Constant(-0.5)),30),40),40)
+Mul(Sub(Constant(-1.0),$vwap),Constant(-0.01))
+Med(Mad(Add(Constant(0.01),$close),40),10)
+Var(Min($high,10),40)
+$vwap
+Log(Mul(Max(Greater(WMA(Mul($volume,Constant(2.0)),40),Log($close)),30),Constant(-10.0)))
+$vwap
+$vwap
+Mul(Less(Mean(Mul(Constant(-5.0),Div(Add($low,Add(Constant(-2.0),Std($close,20))),Constant(0.5))),40),Greater(Constant(-5.0),$vwap)),$vwap)
+Ref(Div($close,Constant(30.0)),10)
+Add(Mul(Greater(Delta(WMA(Sum($close,20),10),10),Div($vwap,Min($vwap,40))),Constant(0.5)),Constant(-5.0))
+Add(Corr(Div(Greater(Constant(-5.0),$volume),Ref(Max(Sub($vwap,Constant(5.0)),40),10)),$vwap,20),$low)
+Max(Sub(Less(Less(Constant(30.0),Log($low)),$close),$low),20)
+Add(Div(Constant(5.0),Add($close,Constant(0.5))),Constant(0.01))
+Div(Constant(-5.0),Std($vwap,10))
+Div(Add(Sub(Greater($volume,Constant(-1.0)),$high),Abs($low)),Constant(1.0))
+Greater(Mul(Constant(5.0),Log(Div($volume,Constant(0.01)))),Log(Abs($vwap)))
+WMA(Sub(Greater(Div(Greater(Constant(0.01),$high),$volume),Constant(0.5)),Log($low)),20)
+Log(Mul(Add(Constant(0.01),$close),Constant(5.0)))
+Add(Less(WMA(Mul(Constant(30.0),$open),10),Constant(5.0)),Div(Sub($open,Constant(-2.0)),Constant(-5.0)))
+Log(Max(Add(Constant(-0.01),Delta(Sub($vwap,Constant(5.0)),10)),40))
+$vwap
+Div(Log(Add(Constant(-0.5),$vwap)),Constant(-10.0))
+Mul(Constant(-0.5),$high)
+Div(Less(Mad(Mul(Less(Constant(-1.0),Min(Mul(Ref(Mul($vwap,Constant(1.0)),20),Constant(-30.0)),10)),$low),20),Constant(-10.0)),$volume)
+Sub(Constant(-30.0),$high)
+Max(Std($high,10),20)
+$vwap
+Sub(Constant(30.0),Add(Min($low,20),Constant(-30.0)))
+$close
+Med(Mul(Div(Abs(Add(Log($volume),Constant(-1.0))),Constant(-10.0)),Constant(-2.0)),40)
+Abs(Log(Max(Mul($low,Mul($low,Constant(0.01))),20)))
+$vwap
+$vwap
+Med(Sub(Constant(0.01),$volume),50)
+$volume
+Mul(Less(Constant(5.0),WMA($volume,50)),Max($high,40))
+Sub(Corr(Add(Constant(-0.5),Med($close,40)),Mul($volume,Mul($vwap,Constant(-2.0))),20),Constant(5.0))
+Mul(Constant(-0.01),Max(Mad($volume,10),10))
+$high
+Mul(Add(Constant(-10.0),$vwap),Constant(1.0))
+Div(Less(Constant(0.01),WMA($vwap,50)),Sub(Cov($vwap,$vwap,40),Constant(10.0)))
+Add(Constant(-10.0),$close)
+Div(Abs(Std($close,30)),$volume)
+Log(Mul(Med(Add(Constant(1.0),$close),20),Constant(-0.01)))
+Med($low,40)
+Max($volume,30)
+Div(Mul(Constant(-30.0),Mul(Var(Add($volume,Constant(-5.0)),30),Abs(Div(Constant(0.5),$volume)))),Greater($close,Constant(-10.0)))
+Sub(Add(Sum(Div(Constant(0.01),EMA($volume,20)),20),Constant(-0.5)),Constant(0.01))
+$low
+$low
+Mul(Greater(Max(Sub(Constant(2.0),Min($low,30)),50),Constant(-10.0)),Add(Add(Log($low),Constant(2.0)),$low))
+Std(Greater(Std(Log(Div(Med(Mul(Abs(Add(Constant(30.0),$close)),Constant(-5.0)),20),Constant(-1.0))),40),Add(Constant(-0.5),$high)),10)
+Mul(Constant(-5.0),$volume)
+Add(Div(Max(Div(Sum(Add(Max(Mul(Constant(10.0),$volume),10),Constant(0.01)),20),Constant(2.0)),40),Constant(-0.5)),Mul($high,Constant(-0.01)))
+Sum(Med($vwap,50),40)
+Mul(Constant(10.0),Mean($open,10))
+Log(Div(Add(Constant(10.0),Greater($close,Sub(Sub(Constant(1.0),$vwap),Less(Div(Min(Abs($vwap),10),Constant(-0.01)),Constant(10.0))))),Constant(0.01)))
+Sub(Constant(-2.0),$open)
+Div(WMA(Div(Constant(-2.0),$close),10),Constant(-5.0))
+Med(Mul(Constant(-2.0),$vwap),10)
+Mad($low,20)
+Mul(Greater(Log(Add(Constant(-0.01),Add($close,$vwap))),Constant(-0.5)),Div($volume,Constant(30.0)))
+Log(Div(Constant(-5.0),$open))
+Add(Mul(Greater(Constant(-0.01),$volume),Mul(Less($high,Constant(-10.0)),Sum($close,10))),Less(Mad($volume,50),Constant(0.01)))
+Div(Less(Mul(Mul(Div(Constant(-5.0),Abs(Sub(Log($volume),Add(Constant(0.01),$vwap)))),Constant(-5.0)),Constant(30.0)),Constant(-30.0)),Div($vwap,Constant(1.0)))
+Corr(Div(Sub(Constant(-1.0),Div($vwap,Constant(-1.0))),Constant(-5.0)),Sub(Log(Med($volume,20)),Constant(1.0)),50)
+Log(Delta(Div(Constant(-1.0),Mul($open,Constant(-10.0))),10))
+Mul(Mean(Add(Constant(-0.01),$volume),20),Constant(-2.0))
+Add(Constant(-2.0),Mul(Div($volume,Max($low,20)),Constant(-1.0)))
+Mul(Mean(Div(Log(Log($low)),Constant(-0.01)),40),Constant(-0.01))
+Add(Constant(-2.0),Med($volume,50))
+Log(Sub(Sub(Mul(Constant(-0.5),$volume),Log($vwap)),$vwap))
+Sub(Add(Mul(Constant(-5.0),Mul($volume,Mul($low,$open))),Constant(-5.0)),Constant(0.01))
+EMA(Add(Add(Mul(Add(Constant(2.0),Log($vwap)),Constant(5.0)),$open),Less(Add(Constant(2.0),$volume),Constant(10.0))),40)
+$vwap
+Add(Mul(Constant(-1.0),$high),$close)
+Add($open,Constant(1.0))
+Max(Ref($high,10),10)
+Log(WMA(Sub(Max(Div(Constant(-2.0),Med($high,50)),20),Constant(-30.0)),10))
+$volume
+Var($volume,40)
+Mul(Constant(0.01),$high)
+WMA(Sub(Div(Add(Less(Constant(0.01),$high),$open),Constant(0.01)),Var(Div($high,Constant(2.0)),40)),40)
+Delta(Add(Constant(-0.01),Greater($high,Add($close,Max($high,50)))),40)
+$open
+Var(Mul(Constant(2.0),$close),20)
+Mad(Std(Mul(Add(Constant(5.0),$vwap),Less(Constant(-10.0),$low)),20),10)
+Log(Mul(Constant(-5.0),Abs($low)))
+$volume
+Add(Constant(-30.0),Abs(Div(Greater($high,Constant(5.0)),$high)))
+Add(Med(Mean(Mul(Constant(-0.01),Log($low)),40),20),$close)
+$high
+Mul(Constant(1.0),Div($vwap,$vwap))
+Div(Constant(1.0),Mul($high,Constant(0.01)))
+$open
+Mul(Constant(0.5),WMA(Med($vwap,10),20))
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942/30720_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.306       |
+|    eval_cnt             | 820         |
+|    significant          | 173         |
+|    size                 | 200         |
+| rollout/                |             |
+|    ep_len_mean          | 9.13        |
+|    ep_rew_mean          | 0.135       |
+| test/                   |             |
+|    ic                   | 0.0857      |
+|    rank_ic              | 0.0938      |
+| time/                   |             |
+|    fps                  | 2           |
+|    iterations           | 15          |
+|    time_elapsed         | 14188       |
+|    total_timesteps      | 30720       |
+| train/                  |             |
+|    approx_kl            | 0.014714256 |
+|    clip_fraction        | 0.182       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.57       |
+|    explained_variance   | 5.96e-08    |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.236      |
+|    n_updates            | 140         |
+|    policy_gradient_loss | -0.00603    |
+|    value_loss           | 0.0441      |
+-----------------------------------------

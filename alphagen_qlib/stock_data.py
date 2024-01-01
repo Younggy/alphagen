@@ -64,12 +64,19 @@ class StockData:
 
     def _get_data(self) -> Tuple[torch.Tensor, pd.Index, pd.Index]:
         features = ['$' + f.name.lower() for f in self._features]
+        print(f"instruments: {self._instrument}")
         df = self._load_exprs(features)
+        print(f"df before: {df}")
         df = df.stack().unstack(level=1)
+        print(f"df: {df}")
         dates = df.index.levels[0]                                      # type: ignore
         stock_ids = df.columns
         values = df.values
+        print(f"features: {features}")
+        print(f"dates: {dates}")
+        print(f"stock ids: {stock_ids}")
         values = values.reshape((-1, len(features), values.shape[-1]))  # type: ignore
+        print(f"values: {values}, {values.shape}")
         return torch.tensor(values, dtype=torch.float, device=self.device), dates, stock_ids
 
     @property
