@@ -15,9 +15,17 @@ from alphagen.rl.env.wrapper import AlphaEnv
 from alphagen.rl.policy import LSTMSharedNet, TransformerSharedNet
 from alphagen.utils.random import reseed_everything
 from alphagen.rl.env.core import AlphaEnvCore
+from alphagen_qlib.stock_data import StockData, StockDataLP
 from alphagen_qlib.calculator import QLibStockDataCalculator
-
+from sklearn.preprocessing import StandardScaler
+import pandas as pd
+from qlib.data.dataset.processor import fetch_df_by_index, get_group_columns
+from qlib.data.dataset.processor import ZScoreNorm, Fillna, DropnaProcessor, MinMaxNorm, CSZFillna
+import joblib
 LOGDIR = '/Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen'
+
+
+
 class CustomCallback(BaseCallback):
     def __init__(self,
                  save_freq: int,
@@ -62,7 +70,7 @@ class CustomCallback(BaseCallback):
 
     def save_checkpoint(self):
         path = os.path.join(self.save_path, f'{self.name_prefix}_{self.timestamp}', f'{self.num_timesteps}_steps')
-        self.model.save(path)   # type: ignore
+        self.model.save(path)  # type: ignore
         if self.verbose > 1:
             print(f'Saving model checkpoint to {path}')
         with open(f'{path}_pool.json', 'w') as f:
@@ -103,19 +111,32 @@ def main(
     close = Feature(FeatureType.CLOSE)
     target = Ref(close, -20) / close - 1
 
+    minmax_proc = MinMaxNorm(fit_start_time="2015-01-01", fit_end_time='2018-12-31')
+    dropna_proc = DropnaProcessor()
+    csfillna_proc = CSZFillna()
+    learn_processors = [dropna_proc, minmax_proc]
+    infer_processors = [csfillna_proc, dropna_proc, minmax_proc]
+
     # You can re-implement AlphaCalculator instead of using QLibStockDataCalculator.
-    data_train = StockData(instrument=instruments,
-                           start_time='2015-01-01',
-                           end_time='2018-12-31',
-                           device=device)
-    data_valid = StockData(instrument=instruments,
-                           start_time='2019-01-01',
-                           end_time='2019-12-31',
-                           device=device)
-    data_test = StockData(instrument=instruments,
-                          start_time='2020-01-01',
-                          end_time='2023-06-30',
-                          device=device)
+    data_train = StockDataLP(instrument=instruments,
+                             start_time='2015-01-01',
+                             end_time='2018-12-31',
+                             device=device,
+                             processors=learn_processors,
+                             for_train=True)
+    print(f"train data: {data_train.data}, {data_train.data.shape}")
+    data_valid = StockDataLP(instrument=instruments,
+                             start_time='2019-01-01',
+                             end_time='2019-12-31',
+                             device=device,
+                             processors=infer_processors)
+    print(f"valid data: {data_valid.data}, {data_valid.data.shape}")
+    data_test = StockDataLP(instrument=instruments,
+                            start_time='2020-01-01',
+                            end_time='2023-06-30',
+                            device=device,
+                            processors=infer_processors)
+    print(f"test data: {data_test.data}, {data_test.data.shape}")
     calculator_train = QLibStockDataCalculator(data_train, target)
     calculator_valid = QLibStockDataCalculator(data_valid, target)
     calculator_test = QLibStockDataCalculator(data_test, target)
@@ -201,15 +222,17 @@ def main(
         tb_log_name=f'{name_prefix}_{timestamp}',
     )
 
+    joblib.dump(minmax_proc, f'{name_prefix}_{timestamp}_minmax.pkl')
+
 
 def fire_helper(
-    seed: Union[int, Tuple[int]],
-    code: Union[str, List[str]],
-    pool: int,
-    step: int = None
+        seed: Union[int, Tuple[int]],
+        code: Union[str, List[str]],
+        pool: int,
+        step: int = None
 ):
     if isinstance(seed, int):
-        seed = (seed, )
+        seed = (seed,)
     default_steps = {
         10: 250_000,
         20: 300_000,

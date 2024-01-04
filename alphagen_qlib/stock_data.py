@@ -1,8 +1,10 @@
-from typing import List, Union, Optional, Tuple
+from typing import List, Union, Optional, Tuple, Any, Callable
 from enum import IntEnum
 import numpy as np
 import pandas as pd
 import torch
+from qlib.log import get_module_logger, TimeInspector
+import qlib.data.dataset.processor as processor_module
 
 
 class FeatureType(IntEnum):
@@ -12,6 +14,15 @@ class FeatureType(IntEnum):
     LOW = 3
     VOLUME = 4
     VWAP = 5
+    AMOUNT = 6
+    PBMRQ = 7
+    PCFNCFTTM = 8
+    PCTCHG = 9
+    PETTM = 10
+    PRECLOSE = 11
+    PSTTM = 12
+    TURN = 13
+    ISST = 14
 
 
 class StockData:
@@ -66,10 +77,11 @@ class StockData:
         features = ['$' + f.name.lower() for f in self._features]
         print(f"instruments: {self._instrument}")
         df = self._load_exprs(features)
-        print(f"df before: {df}")
+        print(f"raw df: {df}")
+        print(f"preprocessed df: {df}")
         df = df.stack().unstack(level=1)
-        print(f"df: {df}")
-        dates = df.index.levels[0]                                      # type: ignore
+        print(f"df after stack: {df}")
+        dates = df.index.levels[0]  # type: ignore
         stock_ids = df.columns
         values = df.values
         print(f"features: {features}")
@@ -92,9 +104,9 @@ class StockData:
         return self.data.shape[0] - self.max_backtrack_days - self.max_future_days
 
     def make_dataframe(
-        self,
-        data: Union[torch.Tensor, List[torch.Tensor]],
-        columns: Optional[List[str]] = None
+            self,
+            data: Union[torch.Tensor, List[torch.Tensor]],
+            columns: Optional[List[str]] = None
     ) -> pd.DataFrame:
         """
             Parameters:
@@ -125,3 +137,55 @@ class StockData:
         index = pd.MultiIndex.from_product([date_index, self._stock_ids])
         data = data.reshape(-1, n_columns)
         return pd.DataFrame(data.detach().cpu().numpy(), index=index, columns=columns)
+
+
+class StockDataLP(StockData):
+    def __init__(self,
+                 instrument: Union[str, List[str]],
+                 start_time: str,
+                 end_time: str,
+                 max_backtrack_days: int = 100,
+                 max_future_days: int = 30,
+                 features: Optional[List[FeatureType]] = None,
+                 device: torch.device = torch.device('cuda:0'),
+                 processors: List[processor_module.Processor] = [],
+                 for_train: bool = False) -> None:
+        self.processors = processors
+        self.with_fit = for_train
+        super().__init__(
+            instrument=instrument,
+            start_time=start_time,
+            end_time=end_time,
+            max_backtrack_days=max_backtrack_days,
+            max_future_days=max_future_days,
+            features=features,
+            device=device
+        )
+
+
+    def _get_data(self) -> Tuple[torch.Tensor, pd.Index, pd.Index]:
+        features = ['$' + f.name.lower() for f in self._features]
+        print(f"instruments: {self._instrument}")
+        df = self._load_exprs(features)
+        print(f"raw df: {df}")
+        df = self.process_data(df)
+        print(f"preprocessed df: {df}")
+        df = df.stack().unstack(level=1)
+        print(f"df after stack: {df}")
+        dates = df.index.levels[0]  # type: ignore
+        stock_ids = df.columns
+        values = df.values
+        print(f"features: {features}")
+        print(f"dates: {dates}")
+        print(f"stock ids: {stock_ids}")
+        values = values.reshape((-1, len(features), values.shape[-1]))  # type: ignore
+        print(f"values: {values}, {values.shape}")
+        return torch.tensor(values, dtype=torch.float, device=self.device), dates, stock_ids
+
+    def process_data(self, df: pd.DataFrame) -> pd.DataFrame:
+        for proc in self.processors:
+            with TimeInspector.logt(f"{proc.__class__.__name__}"):
+                if self.with_fit:
+                    proc.fit(df)
+                df = proc(df)
+        return df

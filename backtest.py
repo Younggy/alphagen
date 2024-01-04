@@ -11,7 +11,7 @@ from alphagen.data.expression import *
 from alphagen_qlib.stock_data import StockData
 from alphagen_generic.features import *
 from alphagen_qlib.strategy import TopKSwapNStrategy
-
+from datetime import datetime
 
 _T = TypeVar("_T")
 
@@ -113,12 +113,12 @@ class QlibBacktest:
             portfolio_metric = backtest_impl(-2)
 
         report, _ = portfolio_metric["1day"]    # type: ignore
-        result = self._analyze_report(report)
+        result: dict = self._analyze_report(report)
         graph = report_graph(report, show_notebook=False)[0]
         if output_prefix is not None:
             dump_pickle(output_prefix + "-report.pkl", lambda: report, True)
             dump_pickle(output_prefix + "-graph.pkl", lambda: graph, True)
-            write_all_text(output_prefix + "-result.json", result)
+            write_all_text(output_prefix + "-result.json", str(result))
 
         print(report)
         print(result)
@@ -142,6 +142,7 @@ class QlibBacktest:
 
 if __name__ == "__main__":
     qlib_backtest = QlibBacktest()
+    timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
 
     """ Example code
     expr = Mul(EMA(Sub(Delta(Mul(Log(open_),Constant(-30.0)),50),Constant(-0.01)),40),Mul(Div(Abs(EMA(low,50)),close),Constant(0.01)))
@@ -204,4 +205,4 @@ if __name__ == "__main__":
     data_df = pd.concat(dfs, axis=1)
     weighted_sum = data_df.mul(weights).sum(axis=1)
     data_df['Weighted_Sum'] = weighted_sum
-    qlib_backtest.run(data_df)
+    qlib_backtest.run(data_df, f"/Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942/{code}_{timestamp}")
