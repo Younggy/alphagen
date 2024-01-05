@@ -111,11 +111,12 @@ def main(
     close = Feature(FeatureType.CLOSE)
     target = Ref(close, -20) / close - 1
 
-    minmax_proc = MinMaxNorm(fit_start_time="2015-01-01", fit_end_time='2018-12-31')
-    dropna_proc = DropnaProcessor()
-    csfillna_proc = CSZFillna()
-    learn_processors = [dropna_proc, minmax_proc]
-    infer_processors = [csfillna_proc, dropna_proc, minmax_proc]
+    # minmax_proc = MinMaxNorm(fit_start_time="2015-01-01", fit_end_time='2018-12-31')
+    # dropna_proc = DropnaProcessor()
+    # csfillna_proc = CSZFillna()
+    # learn_processors = [dropna_proc, minmax_proc]
+    # infer_processors = [csfillna_proc, dropna_proc, minmax_proc]
+    learn_processors, infer_processors = [], []
 
     # You can re-implement AlphaCalculator instead of using QLibStockDataCalculator.
     data_train = StockDataLP(instrument=instruments,
@@ -137,6 +138,8 @@ def main(
                             device=device,
                             processors=infer_processors)
     print(f"test data: {data_test.data}, {data_test.data.shape}")
+
+    # joblib.dump(minmax_proc, f'{name_prefix}_{timestamp}_minmax.pkl')
     calculator_train = QLibStockDataCalculator(data_train, target)
     calculator_valid = QLibStockDataCalculator(data_valid, target)
     calculator_test = QLibStockDataCalculator(data_test, target)
@@ -222,7 +225,6 @@ def main(
         tb_log_name=f'{name_prefix}_{timestamp}',
     )
 
-    joblib.dump(minmax_proc, f'{name_prefix}_{timestamp}_minmax.pkl')
 
 
 def fire_helper(

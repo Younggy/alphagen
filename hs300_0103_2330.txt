@@ -1,0 +1,2204 @@
+[48966:MainThread](2024-01-04 00:31:14,107) INFO - qlib.Initialization - [config.py:416] - default_conf: client.
+[48966:MainThread](2024-01-04 00:31:14,323) INFO - qlib.Initialization - [__init__.py:74] - qlib successfully initialized based on client settings.
+[48966:MainThread](2024-01-04 00:31:14,323) INFO - qlib.Initialization - [__init__.py:76] - data_path={'__DEFAULT_FREQ': PosixPath('/Users/yangguangyu/.qlib/qlib_data/cn_data_rolling')}
+instruments: hs300
+[48966:MainThread](2024-01-04 00:31:18,225) INFO - qlib.timer - [log.py:127] - Time cost: 0.026s | ZScoreNorm Done
+raw df:                             $open      $close  ...     $psttm     $turn
+datetime   instrument                          ...                     
+2014-08-06 SH600000     36.678059   36.342247  ...   1.720402  0.901515
+           SH600009     15.457175   15.367242  ...   4.889094  0.833367
+           SH600010      4.297257    4.641038  ...   1.049635  3.491852
+           SH600011      7.163883    7.211963  ...   0.627584  0.171663
+           SH600015     12.955123   13.058764  ...   1.676678  0.649496
+...                           ...         ...  ...        ...       ...
+2019-02-19 SZ300661    107.945366  107.527779  ...  10.980824  1.395842
+           SZ300750     84.660004   82.290001  ...   6.650053  4.338807
+           SZ300751    174.140717  175.225296  ...  13.278975  8.478977
+           SZ300759     31.355343   31.355343  ...   7.607547  0.926154
+           SZ300760    114.797508  115.075615  ...  10.744785  3.528142
+
+[251929 rows x 15 columns]
+preprocessed df:                           $open    $close  ...    $psttm     $turn
+datetime   instrument                      ...                    
+2014-08-06 SH600000   -0.065039 -0.070108  ... -0.097246 -0.276921
+           SH600009   -0.344028 -0.345501  ... -0.037850 -0.300903
+           SH600010   -0.490746 -0.486332  ... -0.109819  0.634667
+           SH600011   -0.453059 -0.452577  ... -0.117730 -0.533769
+           SH600015   -0.376922 -0.375811  ... -0.098065 -0.365611
+...                         ...       ...  ...       ...       ...
+2019-02-19 SZ300661    0.871906  0.864530  ...  0.076338 -0.102958
+           SZ300750    0.565775  0.533168  ... -0.004841  0.932726
+           SZ300751    1.742170  1.753371  ...  0.119416  2.389728
+           SZ300759   -0.135016 -0.135584  ...  0.013107 -0.268250
+           SZ300760    0.961990  0.963630  ...  0.071913  0.647438
+
+[251929 rows x 15 columns]
+df after stack: instrument            SH600000  SH600009  ...  SZ300759  SZ300760
+datetime                                  ...                    
+2014-08-06 $open     -0.065039 -0.344028  ...       NaN       NaN
+           $close    -0.070108 -0.345501  ...       NaN       NaN
+           $high     -0.073931 -0.348540  ...       NaN       NaN
+           $low      -0.065367 -0.342963  ...       NaN       NaN
+           $volume   -0.040615 -0.282376  ...       NaN       NaN
+...                        ...       ...  ...       ...       ...
+2019-02-19 $pctchg   -0.144089  0.757156  ...  3.225699  0.201676
+           $pettm    -0.018945 -0.016637  ... -0.011727 -0.014893
+           $preclose  0.290415  0.295846  ... -0.172886  0.953933
+           $psttm    -0.094855  0.090356  ...  0.013107  0.071913
+           $turn     -0.561682 -0.314562  ... -0.268250  0.647438
+
+[16575 rows x 254 columns]
+features: ['$open', '$close', '$high', '$low', '$volume', '$vwap', '$amount', '$isst', '$pbmrq', '$pcfncfttm', '$pctchg', '$pettm', '$preclose', '$psttm', '$turn']
+dates: DatetimeIndex(['2014-08-06', '2014-08-07', '2014-08-08', '2014-08-11',
+               '2014-08-12', '2014-08-13', '2014-08-14', '2014-08-15',
+               '2014-08-18', '2014-08-19',
+               ...
+               '2019-01-30', '2019-01-31', '2019-02-01', '2019-02-11',
+               '2019-02-12', '2019-02-13', '2019-02-14', '2019-02-15',
+               '2019-02-18', '2019-02-19'],
+              dtype='datetime64[ns]', name='datetime', length=1105, freq=None)
+stock ids: Index(['SH600000', 'SH600009', 'SH600010', 'SH600011', 'SH600015', 'SH600016',
+       'SH600018', 'SH600019', 'SH600023', 'SH600025',
+       ...
+       'SZ300450', 'SZ300454', 'SZ300496', 'SZ300498', 'SZ300628', 'SZ300661',
+       'SZ300750', 'SZ300751', 'SZ300759', 'SZ300760'],
+      dtype='object', name='instrument', length=254)
+values: [[[-6.50388375e-02 -3.44027817e-01 -4.90746260e-01 ...             nan
+               nan             nan]
+  [-7.01078102e-02 -3.45501274e-01 -4.86332029e-01 ...             nan
+               nan             nan]
+  [-7.39311129e-02 -3.48540127e-01 -4.87067133e-01 ...             nan
+               nan             nan]
+  ...
+  [-6.35455772e-02 -3.44424129e-01 -4.90481406e-01 ...             nan
+               nan             nan]
+  [-9.72458944e-02 -3.78497913e-02 -1.09819211e-01 ...             nan
+               nan             nan]
+  [-2.76920915e-01 -3.00903440e-01  6.34666622e-01 ...             nan
+               nan             nan]]
+
+ [[-6.89631924e-02 -3.45062405e-01 -4.81573999e-01 ...             nan
+               nan             nan]
+  [-7.89259523e-02 -3.47272426e-01 -4.80225265e-01 ...             nan
+               nan             nan]
+  [-7.63453171e-02 -3.48976552e-01 -4.82487619e-01 ...             nan
+               nan             nan]
+  ...
+  [-6.99175894e-02 -3.45457911e-01 -4.86363769e-01 ...             nan
+               nan             nan]
+  [-9.78418589e-02 -3.86542715e-02 -1.07847400e-01 ...             nan
+               nan             nan]
+  [-2.61089504e-01 -3.05251390e-01  2.07458377e+00 ...             nan
+               nan             nan]]
+
+ [[-7.82834888e-02 -3.47131461e-01 -4.82105702e-01 ...             nan
+               nan             nan]
+  [-7.99057782e-02 -3.46682012e-01 -4.82482105e-01 ...             nan
+               nan             nan]
+  [-8.50364640e-02 -3.50140333e-01 -4.83534336e-01 ...             nan
+               nan             nan]
+  ...
+  [-7.87404403e-02 -3.47230017e-01 -4.80253756e-01 ...             nan
+               nan             nan]
+  [-9.79080647e-02 -3.83861102e-02 -1.08576119e-01 ...             nan
+               nan             nan]
+  [-3.08871239e-01 -4.38429326e-01  1.12170291e+00 ...             nan
+               nan             nan]]
+
+ ...
+
+ [[ 2.86520988e-01  2.96597153e-01 -4.89191920e-01 ...  1.70017803e+00
+   -2.06582159e-01  9.57158923e-01]
+  [ 2.76129246e-01  2.76142776e-01 -4.90036696e-01 ...  1.67367840e+00
+   -2.07055733e-01  9.28289473e-01]
+  [ 2.77438402e-01  2.94044584e-01 -4.91425216e-01 ...  1.71778178e+00
+   -2.13252291e-01  9.37873960e-01]
+  ...
+  [ 2.88869351e-01  2.95371085e-01 -4.89326775e-01 ...  1.69871902e+00
+   -2.37847626e-01  9.62805569e-01]
+  [-9.53039378e-02  8.02708194e-02 -1.09874152e-01 ...  1.10793717e-01
+   -1.16500761e-02  6.72022477e-02]
+  [-5.71942985e-01 -3.43666136e-01 -4.09858465e-01 ...  1.67388797e+00
+   -3.70959848e-01  1.51963577e-01]]
+
+ [[ 2.84200668e-01  2.88035154e-01 -4.89564031e-01 ...  1.67113698e+00
+   -1.72503084e-01  9.30651426e-01]
+  [ 2.90032715e-01  2.95461178e-01 -4.88550216e-01 ...  1.71287155e+00
+   -1.73021510e-01  9.53197241e-01]
+  [ 2.78961003e-01  2.90767223e-01 -4.90692705e-01 ...  1.70181501e+00
+   -1.79708228e-01  9.39159214e-01]
+  ...
+  [ 2.76504129e-01  2.76517659e-01 -4.90070432e-01 ...  1.67479849e+00
+   -2.06938550e-01  9.29012120e-01]
+  [-9.47265923e-02  8.51922408e-02 -1.09364532e-01 ...  1.15034088e-01
+    1.38881107e-04  7.05225393e-02]
+  [-5.69008350e-01 -3.05831730e-01 -2.63905555e-01 ...  1.37281060e+00
+   -3.86765927e-01  4.20016766e-01]]
+
+ [[ 2.91934967e-01  3.00719708e-01 -4.88819778e-01 ...  1.74217010e+00
+   -1.35016084e-01  9.61990297e-01]
+  [ 2.86943108e-01  3.15729767e-01 -4.88550216e-01 ...  1.75337100e+00
+   -1.35583863e-01  9.63629842e-01]
+  [ 2.85812646e-01  3.21668565e-01 -4.89593834e-01 ...  1.81628489e+00
+   -1.42809764e-01  9.97639894e-01]
+  ...
+  [ 2.90415019e-01  2.95846373e-01 -4.88583148e-01 ...  1.71401274e+00
+   -1.72886178e-01  9.53933179e-01]
+  [-9.48548988e-02  9.03556719e-02 -1.09364532e-01 ...  1.19415805e-01
+    1.31067280e-02  7.19132498e-02]
+  [-5.61682463e-01 -3.14562112e-01 -1.92142680e-01 ...  2.38972831e+00
+   -2.68249989e-01  6.47437692e-01]]], (1105, 15, 254)
+instruments: hs300
+[48966:MainThread](2024-01-04 00:31:22,024) INFO - qlib.timer - [log.py:127] - Time cost: 0.002s | ZScoreNorm Done
+raw df:                             $open      $close  ...     $psttm      $turn
+datetime   instrument                          ...                      
+2018-08-03 SH600000     57.594746   57.830067  ...   1.745467   0.060483
+           SH600009     74.151337   71.261703  ...  13.612852   0.662246
+           SH600010      4.528701    4.472093  ...   1.285209   0.548638
+           SH600011     10.894892   10.532657  ...   0.703142   0.260177
+           SH600015     17.312105   17.288551  ...   1.426968   0.077760
+...                           ...         ...  ...        ...        ...
+2020-02-20 SZ300751    210.300003  221.039993  ...   9.349808   4.972300
+           SZ300759     62.450001   61.599998  ...  13.984790   1.604300
+           SZ300760    234.800003  234.990005  ...  18.020260   0.970900
+           SZ300763     76.010002   81.680000  ...   6.418219  26.974701
+           SZ300782    511.200012  551.090027  ...  49.872787   6.694400
+
+[95573 rows x 15 columns]
+preprocessed df:                           $open    $close  ...    $psttm     $turn
+datetime   instrument                      ...                    
+2018-08-03 SH600000    0.209951  0.212019  ... -0.096776 -0.572896
+           SH600009    0.427619  0.388371  ...  0.125674 -0.361124
+           SH600010   -0.487703 -0.488550  ... -0.105403 -0.401105
+           SH600011   -0.404008 -0.408977  ... -0.116314 -0.502620
+           SH600015   -0.319641 -0.320275  ... -0.102746 -0.566816
+...                         ...       ...  ...       ...       ...
+2020-02-20 SZ300751    2.217553  2.354900  ...  0.045765  1.155664
+           SZ300759    0.273782  0.261516  ...  0.132646 -0.029598
+           SZ300760    2.539652  2.538058  ...  0.208290 -0.252503
+           SZ300763    0.452055  0.525159  ... -0.009187  8.898716
+           SZ300782    6.173457  6.688325  ...  0.805355  1.761703
+
+[95573 rows x 15 columns]
+df after stack: instrument            SH600000  SH600009  ...  SZ300763  SZ300782
+datetime                                  ...                    
+2018-08-03 $open      0.209951  0.427619  ...       NaN       NaN
+           $close     0.212019  0.388371  ...       NaN       NaN
+           $high      0.211206  0.419645  ...       NaN       NaN
+           $low       0.219740  0.401526  ...       NaN       NaN
+           $volume   -0.327502 -0.300036  ...       NaN       NaN
+...                        ...       ...  ...       ...       ...
+2020-02-20 $pctchg    0.326692  0.751013  ...  3.226738  1.918199
+           $pettm    -0.018954 -0.016339  ... -0.012650 -0.001082
+           $preclose  0.337970  0.603587  ...  0.428061  6.283702
+           $psttm    -0.097092  0.121501  ... -0.009187  0.805355
+           $turn     -0.548291 -0.059687  ...  8.898716  1.761703
+
+[5610 rows x 265 columns]
+features: ['$open', '$close', '$high', '$low', '$volume', '$vwap', '$amount', '$isst', '$pbmrq', '$pcfncfttm', '$pctchg', '$pettm', '$preclose', '$psttm', '$turn']
+dates: DatetimeIndex(['2018-08-03', '2018-08-06', '2018-08-07', '2018-08-08',
+               '2018-08-09', '2018-08-10', '2018-08-13', '2018-08-14',
+               '2018-08-15', '2018-08-16',
+               ...
+               '2020-02-07', '2020-02-10', '2020-02-11', '2020-02-12',
+               '2020-02-13', '2020-02-14', '2020-02-17', '2020-02-18',
+               '2020-02-19', '2020-02-20'],
+              dtype='datetime64[ns]', name='datetime', length=374, freq=None)
+stock ids: Index(['SH600000', 'SH600009', 'SH600010', 'SH600011', 'SH600015', 'SH600016',
+       'SH600018', 'SH600019', 'SH600023', 'SH600025',
+       ...
+       'SZ300496', 'SZ300498', 'SZ300628', 'SZ300661', 'SZ300750', 'SZ300751',
+       'SZ300759', 'SZ300760', 'SZ300763', 'SZ300782'],
+      dtype='object', name='instrument', length=265)
+values: [[[ 2.09950909e-01  4.27618891e-01 -4.87703472e-01 ...             nan
+               nan             nan]
+  [ 2.12018669e-01  3.88370693e-01 -4.88550216e-01 ...             nan
+               nan             nan]
+  [ 2.11205974e-01  4.19645190e-01 -4.88861322e-01 ...             nan
+               nan             nan]
+  ...
+  [ 2.09268034e-01  4.26451683e-01 -4.87467647e-01 ...             nan
+               nan             nan]
+  [-9.67760682e-02  1.25674233e-01 -1.05403446e-01 ...             nan
+               nan             nan]
+  [-5.72895646e-01 -3.61124098e-01 -4.01104867e-01 ...             nan
+               nan             nan]]
+
+ [[ 2.23872706e-01  3.64825934e-01 -4.88819778e-01 ...             nan
+               nan             nan]
+  [ 2.18197972e-01  3.14215779e-01 -4.88550216e-01 ...             nan
+               nan             nan]
+  [ 2.15012446e-01  3.56138349e-01 -4.89960134e-01 ...             nan
+               nan             nan]
+  ...
+  [ 2.12359354e-01  3.88805419e-01 -4.88583148e-01 ...             nan
+               nan             nan]
+  [-9.65097919e-02  1.05450578e-01 -1.05403446e-01 ...             nan
+               nan             nan]
+  [-5.72336435e-01 -8.31820443e-02 -4.21907097e-01 ...             nan
+               nan             nan]]
+
+ [[ 2.21552402e-01  2.97951460e-01 -4.88075584e-01 ...             nan
+               nan             nan]
+  [ 2.33646318e-01  3.30834031e-01 -4.86692101e-01 ...             nan
+               nan             nan]
+  [ 2.21864074e-01  3.18590522e-01 -4.88495052e-01 ...             nan
+               nan             nan]
+  ...
+  [ 2.18541935e-01  3.14610958e-01 -4.88583148e-01 ...             nan
+               nan             nan]
+  [-9.58441123e-02  1.09982722e-01 -1.04641080e-01 ...             nan
+               nan             nan]
+  [-5.66901743e-01 -2.56956577e-01 -3.93692017e-01 ...             nan
+               nan             nan]]
+
+ ...
+
+ [[ 3.37159276e-01  5.93713045e-01 -5.01560032e-01 ...  2.58251095e+00
+    3.41883451e-01  5.74749708e+00]
+  [ 3.33580613e-01  5.85483313e-01 -5.01645386e-01 ...  2.63390374e+00
+    3.74299705e-01  6.34577322e+00]
+  [ 3.29017311e-01  5.85803509e-01 -5.03230631e-01 ...  2.62056661e+00
+    3.59730482e-01  6.25542593e+00]
+  ...
+  [ 3.43548328e-01  5.95443845e-01 -5.01685262e-01 ...  2.62318778e+00
+    2.90915370e-01  5.73183298e+00]
+  [-9.75826830e-02  1.11909948e-01 -1.13652453e-01 ...  2.18782946e-01
+   -2.61106044e-02  7.61096895e-01]
+  [-5.56419849e-01 -1.78459376e-01 -3.15742791e-01 ... -3.22534829e-01
+    2.65744090e+00  1.99836755e+00]]
+
+ [[ 3.36361766e-01  5.89718103e-01 -5.01560032e-01 ...  2.59500051e+00
+    4.65070009e-01  6.17082787e+00]
+  [ 3.37562710e-01  6.03037834e-01 -5.02393246e-01 ...  2.53556323e+00
+    4.27605838e-01  6.28012514e+00]
+  [ 3.33727032e-01  5.91465890e-01 -5.03599226e-01 ...  2.58278012e+00
+    4.50572789e-01  6.55577517e+00]
+  ...
+  [ 3.33986133e-01  5.86023152e-01 -5.01685262e-01 ...  2.63553596e+00
+    3.74726921e-01  6.34938478e+00]
+  [-9.75826830e-02  1.11909948e-01 -1.13912158e-01 ...  2.18782946e-01
+   -2.61106044e-02  7.61096895e-01]
+  [-5.62754393e-01 -2.22906709e-01 -3.53644401e-01 ... -1.49989188e-01
+    9.98389149e+00  1.86484993e+00]]
+
+ [[ 3.43539029e-01  6.04099929e-01 -5.01934528e-01 ...  2.53965211e+00
+    4.52054590e-01  6.17345715e+00]
+  [ 3.47119808e-01  6.30486846e-01 -5.01645386e-01 ...  2.53805780e+00
+    5.25158763e-01  6.68832493e+00]
+  [ 3.36081892e-01  6.18834138e-01 -5.03230631e-01 ...  2.52868891e+00
+    5.08416891e-01  6.76282310e+00]
+  ...
+  [ 3.37970346e-01  6.03587031e-01 -5.02433538e-01 ...  2.53714299e+00
+    4.28061485e-01  6.28370190e+00]
+  [-9.70921740e-02  1.21500827e-01 -1.13652453e-01 ...  2.08289653e-01
+   -9.18683596e-03  8.05355012e-01]
+  [-5.48290551e-01 -5.96868917e-02 -3.06416959e-01 ... -2.52503037e-01
+    8.89871597e+00  1.76170254e+00]]], (374, 15, 265)
+instruments: hs300
+[48966:MainThread](2024-01-04 00:31:25,800) INFO - qlib.timer - [log.py:127] - Time cost: 0.005s | ZScoreNorm Done
+/Users/yangguangyu/anaconda3/envs/quant_dev/lib/python3.9/site-packages/torch/nn/modules/transformer.py:282: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.activation_relu_or_gelu was not True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+raw df:                             $open      $close  ...     $psttm   $turn
+datetime   instrument                          ...                   
+2019-08-06 SH600000     67.331314   67.270660  ...   1.786627  0.1608
+           SH600009     93.082047   95.216736  ...  15.513098  1.1181
+           SH600010      4.357638    4.272194  ...   1.010858  0.9161
+           SH600011      9.384294    9.624917  ...   0.625742  0.2261
+           SH600015     17.344748   17.417017  ...   1.467073  0.1580
+...                           ...         ...  ...        ...     ...
+2023-08-11 SZ300751    963.043640  941.549194  ...  12.552358  0.7226
+           SZ300759     69.619865   67.315178  ...   4.841266  2.0063
+           SZ300760    280.070007  276.232025  ...  10.157454  0.3799
+           SZ300763    400.967407  391.187714  ...   5.525766  2.7863
+           SZ300782    654.953186  639.436157  ...  21.357079  0.4208
+
+[259698 rows x 15 columns]
+preprocessed df:                            $open     $close  ...    $psttm     $turn
+datetime   instrument                        ...                    
+2019-08-06 SH600000     0.337957   0.335970  ... -0.096005 -0.537592
+           SH600009     0.676499   0.702891  ...  0.161294 -0.200701
+           SH600010    -0.489952  -0.491175  ... -0.110546 -0.271788
+           SH600011    -0.423867  -0.420896  ... -0.117765 -0.514612
+           SH600015    -0.319212  -0.318589  ... -0.101994 -0.538578
+...                          ...        ...  ...       ...       ...
+2023-08-11 SZ300751    12.113804  11.814898  ...  0.105796 -0.339884
+           SZ300759     0.368044   0.336554  ... -0.038746  0.111873
+           SZ300760     3.134813   3.079549  ...  0.060904 -0.460487
+           SZ300763     4.724239   4.588871  ... -0.025916  0.386370
+           SZ300782     8.063368   7.848274  ...  0.270837 -0.446093
+
+[259698 rows x 15 columns]
+df after stack: instrument            SH600000  SH600009  ...  SZ300763  SZ300782
+datetime                                  ...                    
+2019-08-06 $open      0.337957  0.676499  ... -0.078696  2.403154
+           $close     0.335970  0.702891  ... -0.075245  2.479256
+           $high      0.332942  0.695294  ... -0.082205  2.482641
+           $low       0.341448  0.682255  ... -0.091036  2.388882
+           $volume   -0.288034 -0.264802  ... -0.341799 -0.334833
+...                        ...       ...  ...       ...       ...
+2023-08-11 $pctchg   -0.856088 -0.499666  ... -1.000074 -0.679648
+           $pettm    -0.019046 -0.024901  ... -0.016197 -0.009094
+           $preclose  0.175134  0.224143  ...  4.750689  8.025643
+           $psttm    -0.107542  0.248168  ... -0.025916  0.270837
+           $turn     -0.549769 -0.263624  ...  0.386370 -0.446093
+
+[14640 rows x 267 columns]
+features: ['$open', '$close', '$high', '$low', '$volume', '$vwap', '$amount', '$isst', '$pbmrq', '$pcfncfttm', '$pctchg', '$pettm', '$preclose', '$psttm', '$turn']
+dates: DatetimeIndex(['2019-08-06', '2019-08-07', '2019-08-08', '2019-08-09',
+               '2019-08-12', '2019-08-13', '2019-08-14', '2019-08-15',
+               '2019-08-16', '2019-08-19',
+               ...
+               '2023-07-31', '2023-08-01', '2023-08-02', '2023-08-03',
+               '2023-08-04', '2023-08-07', '2023-08-08', '2023-08-09',
+               '2023-08-10', '2023-08-11'],
+              dtype='datetime64[ns]', name='datetime', length=976, freq=None)
+stock ids: Index(['SH600000', 'SH600009', 'SH600010', 'SH600011', 'SH600015', 'SH600016',
+       'SH600018', 'SH600019', 'SH600023', 'SH600025',
+       ...
+       'SZ300496', 'SZ300498', 'SZ300628', 'SZ300661', 'SZ300750', 'SZ300751',
+       'SZ300759', 'SZ300760', 'SZ300763', 'SZ300782'],
+      dtype='object', name='instrument', length=267)
+values: [[[ 3.37956667e-01  6.76499188e-01 -4.89952415e-01 ...  1.42479432e+00
+   -7.86961392e-02  2.40315437e+00]
+  [ 3.35969895e-01  7.02890694e-01 -4.91174787e-01 ...  1.45906723e+00
+   -7.52446279e-02  2.47925591e+00]
+  [ 3.32942039e-01  6.95294261e-01 -4.92173761e-01 ...  1.45540333e+00
+   -8.22048336e-02  2.48264122e+00]
+  ...
+  [ 3.48329425e-01  7.09988892e-01 -4.88964260e-01 ...  1.46729815e+00
+   -6.99376315e-02  2.47268248e+00]
+  [-9.60045233e-02  1.61293715e-01 -1.10546067e-01 ...  1.11939140e-01
+   -6.44666478e-02  5.76340675e-01]
+  [-5.37592232e-01 -2.00700626e-01 -2.71788180e-01 ...  4.06098701e-02
+    1.52570593e+00  2.27251220e+00]]
+
+ [[ 3.41146618e-01  7.15662777e-01 -4.91075754e-01 ...  1.47291207e+00
+   -7.25479200e-02  2.48549962e+00]
+  [ 3.34376991e-01  7.03840852e-01 -4.90426928e-01 ...  1.49924374e+00
+   -6.27085343e-02  2.54355240e+00]
+  [ 3.27447414e-01  7.09340274e-01 -4.91805196e-01 ...  1.48607218e+00
+   -6.80841804e-02  2.61351228e+00]
+  ...
+  [ 3.36376667e-01  7.03493178e-01 -4.91209120e-01 ...  1.46007299e+00
+   -7.50571415e-02  2.48080564e+00]
+  [-9.60649326e-02  1.61514699e-01 -1.10293433e-01 ...  1.16773829e-01
+   -6.27396256e-02  5.91335714e-01]
+  [-5.54801047e-01 -4.00273621e-01 -3.54348272e-01 ... -7.40451589e-02
+    1.87157130e+00  2.91835308e+00]]
+
+ [[ 3.41944128e-01  7.11540222e-01 -4.90701318e-01 ...  1.52076674e+00
+   -6.28132150e-02  2.59970760e+00]
+  [ 3.49509090e-01  7.31393337e-01 -4.90800858e-01 ...  1.55543840e+00
+   -4.64627706e-02  2.81828618e+00]
+  [ 3.39221746e-01  7.29316890e-01 -4.92542356e-01 ...  1.54326928e+00
+   -4.81640287e-02  2.80233359e+00]
+  ...
+  [ 3.34782898e-01  7.04443812e-01 -4.90460843e-01 ...  1.50027096e+00
+   -6.25143722e-02  2.54513645e+00]
+  [-9.54911560e-02  1.67923465e-01 -1.10419758e-01 ...  1.23536043e-01
+   -6.05015531e-02  6.55408204e-01]
+  [-5.52548766e-01 -3.29221278e-01 -4.39019859e-01 ... -7.11026881e-03
+    3.26935673e+00  4.61129236e+00]]
+
+ ...
+
+ [[ 1.83585778e-01  1.94329277e-01 -4.75904137e-01 ...  3.18117905e+00
+    4.44624424e+00  7.96995258e+00]
+  [ 1.87464327e-01  1.97358161e-01 -4.76023138e-01 ...  3.14696455e+00
+    4.46798706e+00  7.92510271e+00]
+  [ 1.75585911e-01  1.90262750e-01 -4.77603018e-01 ...  3.12132311e+00
+    4.49764204e+00  7.93632841e+00]
+  ...
+  [ 1.84870929e-01  1.96884573e-01 -4.76049393e-01 ...  3.13810515e+00
+    4.51284218e+00  8.00505257e+00]
+  [-1.07244626e-01  2.40635380e-01 -1.06230177e-01 ...  6.44430593e-02
+   -2.83534192e-02  2.74500698e-01]
+  [-5.72854459e-01 -4.76006508e-01 -4.03018564e-01 ... -3.41010541e-01
+    1.44134334e-03 -4.02279556e-01]]
+
+ [[ 1.78713620e-01  2.04176024e-01 -4.75904137e-01 ...  3.14844990e+00
+    4.43524027e+00  7.87173033e+00]
+  [ 1.74813345e-01  2.23796472e-01 -4.76400077e-01 ...  3.13280058e+00
+    4.74792957e+00  8.02113724e+00]
+  [ 1.66953653e-01  2.11712599e-01 -4.77974504e-01 ...  3.10065174e+00
+    4.76785278e+00  7.93294764e+00]
+  ...
+  [ 1.87791914e-01  1.97691023e-01 -4.76049393e-01 ...  3.14887047e+00
+    4.47059727e+00  7.92955685e+00]
+  [-1.06965117e-01  2.53777057e-01 -1.06353275e-01 ...  6.36994764e-02
+   -2.27079000e-02  2.79080003e-01]
+  [-5.30800223e-01 -1.67937025e-01 -4.14807826e-01 ... -4.22866791e-01
+    1.49734139e+00 -4.14702266e-01]]
+
+ [[ 1.77739173e-01  2.25322247e-01 -4.75904137e-01 ...  3.13481259e+00
+    4.72423935e+00  8.06336784e+00]
+  [ 1.56323403e-01  2.12511823e-01 -4.77907896e-01 ...  3.07954931e+00
+    4.58887148e+00  7.84827375e+00]
+  [ 1.65035412e-01  2.19815820e-01 -4.78346020e-01 ...  3.09702706e+00
+    4.65497971e+00  7.96404696e+00]
+  ...
+  [ 1.75134182e-01  2.24143431e-01 -4.76426542e-01 ...  3.13469863e+00
+    4.75068903e+00  8.02564335e+00]
+  [-1.07542008e-01  2.48167783e-01 -1.06845625e-01 ...  6.09039031e-02
+   -2.59155817e-02  2.70837247e-01]
+  [-5.49768627e-01 -2.63623655e-01 -3.72366458e-01 ... -4.60486889e-01
+    3.86369765e-01 -4.46093410e-01]]], (976, 15, 267)
+Using cpu device
+Wrapping the env with a `Monitor` wrapper
+Wrapping the env in a DummyVecEnv.
+Logging to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_hs300_200_5_20240104003126_1
+/Users/yangguangyu/anaconda3/envs/quant_dev/lib/python3.9/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.action_masks to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.action_masks` for environment variables or `env.get_wrapper_attr('action_masks')` that will search the reminding wrappers.[0m
+  logger.warn(
+/Users/yangguangyu/anaconda3/envs/quant_dev/lib/python3.9/site-packages/stable_baselines3/common/save_util.py:283: UserWarning: Path '/Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_hs300_200_5_20240104003126' does not exist. Will create it.
+  warnings.warn(f"Path '{path.parent}' does not exist. Will create it.")
+Add(Constant(-0.5),Sub($low,Constant(-0.5)))
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_hs300_200_5_20240104003126/2048_steps
+---------------------------------
+| pool/              |          |
+|    best_ic_ret     | 0.00665  |
+|    eval_cnt        | 1        |
+|    significant     | 1        |
+|    size            | 1        |
+| rollout/           |          |
+|    ep_len_mean     | 19.9     |
+|    ep_rew_mean     | -0.99    |
+| test/              |          |
+|    ic              | 0.00339  |
+|    rank_ic         | 0.0131   |
+| time/              |          |
+|    fps             | 270      |
+|    iterations      | 1        |
+|    time_elapsed    | 7        |
+|    total_timesteps | 2048     |
+---------------------------------
+/Users/yangguangyu/anaconda3/envs/quant_dev/lib/python3.9/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.action_masks to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.action_masks` for environment variables or `env.get_wrapper_attr('action_masks')` that will search the reminding wrappers.[0m
+  logger.warn(
+$amount
+$pcfncfttm
+$psttm
+$high
+Sub(Constant(0.01),$isst)
+Add($turn,Constant(10.0))
+$pbmrq
+Cov($pbmrq,$psttm,20)
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_hs300_200_5_20240104003126/4096_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.0143      |
+|    eval_cnt             | 8           |
+|    significant          | 5           |
+|    size                 | 8           |
+| rollout/                |             |
+|    ep_len_mean          | 18.8        |
+|    ep_rew_mean          | -0.929      |
+| test/                   |             |
+|    ic                   | -0.00128    |
+|    rank_ic              | 0.001       |
+| time/                   |             |
+|    fps                  | 71          |
+|    iterations           | 2           |
+|    time_elapsed         | 57          |
+|    total_timesteps      | 4096        |
+| train/                  |             |
+|    approx_kl            | 0.015593439 |
+|    clip_fraction        | 0.21        |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -3.42       |
+|    explained_variance   | -2.95       |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.343      |
+|    n_updates            | 10          |
+|    policy_gradient_loss | -0.0211     |
+|    value_loss           | 0.0823      |
+-----------------------------------------
+$turn
+$close
+Div(Constant(-1.0),$amount)
+Ref($pbmrq,50)
+Mean(Mul($high,Std($close,50)),10)
+Std($pctchg,40)
+WMA(Add(Constant(-30.0),Less(Less($isst,$amount),Sub($turn,$high))),40)
+Sub($amount,Sub($pbmrq,Constant(-10.0)))
+$high
+$psttm
+Add($low,Abs(Div($preclose,Constant(-1.0))))
+Add(Abs(Div(Constant(0.01),$preclose)),Less($pcfncfttm,Constant(-0.5)))
+EMA($close,30)
+Abs(Min(EMA($pcfncfttm,20),20))
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_hs300_200_5_20240104003126/6144_steps
+----------------------------------------
+| pool/                   |            |
+|    best_ic_ret          | 0.0229     |
+|    eval_cnt             | 17         |
+|    significant          | 13         |
+|    size                 | 17         |
+| rollout/                |            |
+|    ep_len_mean          | 18.3       |
+|    ep_rew_mean          | -0.878     |
+| test/                   |            |
+|    ic                   | -0.0158    |
+|    rank_ic              | -0.0166    |
+| time/                   |            |
+|    fps                  | 55         |
+|    iterations           | 3          |
+|    time_elapsed         | 111        |
+|    total_timesteps      | 6144       |
+| train/                  |            |
+|    approx_kl            | 0.01459706 |
+|    clip_fraction        | 0.18       |
+|    clip_range           | 0.2        |
+|    entropy_loss         | -3.41      |
+|    explained_variance   | 6.68e-06   |
+|    learning_rate        | 0.001      |
+|    loss                 | -0.36      |
+|    n_updates            | 20         |
+|    policy_gradient_loss | -0.016     |
+|    value_loss           | 0.011      |
+----------------------------------------
+$pcfncfttm
+$open
+Add(EMA($pbmrq,40),Constant(-1.0))
+$preclose
+Mad($volume,10)
+$pctchg
+Sub(Constant(-30.0),$preclose)
+Less(WMA($high,30),$amount)
+Mul($pctchg,Abs(Sub(Constant(-0.5),$amount)))
+Sub(Add(Constant(-0.5),$pcfncfttm),Greater(Div($pctchg,Constant(-2.0)),Constant(-1.0)))
+Add($high,Constant(-0.01))
+Abs(Max(Med(Mul(Add($preclose,$close),Add($psttm,Cov(Add(Ref($amount,10),$open),$pctchg,10))),50),20))
+$psttm
+$pctchg
+$pcfncfttm
+Min(Sum($preclose,20),20)
+$pctchg
+Max(Med($volume,20),20)
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_hs300_200_5_20240104003126/8192_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.0234      |
+|    eval_cnt             | 26          |
+|    significant          | 18          |
+|    size                 | 26          |
+| rollout/                |             |
+|    ep_len_mean          | 17.8        |
+|    ep_rew_mean          | -0.848      |
+| test/                   |             |
+|    ic                   | -0.0157     |
+|    rank_ic              | -0.0114     |
+| time/                   |             |
+|    fps                  | 49          |
+|    iterations           | 4           |
+|    time_elapsed         | 166         |
+|    total_timesteps      | 8192        |
+| train/                  |             |
+|    approx_kl            | 0.016713256 |
+|    clip_fraction        | 0.287       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -3.39       |
+|    explained_variance   | 1.67e-06    |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.347      |
+|    n_updates            | 30          |
+|    policy_gradient_loss | -0.0247     |
+|    value_loss           | 0.0265      |
+-----------------------------------------
+Add(Constant(-2.0),Abs($high))
+$preclose
+$amount
+$amount
+$vwap
+$high
+Add($turn,Constant(5.0))
+$isst
+Med(Mul(Mul(Add(Mul(Mad(Less($close,EMA($amount,50)),40),Constant(-1.0)),Less(Constant(-10.0),$preclose)),Constant(2.0)),$volume),30)
+$close
+$high
+Add(Div(Constant(1.0),Sub($preclose,Mul(Sub($volume,$psttm),$close))),Log($preclose))
+$pcfncfttm
+Sub(Constant(5.0),$turn)
+Sub(Constant(-1.0),Abs(Div(Less(Add(Std($pcfncfttm,40),Constant(-30.0)),Ref($amount,30)),$close)))
+Sub($amount,$isst)
+Ref($volume,10)
+$pbmrq
+$pctchg
+$turn
+Add(Constant(0.5),Med(Abs($pcfncfttm),20))
+$high
+WMA(Greater(Mul(Mul(Greater(Mul(Mean($pcfncfttm,20),Constant(-30.0)),Constant(-1.0)),WMA($turn,20)),Less($turn,Constant(-10.0))),$psttm),40)
+Abs(Less($low,$pcfncfttm))
+$preclose
+$turn
+$volume
+WMA($psttm,20)
+Abs(Med(Mul($amount,$pctchg),20))
+Add($volume,Constant(5.0))
+Max(Sum($low,40),20)
+Mul($preclose,Div(Constant(30.0),$amount))
+Mul($pcfncfttm,Add(Add(Sub(WMA(Sub(Sub(Constant(5.0),Sub($pctchg,Mul(Constant(10.0),$open))),$psttm),40),Constant(-5.0)),Constant(2.0)),Constant(2.0)))
+$amount
+Med($preclose,20)
+Sub(Constant(-2.0),$preclose)
+Var($close,30)
+Mul(Constant(2.0),$low)
+$low
+$preclose
+$psttm
+Mean(Add(Constant(-10.0),$volume),20)
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_hs300_200_5_20240104003126/10240_steps
+----------------------------------------
+| pool/                   |            |
+|    best_ic_ret          | 0.0316     |
+|    eval_cnt             | 44         |
+|    significant          | 23         |
+|    size                 | 44         |
+| rollout/                |            |
+|    ep_len_mean          | 15.9       |
+|    ep_rew_mean          | -0.716     |
+| test/                   |            |
+|    ic                   | -0.00331   |
+|    rank_ic              | -0.00709   |
+| time/                   |            |
+|    fps                  | 43         |
+|    iterations           | 5          |
+|    time_elapsed         | 233        |
+|    total_timesteps      | 10240      |
+| train/                  |            |
+|    approx_kl            | 0.01869897 |
+|    clip_fraction        | 0.33       |
+|    clip_range           | 0.2        |
+|    entropy_loss         | -3.35      |
+|    explained_variance   | 2.26e-06   |
+|    learning_rate        | 0.001      |
+|    loss                 | -0.351     |
+|    n_updates            | 40         |
+|    policy_gradient_loss | -0.0256    |
+|    value_loss           | 0.0309     |
+----------------------------------------
+Mul(Constant(-1.0),Sum($pctchg,30))
+$pcfncfttm
+Sub($pettm,Sub($close,Ref(Less(Sum(Div($high,Constant(-5.0)),20),Ref(Mul($amount,$low),30)),50)))
+Less($pcfncfttm,$isst)
+Div(Constant(-10.0),Std(Std($pctchg,30),20))
+Mad(WMA(Sub(Constant(10.0),Cov($volume,$pbmrq,40)),20),20)
+$turn
+Min(Var(Min(Sub(Var($preclose,50),Less(WMA(Mul($pcfncfttm,Constant(10.0)),40),Greater(Constant(-1.0),$close))),20),50),40)
+$high
+Greater(Med(Cov(Mul(Med(Max($pcfncfttm,40),40),Constant(0.5)),Mul(Add($open,$turn),$isst),20),40),$amount)
+$preclose
+Less($psttm,Corr(Abs(Var(Mul(Constant(-1.0),Abs(Add(Abs(EMA($pcfncfttm,10)),$close))),40)),$pctchg,20))
+Med(Abs(Sub(Add(Add(Constant(-10.0),$psttm),Constant(10.0)),Constant(-2.0))),20)
+Sub($amount,$preclose)
+$volume
+$psttm
+$pctchg
+Mul($pbmrq,$amount)
+Div(Greater(Abs($high),Constant(-30.0)),Div(Div($high,Sub($preclose,$open)),Mad($volume,30)))
+Med(Abs($high),40)
+Greater($psttm,Less($preclose,$amount))
+Mul(Less(Constant(-30.0),$pctchg),$isst)
+$close
+Abs(Less($pettm,$amount))
+Mean(Sub(Constant(2.0),$volume),20)
+$amount
+Sum(Sub(Constant(-5.0),$low),50)
+Mul(Sum(Abs($isst),30),Constant(-1.0))
+$pcfncfttm
+Sub(Constant(-1.0),$pcfncfttm)
+$psttm
+Abs($close)
+Div($psttm,Constant(-30.0))
+Add(Mad(Div($turn,Less(Greater($pcfncfttm,Sub(Sum(Std(Ref($pctchg,20),30),50),$close)),Constant(0.5))),20),$preclose)
+Min($psttm,10)
+$vwap
+Div(Mul(Mul($pettm,$low),Ref(Abs($preclose),40)),$volume)
+Min(Abs($turn),40)
+Add(Constant(10.0),$volume)
+$volume
+$low
+Add(Constant(1.0),$preclose)
+$vwap
+Sub(Constant(2.0),$preclose)
+Mul(Std(Div($isst,$pcfncfttm),30),Constant(-10.0))
+Mean($close,20)
+Mul($high,Sub(Mul($volume,$close),$amount))
+$pettm
+Max(Greater(Mul(Sub(Constant(-2.0),$close),$isst),Mul(Std($turn,30),Div(Less(Constant(-0.5),$turn),$amount))),40)
+Var(Mul(Greater(Constant(-0.5),Abs(Med(Sum($turn,20),40))),$preclose),20)
+Sub(Var(Sub($turn,Constant(-1.0)),20),Ref(Mul(Add($pcfncfttm,$preclose),Constant(30.0)),30))
+Add(Constant(-1.0),$pbmrq)
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_hs300_200_5_20240104003126/12288_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.0345      |
+|    eval_cnt             | 70          |
+|    significant          | 42          |
+|    size                 | 70          |
+| rollout/                |             |
+|    ep_len_mean          | 14.3        |
+|    ep_rew_mean          | -0.593      |
+| test/                   |             |
+|    ic                   | -0.00357    |
+|    rank_ic              | -0.00296    |
+| time/                   |             |
+|    fps                  | 9           |
+|    iterations           | 6           |
+|    time_elapsed         | 1285        |
+|    total_timesteps      | 12288       |
+| train/                  |             |
+|    approx_kl            | 0.015223053 |
+|    clip_fraction        | 0.303       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -3.3        |
+|    explained_variance   | 8.94e-07    |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.332      |
+|    n_updates            | 50          |
+|    policy_gradient_loss | -0.0333     |
+|    value_loss           | 0.0662      |
+-----------------------------------------
+Div(Mul(Var(Max(Max($preclose,10),40),40),Constant(-0.01)),$pcfncfttm)
+Sum(Abs($preclose),40)
+$pctchg
+Mul(Cov(Abs(Sum($turn,20)),Sub(Add($pctchg,Sub(Constant(-1.0),Med($amount,20))),Constant(-10.0)),40),$volume)
+Sub(Abs(Add(Constant(0.01),Sub($psttm,Add($close,Constant(-0.5))))),Constant(-30.0))
+Sub(Corr(Abs(Mul(Constant(0.5),$high)),Med($amount,20),40),$preclose)
+$preclose
+Ref(Add($pbmrq,$pbmrq),40)
+Ref(Sub(Constant(0.01),Sub(Mad($turn,30),$pettm)),10)
+$preclose
+Sum(Mul(Sub(Constant(-0.01),EMA(Abs(Abs(Min(Var($close,30),20))),20)),Sub(Constant(10.0),Mul($high,Constant(10.0)))),40)
+Sub(Constant(2.0),WMA(Abs($isst),20))
+Mul(Mad(Abs($amount),20),Less(Greater($pctchg,Constant(-1.0)),$open))
+Add(Constant(30.0),Sum($preclose,30))
+$close
+Mul(Sub(Sub(Constant(0.5),$preclose),Constant(-0.5)),$volume)
+Sub($high,Mul($pctchg,Mul(Constant(-0.5),Abs(Std($psttm,20)))))
+Mul(Constant(10.0),$amount)
+Mul($pcfncfttm,Greater(Cov($close,Less(Abs($pettm),Add(Constant(-1.0),Add($open,$pcfncfttm))),20),$psttm))
+Abs($pettm)
+Add(Less(Less($low,$amount),Constant(-5.0)),$pbmrq)
+$vwap
+Less(Greater(Sub($pettm,Sub(Add(Div($preclose,Constant(0.01)),$volume),Constant(1.0))),Sub($turn,Constant(0.01))),$psttm)
+Sub($low,Log($turn))
+$pctchg
+Mul(Div(Less(Constant(-0.5),$pettm),$pbmrq),Abs($psttm))
+Med(Max(Sum($pbmrq,50),20),40)
+$volume
+Med($volume,20)
+Less($isst,Abs(Mul(Sum($volume,50),Constant(5.0))))
+Log(Less($low,$pctchg))
+Abs(Add(Constant(5.0),$turn))
+$volume
+Mul(Max(Add(Mad(Add(Constant(-2.0),Var($pctchg,20)),20),WMA(Med(Min($pettm,20),40),40)),40),Constant(-1.0))
+WMA(Mul(Abs($close),Ref(Sub($amount,Constant(-0.01)),30)),20)
+Mul(Constant(-2.0),$close)
+Add($pctchg,Min(Sub(Constant(30.0),$isst),10))
+Mul($amount,Constant(-30.0))
+Mad(Sum(Sub(Constant(1.0),Div($vwap,Mul($vwap,Constant(-5.0)))),20),50)
+Sub($pcfncfttm,Constant(0.01))
+$close
+Abs(Sub(Less(Constant(-5.0),Greater($pbmrq,Add($low,Constant(0.5)))),Sum(Mul(Div($turn,Constant(2.0)),$preclose),20)))
+Mul(Constant(0.5),Div(Abs($pctchg),Constant(-10.0)))
+Abs(Ref($close,40))
+$psttm
+Greater($preclose,Min($amount,20))
+Mad(Sub($high,Sum(Mul(Constant(-0.01),Less(Min($high,40),$open)),30)),30)
+Mul(Greater(Constant(0.01),Abs($isst)),Med(Add(Greater($preclose,Constant(10.0)),$amount),40))
+$preclose
+Abs(Add(Constant(0.01),$volume))
+$volume
+$turn
+Add(Constant(-0.5),$open)
+Div(Sub($amount,$pctchg),Constant(0.01))
+$isst
+Abs(Add(Constant(30.0),Sub(Div(Ref(Corr($psttm,$amount,20),30),Constant(-5.0)),Constant(1.0))))
+$vwap
+$close
+$pbmrq
+$close
+Mad(Med(Add(Abs($preclose),Abs($open)),50),20)
+Mul($pbmrq,Mul($isst,Max($preclose,10)))
+$psttm
+Min(Div(Add(Less(Constant(0.01),$amount),WMA(Mul($high,$vwap),20)),Min(Add($low,Constant(-0.5)),20)),20)
+$psttm
+$pettm
+$turn
+Mul(Constant(-30.0),$psttm)
+$pbmrq
+Sub(Constant(1.0),Sub(Mean(Abs($isst),40),Constant(-1.0)))
+$high
+Med(Abs(Add($turn,Sub($turn,Div(Constant(5.0),Mul(Add($open,WMA(Log(Mul(Constant(-10.0),$close)),20)),Constant(-0.01)))))),10)
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_hs300_200_5_20240104003126/14336_steps
+----------------------------------------
+| pool/                   |            |
+|    best_ic_ret          | 0.0404     |
+|    eval_cnt             | 105        |
+|    significant          | 57         |
+|    size                 | 105        |
+| rollout/                |            |
+|    ep_len_mean          | 13.4       |
+|    ep_rew_mean          | -0.512     |
+| test/                   |            |
+|    ic                   | 0.00231    |
+|    rank_ic              | 0.00787    |
+| time/                   |            |
+|    fps                  | 6          |
+|    iterations           | 7          |
+|    time_elapsed         | 2353       |
+|    total_timesteps      | 14336      |
+| train/                  |            |
+|    approx_kl            | 0.01566147 |
+|    clip_fraction        | 0.301      |
+|    clip_range           | 0.2        |
+|    entropy_loss         | -3.24      |
+|    explained_variance   | 8.94e-07   |
+|    learning_rate        | 0.001      |
+|    loss                 | -0.313     |
+|    n_updates            | 60         |
+|    policy_gradient_loss | -0.0351    |
+|    value_loss           | 0.0932     |
+----------------------------------------
+Sum($open,20)
+$close
+Mul($psttm,$preclose)
+Div(Less(Constant(-5.0),WMA($volume,20)),$pctchg)
+EMA($high,40)
+Delta(Div($psttm,Constant(10.0)),20)
+Mul(Mul(Constant(-1.0),$pctchg),Greater($pctchg,Mul($pctchg,$preclose)))
+Div(Constant(-5.0),Sum($turn,20))
+Sub($close,$isst)
+$pettm
+$close
+Sub($preclose,$close)
+Sub(Div(Constant(-2.0),Mul(Std(WMA(Mul(Mad($psttm,10),Constant(-0.01)),50),20),Less($amount,$turn))),Constant(-0.01))
+Mad($high,40)
+$close
+Sub(Ref(Mul(Mul(Abs(Delta($pctchg,20)),Constant(-1.0)),Constant(-30.0)),20),Constant(-0.01))
+Add($pbmrq,Div(Constant(-0.5),Add(Greater($psttm,$amount),Constant(-30.0))))
+Mul(Log($close),Constant(-0.01))
+$turn
+Min(Min(Sub(Constant(-0.5),$pbmrq),10),20)
+$turn
+Greater($amount,Sub(Sum($close,20),Constant(2.0)))
+$pettm
+$turn
+$preclose
+$pbmrq
+Mul(Constant(30.0),Ref(Div($pcfncfttm,Less(Constant(1.0),Abs($close))),50))
+Med($pcfncfttm,50)
+$high
+WMA(Sub(Constant(-30.0),Abs($high)),20)
+Sum(Greater(Abs(Sub(Constant(-0.5),Sub($preclose,Constant(0.01)))),$pcfncfttm),40)
+Add(Min($turn,10),$pcfncfttm)
+$pbmrq
+Cov(Abs($amount),$psttm,30)
+Sum(Ref(Sub(Add(Constant(-2.0),$open),Corr($pctchg,$low,10)),20),30)
+Mad(Mul(Constant(-0.01),$amount),50)
+$volume
+Sum(Abs(Sub($pettm,$pbmrq)),50)
+Sub(Var(Delta(Add(Min(Mul(Constant(-2.0),$preclose),20),Constant(-0.01)),10),50),$vwap)
+Cov($high,$pcfncfttm,50)
+Mul(Less(Constant(1.0),Abs($pctchg)),Div($turn,$turn))
+$amount
+Mean(Div($psttm,$pcfncfttm),30)
+Med(Sum(Abs(Less(Div(Constant(-5.0),Std(Std(Abs(Div($pcfncfttm,Var($amount,20))),20),40)),$isst)),20),40)
+$pcfncfttm
+Add($close,Sub(Abs($vwap),Greater(Constant(-5.0),Sub($preclose,Constant(-1.0)))))
+Sum(Abs(Add(Constant(0.01),Sub($pbmrq,Constant(-10.0)))),30)
+Mean($vwap,20)
+Max($pctchg,20)
+$close
+Delta(Sub(Constant(-2.0),Mad($turn,40)),30)
+Mad($amount,30)
+Sum(Med(Ref($pbmrq,40),20),20)
+Log(Sub(Constant(1.0),$close))
+Var(Log(Sub($amount,$turn)),10)
+Sum($low,10)
+Mul(Constant(-0.5),Sum(Log($high),30))
+Cov(Mad($pettm,10),Sub(Sub($pbmrq,Add(Constant(-0.01),$isst)),Constant(-30.0)),30)
+$turn
+Med($psttm,10)
+$isst
+Mul(Div(Mul($vwap,Add(Med($vwap,40),$psttm)),Sub(Sum(Log($pettm),30),Constant(0.5))),$turn)
+$pcfncfttm
+Mul(Constant(10.0),Add(Log(Min($vwap,20)),Add($turn,Constant(-10.0))))
+Add(Sub(Div(Constant(30.0),Div($amount,$psttm)),$isst),Add(Add(Constant(-0.5),$pctchg),$pcfncfttm))
+$pbmrq
+Med($pcfncfttm,20)
+Abs(Div(Div(Constant(-0.01),$amount),Constant(-0.01)))
+$pettm
+Min(Sub(Constant(0.01),Sub(Sub($preclose,Constant(-0.01)),Div($volume,Constant(1.0)))),40)
+$amount
+Sub(Corr($preclose,$psttm,40),Constant(5.0))
+Less(Mul(Mul(Constant(-2.0),$pbmrq),Constant(10.0)),$psttm)
+$pcfncfttm
+Div(Mul($psttm,Constant(-1.0)),Sub(Mul($pettm,Max(Cov($pbmrq,$vwap,40),50)),$preclose))
+Abs($volume)
+Sum($vwap,20)
+Cov(Sub(Mul($turn,Constant(-5.0)),Sub(Less(Constant(-0.5),Sub($isst,Constant(-0.01))),$preclose)),$psttm,20)
+Less(Abs($pctchg),$pbmrq)
+$vwap
+$pettm
+$pcfncfttm
+$close
+Mean(Sub(Constant(0.01),$psttm),30)
+Sub(Mad(Add($isst,$preclose),20),$amount)
+Mul(Less(Mul(Constant(-0.01),$pctchg),Constant(10.0)),$preclose)
+Sub($turn,Constant(-0.01))
+Add($close,Constant(-1.0))
+$isst
+Add(Constant(10.0),$close)
+Sum($pcfncfttm,40)
+Med(Div(Constant(1.0),$pettm),20)
+Cov(Add(Constant(1.0),Sub($turn,Constant(0.01))),$pctchg,20)
+Greater($pctchg,Min($pctchg,20))
+Var(Cov(Sub(Greater($pctchg,Constant(-30.0)),$volume),WMA(EMA($pcfncfttm,10),20),40),40)
+$isst
+Div(Add(Constant(0.5),Corr(Abs(Var($high,10)),EMA($pbmrq,20),20)),Log(Mul($pcfncfttm,Less($preclose,$close))))
+$pettm
+$pctchg
+Mul(Cov($amount,$pettm,20),Constant(-30.0))
+$pbmrq
+Abs(Mul(Add(Delta($close,30),$high),$pctchg))
+$pbmrq
+Mul($psttm,Sub(Std(Min($volume,20),40),$amount))
+Abs(Abs($preclose))
+$psttm
+Sub(Constant(-5.0),Add(Delta(Mul($pcfncfttm,$psttm),20),Abs($turn)))
+Div(Less(Add(Div($pcfncfttm,Sub(Greater(Constant(-0.01),$volume),$high)),Constant(0.01)),Constant(-0.5)),Delta(Add($amount,Sub($amount,$preclose)),20))
+Log($pctchg)
+Sub(Constant(-0.01),Mul(Abs(Min($preclose,20)),Div(Add(Less(Constant(-30.0),$turn),Add($pctchg,$pbmrq)),$high)))
+$preclose
+Sum(Min(Add(Constant(-30.0),Add(Add(Mul($pbmrq,Constant(-0.5)),$psttm),Less(Constant(5.0),$preclose))),20),10)
+Med(Min(Var(Sub($close,$close),10),20),40)
+$turn
+$high
+Var(Div(Min(Sub(Constant(2.0),$pctchg),20),Sub($pbmrq,Less($psttm,$high))),40)
+$preclose
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_hs300_200_5_20240104003126/16384_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.049       |
+|    eval_cnt             | 170         |
+|    significant          | 100         |
+|    size                 | 170         |
+| rollout/                |             |
+|    ep_len_mean          | 12          |
+|    ep_rew_mean          | -0.396      |
+| test/                   |             |
+|    ic                   | 0.0157      |
+|    rank_ic              | 0.0111      |
+| time/                   |             |
+|    fps                  | 4           |
+|    iterations           | 8           |
+|    time_elapsed         | 3567        |
+|    total_timesteps      | 16384       |
+| train/                  |             |
+|    approx_kl            | 0.014414959 |
+|    clip_fraction        | 0.254       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -3.15       |
+|    explained_variance   | 4.17e-07    |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.292      |
+|    n_updates            | 70          |
+|    policy_gradient_loss | -0.0353     |
+|    value_loss           | 0.123       |
+-----------------------------------------
+Sub(Constant(0.5),Mul($high,$close))
+Sub(WMA($volume,50),Constant(-10.0))
+Add(Constant(5.0),$turn)
+$preclose
+$turn
+$close
+$psttm
+$volume
+Abs($preclose)
+Sum(Mul($amount,Div(Mul(Mul($vwap,Constant(2.0)),Constant(-1.0)),Add(Sub($pctchg,Constant(0.5)),$pbmrq))),40)
+Mul(Less(Greater(Constant(-0.5),Less($close,Var($amount,20))),$pctchg),Sum(Add($turn,Med(Abs($psttm),50)),20))
+Div(Add(Constant(-0.01),$pctchg),Abs($amount))
+Sub(Less(Less(Cov(Mul($volume,Sub($pctchg,Constant(-2.0))),Cov(Log($low),$turn,20),10),$pbmrq),$turn),Constant(-30.0))
+Mul($low,Greater(Sub($pcfncfttm,Mean($turn,20)),Constant(30.0)))
+WMA(Add(Constant(0.01),$pcfncfttm),20)
+$isst
+Less(Mul(Abs($pcfncfttm),Mad(Sub($close,$pctchg),20)),Mul(Constant(2.0),Med($open,50)))
+Div(Constant(-10.0),$pbmrq)
+Add(Mad($pettm,30),Constant(1.0))
+$psttm
+Greater(Log(Sub(Constant(-2.0),Ref($high,10))),Add(Div($psttm,Less(Constant(1.0),Sum($amount,20))),$amount))
+$pctchg
+Sub(Mul(Constant(2.0),$pettm),$high)
+Max($vwap,10)
+Cov(Cov($amount,$amount,20),WMA($isst,20),20)
+$close
+Var($isst,30)
+Sub(Constant(10.0),$pettm)
+Abs($isst)
+Mul(Add(Med($pettm,20),Greater($turn,$vwap)),Abs($turn))
+$low
+Sub(Constant(-0.5),Mul(Abs($turn),$pbmrq))
+$volume
+$pctchg
+$close
+Div(Add(Var(Sum(Sum(Mad(Greater($psttm,Sub($psttm,Constant(0.01))),40),40),40),10),Sub($pettm,$amount)),$isst)
+Mul(Less(Constant(0.01),Less($pctchg,$amount)),$pcfncfttm)
+Less(Min(Add(Constant(2.0),$high),20),$pcfncfttm)
+$amount
+Sub(Constant(30.0),Sub(Var($amount,40),Less($close,Constant(10.0))))
+Add(Mul(Div(Mean($isst,50),Mul(Mul(Less($turn,$pcfncfttm),$close),$pcfncfttm)),Constant(30.0)),Constant(-10.0))
+Sum($turn,10)
+Mul(Mul(Var(Min($pbmrq,50),40),$psttm),Greater(Sub(Constant(-0.5),$turn),Min(Var($preclose,20),40)))
+Mul($volume,Constant(0.01))
+$amount
+Mul(Less(Constant(-1.0),$pettm),$amount)
+$pcfncfttm
+$low
+Med(Mul(Sub(Less(Log(Add(Greater(Mul(Constant(1.0),Abs($psttm)),Sub(Constant(0.5),$turn)),Constant(-1.0))),$close),Constant(-2.0)),$amount),20)
+$pctchg
+$psttm
+Div(Constant(10.0),Add($psttm,$isst))
+Sub(Less(Mul(Sub($low,Sub(Constant(0.01),Std($preclose,50))),Var($low,10)),Constant(1.0)),$psttm)
+Sub(Mul($preclose,Constant(-1.0)),Constant(-0.01))
+$close
+Less($turn,$pcfncfttm)
+Mul(Constant(0.5),Mad(Sum($amount,40),20))
+Mul(WMA($turn,40),Div($amount,Constant(-0.01)))
+Mul(Constant(0.01),Corr($pbmrq,Cov(Div($pctchg,Constant(10.0)),Log(Delta($pbmrq,40)),40),20))
+Sub($pctchg,Add(Div(EMA(Sub(Mul(Constant(5.0),$pbmrq),$pctchg),20),Constant(5.0)),Delta(Abs(Mul($turn,$isst)),20)))
+$turn
+$pctchg
+Div(Constant(10.0),$psttm)
+Abs(Max(Sub(Constant(0.01),Add($open,Constant(30.0))),40))
+Sub(Constant(-5.0),$pctchg)
+Sub($isst,$close)
+Var($close,30)
+Sub(Sub($psttm,Min($pettm,30)),Constant(30.0))
+$preclose
+Div(Constant(1.0),Mul($isst,$turn))
+Min(Add($pctchg,$open),40)
+Mul(Greater($volume,Mul($amount,Constant(1.0))),Constant(2.0))
+Cov(Sub(Constant(-10.0),$pctchg),$pettm,20)
+$pctchg
+WMA(Mul(Constant(-0.01),Mul($close,$pbmrq)),30)
+Log(WMA(Add(Constant(-0.01),$close),40))
+$volume
+$pcfncfttm
+Div(Constant(-0.5),Abs(Add(Greater($psttm,WMA(Mul($volume,$low),40)),Constant(0.01))))
+$psttm
+Mul(Constant(30.0),Abs(Add(Less(Greater($high,Max(Abs($close),20)),Constant(-30.0)),Mul($isst,Sub(Constant(-30.0),Abs($turn))))))
+$amount
+Sub(Constant(-0.5),$close)
+$pctchg
+Mul(Constant(0.5),Abs($low))
+Abs($pcfncfttm)
+Mul(Mul(Constant(1.0),$volume),Mul($volume,Constant(30.0)))
+Less(Div(Constant(-0.5),Med(Div(Greater($pbmrq,Greater(Constant(2.0),$pcfncfttm)),Add($amount,WMA(Greater($pcfncfttm,$amount),20))),20)),$pbmrq)
+Sum($volume,50)
+$volume
+Sub(Mul(Add(Var(Mul(Constant(-2.0),Add(Add($volume,$close),Constant(0.01))),10),Constant(-2.0)),Greater(Constant(30.0),$close)),Mad($psttm,30))
+Sub(Var($open,20),Greater(Constant(-2.0),Min(Div(Less(Add($preclose,$preclose),Mul($pettm,Ref($pctchg,40))),Constant(-1.0)),20)))
+Sub(Constant(30.0),$amount)
+Cov(Mul(Constant(30.0),$amount),Sub($vwap,Abs(Cov(Div(Constant(1.0),$psttm),Mul(Constant(0.5),$turn),20))),20)
+Sub(Constant(2.0),$open)
+Corr(Add($turn,Constant(2.0)),Max($pctchg,10),20)
+Div(Less(Constant(1.0),$amount),Mul($close,$pbmrq))
+Add(Log(Min(Greater($psttm,$low),20)),Div($preclose,WMA(Abs($turn),20)))
+WMA(Add(Mul(Constant(-0.01),$volume),Sub($preclose,Ref($pettm,40))),20)
+Mul(Constant(-1.0),Sub($low,Constant(0.5)))
+Log(Mul(Mul(Constant(2.0),$volume),$psttm))
+Add($amount,$pctchg)
+$preclose
+Mad(Abs(WMA(Abs(Min($preclose,10)),20)),20)
+Mean($close,20)
+Sub($amount,Constant(10.0))
+$isst
+Div(Sub(Abs(Add($psttm,$close)),$volume),Constant(0.01))
+$amount
+$high
+Mean(Abs($volume),10)
+Sub(Abs($high),$pcfncfttm)
+$turn
+Abs(Mul(Max(Mul(Mul(Add($pctchg,$pcfncfttm),$volume),$volume),10),$amount))
+$psttm
+Sub($psttm,Constant(-0.01))
+Add(Constant(1.0),$turn)
+$isst
+$high
+$pbmrq
+Sub($turn,$amount)
+Sub(Add(Div(Constant(-0.01),Abs($volume)),$preclose),$turn)
+Div(Constant(0.5),$psttm)
+Abs(Div(Constant(5.0),$pctchg))
+Greater(Div(Constant(0.01),Abs($preclose)),$pbmrq)
+$turn
+$pcfncfttm
+$amount
+$pbmrq
+Mean($preclose,40)
+Add(Sub(Constant(-0.01),$isst),$psttm)
+Add($volume,Constant(-0.01))
+$open
+Mul(Greater(Sub($high,$psttm),Constant(1.0)),Min(Sub($close,$amount),20))
+Mul(Less(Constant(5.0),Abs($pcfncfttm)),Sum($low,20))
+Mul(Constant(-0.01),$preclose)
+$close
+$volume
+Sub(Sum(Sub(Less($high,Abs(Div($pcfncfttm,Med(Mul($amount,$volume),40)))),Abs(Add(Constant(-0.01),$isst))),10),Constant(-1.0))
+Add(Constant(-0.01),Mul($amount,Add(Sub(Mul(Mul($close,$low),Min(Mul($pcfncfttm,Constant(5.0)),20)),Constant(-0.01)),$psttm)))
+Sub(Constant(-30.0),$psttm)
+Div($close,$preclose)
+$volume
+Med(Less(WMA(Less($close,$psttm),40),Add(Constant(10.0),$pctchg)),20)
+$low
+$preclose
+Min($amount,10)
+Mul(Constant(30.0),$low)
+$psttm
+Mul($amount,Constant(-1.0))
+$pettm
+Mad(Std(Mad($close,30),20),10)
+Abs(Var(Var(Mul(Mul(Mul(Constant(5.0),Mul(Greater($amount,Constant(0.01)),$psttm)),$preclose),Constant(-30.0)),30),20))
+Min($pbmrq,30)
+Sub(Constant(0.5),Delta(Log(Med($amount,20)),40))
+$amount
+Add(Cov(Mean(Sub(Greater(Log($volume),Constant(-0.01)),Sum($psttm,20)),30),$volume,10),Mul(Constant(5.0),$pctchg))
+Sum(WMA(Add(Less(Constant(0.5),$high),Min($psttm,30)),20),40)
+Greater(Var($preclose,20),Log($pbmrq))
+Div($amount,Constant(-0.01))
+$pctchg
+Sum(Mean($preclose,50),20)
+$preclose
+$high
+$pbmrq
+$volume
+$low
+Div(Std($close,30),$pbmrq)
+Max($pcfncfttm,10)
+$pbmrq
+Add($vwap,Abs(Corr(Abs(Abs(Std(Sub($pctchg,Constant(-10.0)),30))),$pbmrq,40)))
+Mul(Constant(-0.01),$turn)
+Med(WMA(Mul(Constant(0.5),Cov(WMA(Mul(Var($close,40),$vwap),50),$pctchg,30)),30),20)
+Var(Sub(Div(Constant(10.0),Abs(Cov($pbmrq,Div($pettm,$pcfncfttm),50))),EMA(Mul(Constant(-0.01),Max($volume,20)),40)),20)
+Mad($amount,20)
+Add(Greater(Constant(-2.0),Mul(Less($high,$low),Constant(-0.01))),Add($pctchg,Max(Min(Add($preclose,Mean($pctchg,20)),50),20)))
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_hs300_200_5_20240104003126/18432_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.0634      |
+|    eval_cnt             | 261         |
+|    significant          | 135         |
+|    size                 | 200         |
+| rollout/                |             |
+|    ep_len_mean          | 8.79        |
+|    ep_rew_mean          | -0.177      |
+| test/                   |             |
+|    ic                   | 0.00323     |
+|    rank_ic              | 0.0123      |
+| time/                   |             |
+|    fps                  | 2           |
+|    iterations           | 9           |
+|    time_elapsed         | 7601        |
+|    total_timesteps      | 18432       |
+| train/                  |             |
+|    approx_kl            | 0.015840326 |
+|    clip_fraction        | 0.257       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -3.06       |
+|    explained_variance   | 3.58e-07    |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.259      |
+|    n_updates            | 80          |
+|    policy_gradient_loss | -0.0389     |
+|    value_loss           | 0.158       |
+-----------------------------------------
+Abs(Abs(Less($low,$pettm)))
+WMA(Div(Constant(-30.0),Min(Abs(Cov($pettm,Max($amount,20),20)),10)),40)
+Sub(Constant(-5.0),Abs(Mean(Min($low,10),30)))
+Mean($psttm,20)
+Sub(Constant(5.0),$isst)
+Sub(Less(Constant(30.0),Mad(Mul($low,$psttm),20)),$preclose)
+$pettm
+Sub(Abs(Mul(Constant(-0.01),Mul($pettm,$preclose))),$preclose)
+$pctchg
+Abs(Var(Sub(Constant(0.01),Log(Mean($pctchg,20))),10))
+$turn
+Mean(Min(Log(Mul(Constant(30.0),$turn)),10),20)
+$low
+$close
+Add(Mul(Constant(0.5),Div($psttm,Add($psttm,Constant(2.0)))),Div($pcfncfttm,$turn))
+Add($low,Mul(Constant(10.0),$volume))
+Sub(Constant(-0.01),$close)
+$pctchg
+$vwap
+$amount
+$low
+Mul(Sub(Constant(0.5),Min(Div($pcfncfttm,Constant(2.0)),20)),Constant(-0.5))
+Mul(Constant(5.0),$psttm)
+$vwap
+$close
+$psttm
+$pcfncfttm
+$high
+Add(Constant(0.5),$amount)
+Cov($low,Mul($turn,$pctchg),20)
+$turn
+Mul(Greater($isst,Less(Constant(0.5),$psttm)),$preclose)
+Sub(Constant(0.01),Mul($pcfncfttm,Constant(5.0)))
+Sub(Constant(10.0),Sub(Sub(Sub($pctchg,Sum($low,40)),$close),Div(Constant(1.0),$pettm)))
+Sum($vwap,30)
+Sub(Constant(5.0),$close)
+Add(Constant(-1.0),Med($amount,20))
+$turn
+$preclose
+$pctchg
+Mul(Add(Log(Sub(Constant(-0.01),$open)),$psttm),Constant(-5.0))
+Mul(Constant(-30.0),Mean($pctchg,20))
+$pcfncfttm
+Sub(Constant(-5.0),Log(Div(Sub($pettm,$close),Constant(-0.01))))
+Mul(Corr($preclose,$pctchg,40),Div(Var($preclose,30),$amount))
+Sub(Less(Constant(10.0),Cov(Abs(Med(Mad($pcfncfttm,30),30)),$pcfncfttm,40)),Cov(EMA($low,20),$preclose,20))
+$open
+$open
+Sub(Constant(30.0),$turn)
+Div($high,$amount)
+$pctchg
+Var(Add(Constant(-0.01),$psttm),10)
+Sub(Constant(10.0),Mul($volume,Constant(1.0)))
+$pctchg
+Add($open,Cov($turn,Sum($amount,20),20))
+Add(Mul(Sum(Mul(Constant(-5.0),Add($turn,$preclose)),40),Constant(0.5)),$pcfncfttm)
+$psttm
+Mul(Div(Add($preclose,WMA(Mul($pbmrq,$amount),20)),Constant(-2.0)),Sub($psttm,$high))
+$close
+$turn
+Div($turn,$pcfncfttm)
+$isst
+Sub(Constant(0.01),Med($close,50))
+$pctchg
+$amount
+Sub(Mul(Constant(-0.5),$amount),$turn)
+Sub(Constant(0.01),$pcfncfttm)
+Mul(Mul(Less(Constant(-1.0),Div($preclose,Constant(-0.5))),$turn),Constant(-1.0))
+Add($preclose,Div(Mul($high,Constant(-1.0)),Constant(-0.01)))
+$low
+Corr($preclose,$pctchg,30)
+$pbmrq
+$volume
+Sub(Less(Constant(2.0),Sub($pettm,$amount)),Abs($psttm))
+Mul(Greater(Less(Constant(-1.0),$pctchg),$isst),$psttm)
+Mul(Cov($pettm,Sub(Add(Constant(-5.0),Add($pettm,Sum($pettm,40))),Delta($psttm,30)),10),Less(Constant(-5.0),$pctchg))
+Add(Constant(-0.01),$vwap)
+Abs(Add($low,Div($open,Add(Div($pctchg,Constant(30.0)),$pettm))))
+$pbmrq
+Add(Greater(Constant(-30.0),$volume),$close)
+Sub(Greater(Less(Constant(-0.01),$turn),$low),$pcfncfttm)
+Sub(Constant(-1.0),$close)
+Sub(Constant(-0.01),$turn)
+Mul(Sub(Constant(0.01),$open),$psttm)
+Sub($pctchg,Add(Constant(-0.01),Sub(Sum(Div($pettm,Constant(0.5)),20),Constant(30.0))))
+$volume
+$pcfncfttm
+$pettm
+$high
+Var(Mul($psttm,Constant(0.5)),50)
+WMA(Mul(Ref(WMA(Mul(Constant(10.0),Mean(Corr($close,Abs(Abs($preclose)),40),20)),20),20),Abs($isst)),40)
+Div(Constant(-1.0),$close)
+Sub(Constant(-0.01),$preclose)
+Mul(Less(Constant(-0.5),$pctchg),Sub(Less(Greater($psttm,Constant(-1.0)),$close),$psttm))
+Sub(Mul(Greater(Constant(30.0),Sum($pcfncfttm,30)),WMA(Abs(Mad($isst,40)),20)),$psttm)
+Sub($turn,$pcfncfttm)
+$vwap
+Mul(Mul(Sub(Mean(Mul(Constant(-0.01),$vwap),30),$isst),Add(Greater(Mul($isst,$psttm),$psttm),Constant(-1.0))),WMA($vwap,20))
+Sub(Constant(-10.0),$pcfncfttm)
+$pettm
+Sub(Greater(Constant(-0.01),$preclose),Abs($pettm))
+$isst
+Add(Add(Constant(10.0),WMA($pcfncfttm,20)),$turn)
+Max(Min(Mean(Add(Less($turn,$isst),$pctchg),50),20),10)
+Sub(Sub(Max(Med($amount,20),20),Mul(Greater($close,Constant(0.5)),$preclose)),$turn)
+WMA(Greater($psttm,$volume),40)
+Std(Cov(Sub(Add($turn,Add(Constant(-5.0),Sub($high,Constant(-30.0)))),Constant(-1.0)),$pbmrq,20),50)
+$preclose
+Mul(Constant(-1.0),Mul(Sub($pctchg,$pettm),Constant(-30.0)))
+$high
+Sum(Mul(Add(Var(Sub(Abs($high),Constant(30.0)),20),Abs(Greater($turn,$amount))),$close),40)
+$volume
+$turn
+Sub(Greater(Constant(0.5),Sub(Add(Abs(Abs(Mad($close,40))),Constant(-1.0)),Constant(0.01))),$psttm)
+Abs(Mul(Constant(30.0),$open))
+Div($turn,Constant(-5.0))
+Add(Constant(-0.01),$psttm)
+Mul($turn,$vwap)
+Sub(Add(Constant(10.0),Add($psttm,Less(Mul(Sub(Mul($amount,$amount),Constant(5.0)),Abs(Max($pbmrq,10))),$pctchg))),Constant(-5.0))
+Log($volume)
+$preclose
+Cov($turn,$psttm,20)
+Div($amount,$pcfncfttm)
+Var(Abs(Min(Std(Sub(Constant(10.0),$amount),40),10)),50)
+$close
+$pbmrq
+$low
+Mul(Div(Constant(-30.0),Log($high)),$preclose)
+$psttm
+Mul(Constant(-5.0),Abs($pettm))
+Mul(Less(Constant(-1.0),Sub($volume,Constant(-0.01))),$psttm)
+Sub(Mul(Sub(Sub(Mul(Constant(-0.01),Div($amount,Add($pctchg,Constant(0.01)))),Constant(-1.0)),Constant(0.01)),Abs($psttm)),$amount)
+$preclose
+Sub(Constant(10.0),Mul(Div(Ref($amount,50),$volume),WMA(Sub(Sub(Abs(Div($isst,Constant(0.01))),Constant(30.0)),Constant(-30.0)),20)))
+Mul($close,Less(Corr(Div($pettm,$preclose),Std($close,20),40),$pctchg))
+Mul(Abs($isst),Abs(EMA($amount,20)))
+WMA(Sub(Greater(Constant(2.0),$psttm),$pcfncfttm),50)
+Std($amount,10)
+Add(Greater(Less(Constant(-30.0),$isst),$preclose),Med(Corr(Mul($isst,$turn),$high,40),20))
+Mul(Abs($turn),Constant(-1.0))
+$vwap
+Sub(Constant(10.0),Mul($isst,Sub($amount,Constant(-0.5))))
+Less(Sub(WMA(Sub(Mul($pctchg,$preclose),Std($pbmrq,50)),30),$close),Mul($pettm,$amount))
+Mul(Constant(1.0),Mul(Greater($psttm,Mul(Sub($close,Constant(0.01)),Constant(-0.5))),$amount))
+Abs(Add(Constant(-0.01),$volume))
+$close
+Log(Mul(Log($pbmrq),Less(Constant(1.0),Div($amount,Add(Constant(-0.5),EMA($turn,20))))))
+Add($vwap,Constant(1.0))
+Div($isst,Abs(Sub(Mul(Sub(Constant(5.0),$psttm),Div(Mul($pctchg,Constant(30.0)),$pcfncfttm)),Constant(0.5))))
+Min(Sub(Add(Sub($vwap,Constant(30.0)),Div(Mean(Log($preclose),40),Sub($isst,Constant(10.0)))),Constant(1.0)),20)
+Med($psttm,20)
+Mul(Constant(-1.0),$open)
+Sub(Mul($vwap,Sub(Constant(5.0),Div(Less($volume,Greater(Constant(2.0),Var(Div($turn,Constant(-30.0)),20))),$pctchg))),$volume)
+$psttm
+Sub(Div(Sub($volume,Mul(Constant(10.0),$isst)),$isst),$pettm)
+$psttm
+Div(Constant(-0.01),Less(Add($preclose,$open),$psttm))
+Med($psttm,30)
+Sub(Constant(-30.0),$turn)
+Sub(Greater(Mul(Abs($volume),Constant(-0.5)),Sub(Constant(-0.01),$close)),$volume)
+$close
+Max($close,20)
+Std($turn,30)
+Mad(Sub(Constant(0.01),Med($pettm,10)),30)
+Add(Greater($volume,Div(Div($amount,Std($amount,40)),Constant(-30.0))),Constant(10.0))
+Abs(Add(Constant(2.0),$turn))
+$high
+Greater(Abs(Add(Constant(0.01),$open)),Div($volume,Sub($volume,Constant(-10.0))))
+Var($volume,20)
+EMA(Add(Abs(Sub($volume,Constant(5.0))),$pbmrq),20)
+Sub(Constant(30.0),$pcfncfttm)
+Var(Corr(Sub(Constant(-0.01),Delta(Std($volume,50),50)),$low,40),20)
+Greater(Mul(Constant(0.01),Sum(Add($pbmrq,$amount),20)),$pettm)
+Sum($isst,20)
+Mul(Constant(-2.0),$psttm)
+$pbmrq
+$preclose
+Sub(Constant(5.0),$turn)
+Max($amount,20)
+Sum($amount,20)
+Div(Constant(30.0),Mul(Greater(Mul($open,$close),$amount),Constant(-0.5)))
+$volume
+Mul(Constant(0.01),Add(Greater($close,Constant(1.0)),Var($close,20)))
+Med(Mul(Constant(-5.0),Cov(Mean($psttm,10),Mul(Constant(-1.0),Ref(Less($pbmrq,$close),30)),20)),20)
+Sub(Constant(-30.0),$low)
+$open
+Log($high)
+$high
+Mul(Sub(Greater($isst,Constant(-5.0)),$close),Div($pctchg,Constant(5.0)))
+Mul(Constant(-5.0),Sum($pettm,20))
+WMA($close,10)
+Div(Mul($volume,Mul($psttm,Constant(1.0))),Constant(-0.01))
+$isst
+Sub(Med($amount,50),$turn)
+$pcfncfttm
+Div(Constant(0.01),$amount)
+Sub($pettm,$vwap)
+$pcfncfttm
+Less($vwap,Mean(Abs(Abs($close)),20))
+Mul(Constant(10.0),Sub($pcfncfttm,$vwap))
+$psttm
+Mul(Constant(0.01),Abs(Div($isst,$pcfncfttm)))
+Corr($preclose,Greater($pcfncfttm,$psttm),20)
+EMA($pcfncfttm,10)
+Max(Sub($pbmrq,Max($psttm,50)),30)
+$pettm
+Sub(Sum(Mul(Constant(-2.0),$high),30),Sub($close,$pcfncfttm))
+$high
+Sub(Constant(0.01),Med($amount,50))
+$close
+Cov(Std(Cov($high,Abs(Sub($amount,Constant(0.01))),30),20),$pctchg,30)
+Max(Sub(Constant(0.01),$psttm),10)
+WMA(Add(Sub(Constant(1.0),$pctchg),$turn),40)
+$turn
+Add($turn,$low)
+Var(Mul(Add(Cov($pbmrq,$low,20),Constant(2.0)),Mean($preclose,10)),20)
+$isst
+Mul(Constant(-1.0),Med($turn,40))
+$psttm
+$isst
+Std($amount,30)
+Sub(Mul(Constant(0.01),$turn),$high)
+Mul(Constant(-2.0),Log(Log(Add(Greater($psttm,Min($high,30)),$volume))))
+Abs(Div($low,Add($volume,Constant(30.0))))
+$vwap
+Mul(Greater(Constant(-2.0),Min(Less($psttm,$psttm),40)),Var($pbmrq,30))
+Mul(Constant(-5.0),$volume)
+Var(Abs(Add($preclose,Constant(5.0))),30)
+Mul(Constant(1.0),Mul(Sub(Mul(Add($low,Greater(Add(Add($low,Sub(Constant(1.0),$open)),Constant(0.5)),$pcfncfttm)),$pctchg),Constant(-5.0)),Constant(-1.0)))
+$volume
+Abs($volume)
+Abs($pctchg)
+Sub($isst,Sub($high,$psttm))
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_hs300_200_5_20240104003126/20480_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.0761      |
+|    eval_cnt             | 397         |
+|    significant          | 141         |
+|    size                 | 200         |
+| rollout/                |             |
+|    ep_len_mean          | 7.79        |
+|    ep_rew_mean          | -0.0805     |
+| test/                   |             |
+|    ic                   | 0.0168      |
+|    rank_ic              | 0.0113      |
+| time/                   |             |
+|    fps                  | 1           |
+|    iterations           | 10          |
+|    time_elapsed         | 16000       |
+|    total_timesteps      | 20480       |
+| train/                  |             |
+|    approx_kl            | 0.014051462 |
+|    clip_fraction        | 0.222       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.93       |
+|    explained_variance   | 9.54e-07    |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.26       |
+|    n_updates            | 90          |
+|    policy_gradient_loss | -0.035      |
+|    value_loss           | 0.159       |
+-----------------------------------------
+Less(Med(Sub($volume,Mul($pcfncfttm,$isst)),30),$preclose)
+Mul($pctchg,Constant(-1.0))
+Mad(Mul(Constant(-0.01),Sum(Var(Sub(Less($open,Constant(0.01)),$preclose),50),30)),20)
+$close
+$low
+$low
+$low
+Mul($turn,Constant(1.0))
+Div(Greater(Constant(1.0),$pctchg),$pcfncfttm)
+Max(Mul($pctchg,Constant(-1.0)),30)
+Sub($close,Constant(-1.0))
+Sub(Constant(-10.0),$isst)
+Sub(Constant(-2.0),Mean(Mul($psttm,Constant(-30.0)),20))
+Max($volume,30)
+Abs(Add(Constant(-1.0),$low))
+Add(Constant(-5.0),Greater($pbmrq,Sub($close,Min($vwap,20))))
+$open
+Mul($high,Sub($high,Sub($pcfncfttm,Sub(Mul($volume,Abs($volume)),Greater($amount,Constant(30.0))))))
+$low
+Sum($pbmrq,10)
+Var(Sub(Constant(1.0),$psttm),10)
+Abs(Mul($pcfncfttm,Mul(Constant(-1.0),$psttm)))
+Mul(Constant(0.5),$close)
+Sub(Constant(2.0),Mul($pctchg,Constant(10.0)))
+Sub($amount,$close)
+Sub(Less(Constant(-0.5),$preclose),$pcfncfttm)
+Greater($close,$vwap)
+$pettm
+Add(Constant(0.01),$preclose)
+Mul(Sub($volume,Add($preclose,Constant(-1.0))),Constant(30.0))
+$psttm
+Abs($amount)
+$vwap
+Corr(Mul(Add(Constant(5.0),Sum(WMA($preclose,40),20)),Constant(30.0)),$pbmrq,20)
+Cov($turn,Mul(Sub(Constant(0.01),$preclose),$high),40)
+Abs($psttm)
+$amount
+Add(Constant(0.01),$high)
+$volume
+$high
+Div($pcfncfttm,Constant(0.01))
+$psttm
+Div($volume,Add(Less(Add($amount,$amount),Constant(-0.01)),$pcfncfttm))
+Sub(Greater(Constant(-1.0),$close),Less(Log($amount),Mad(Add($volume,Less(Less(Constant(0.5),$psttm),$open)),10)))
+Sub(Constant(-0.01),Min(Mul($pcfncfttm,$pettm),10))
+Sub(Constant(-1.0),Sub($isst,Add(Sub(Constant(1.0),$close),$preclose)))
+$psttm
+Sub($isst,$turn)
+WMA(Div(Sub(Constant(10.0),$low),Constant(-1.0)),30)
+WMA(Add($close,$psttm),20)
+Sub(Constant(30.0),Mul($amount,$amount))
+$high
+Med($isst,20)
+$preclose
+$pbmrq
+Mul(Constant(2.0),Log(Log($pcfncfttm)))
+$volume
+Sub(Constant(-1.0),$low)
+$high
+$preclose
+Sub(Constant(2.0),Log($amount))
+Sub($preclose,$amount)
+EMA(Mul(Constant(30.0),Div(Sub(WMA($volume,50),$pcfncfttm),Constant(0.5))),10)
+Div(Constant(-1.0),Add($vwap,Constant(-1.0)))
+Sub(Constant(-1.0),$psttm)
+$volume
+Mul(Abs($pctchg),$psttm)
+Add(Sub(Constant(-2.0),Med($volume,40)),$pettm)
+$pcfncfttm
+$close
+Ref($pcfncfttm,30)
+Add(Constant(-0.5),$preclose)
+$high
+$volume
+Sub(Constant(-2.0),$turn)
+$preclose
+$isst
+Abs($amount)
+$low
+Med($high,40)
+Sub(Less(Constant(1.0),Sum(Add($psttm,$preclose),30)),$vwap)
+Sub(Less(Constant(-0.01),Add($amount,$psttm)),Sum($amount,50))
+Abs(Sub($low,Constant(-0.5)))
+$volume
+$close
+$preclose
+$turn
+$pettm
+$pctchg
+Log(Mul(Constant(10.0),$turn))
+Div(Constant(-5.0),$amount)
+Div(Constant(-0.5),$high)
+$open
+Sub(Constant(30.0),WMA($pctchg,20))
+Mul(Constant(0.01),Add(EMA(Sum($amount,10),20),Constant(0.01)))
+Add(Constant(1.0),$pctchg)
+Sub($pcfncfttm,$vwap)
+$low
+Mul($vwap,Constant(2.0))
+$low
+$pbmrq
+$pctchg
+Greater(Div(Constant(-30.0),Add(Div(Sum(Sub($pbmrq,$turn),40),Mul($psttm,$pcfncfttm)),$pbmrq)),$pbmrq)
+Mul(Less(Mul(Constant(5.0),$pctchg),Constant(2.0)),Sub($pcfncfttm,Constant(-2.0)))
+$turn
+Abs(Sub(Abs(Sub(Constant(-1.0),WMA(Sub($amount,$preclose),50))),Constant(0.01)))
+$isst
+$pettm
+Ref($pctchg,10)
+$turn
+$turn
+Mul(Constant(-30.0),Sub($pcfncfttm,Sub($pctchg,Constant(-10.0))))
+Mul(Constant(-5.0),$close)
+Mul(Constant(-2.0),$pctchg)
+$volume
+Sub($preclose,$preclose)
+Var($volume,20)
+Add(Constant(-0.5),Mul($volume,Var($pcfncfttm,50)))
+$pettm
+Log(Std(Sub(Constant(-10.0),Mul($open,$psttm)),50))
+Sub(Constant(0.01),$vwap)
+Add(Constant(-30.0),Sub($psttm,Add($pctchg,Less($psttm,$amount))))
+Mad(Add(Constant(2.0),$pbmrq),20)
+Log($pctchg)
+Mul(Constant(-5.0),WMA($turn,40))
+Sub(Sub($turn,Add($turn,Constant(-5.0))),$high)
+Add($close,Sum(Add(Sub($pctchg,$pctchg),Constant(-2.0)),40))
+Abs(Add(Constant(-1.0),$amount))
+Add(Constant(-1.0),$pctchg)
+Add(Constant(0.01),$pettm)
+Mul(Mul(Constant(10.0),Sub(Div($pcfncfttm,Constant(30.0)),Constant(-0.01))),Add(Delta(Sum(Div(Constant(-10.0),$pbmrq),20),10),Med($low,20)))
+Sub($isst,Constant(1.0))
+$preclose
+Mul($turn,$pbmrq)
+Div(Constant(0.5),$volume)
+$preclose
+Add($psttm,Abs($pcfncfttm))
+$psttm
+Div(Less(Mul($high,Constant(30.0)),$preclose),Constant(2.0))
+WMA(WMA(Sub(Abs($turn),$psttm),40),20)
+$pctchg
+$high
+$isst
+Sub($preclose,$low)
+Mul(Mean(Mad(Abs($pettm),20),20),Constant(2.0))
+Sub(Less(Greater(Constant(-1.0),$high),$pcfncfttm),$pcfncfttm)
+$volume
+Mul(Less(Constant(-5.0),$low),Mul(Med(Add(Sum($preclose,20),$close),30),Constant(10.0)))
+$volume
+Abs(Mul(EMA($preclose,10),$amount))
+Div($turn,Constant(30.0))
+Sub(Constant(-2.0),$amount)
+Sub(Med($volume,10),Constant(-0.01))
+Delta($pettm,50)
+$pbmrq
+$vwap
+Div($isst,Log($psttm))
+Sub(Abs(Less(Sum($pctchg,20),$close)),Abs(Sum(Sub($high,Constant(-0.01)),20)))
+Abs($volume)
+$isst
+$pctchg
+Sub(WMA(Add(Less(Constant(30.0),$pcfncfttm),$psttm),50),Constant(-1.0))
+Sub(Constant(-0.5),Div($low,Constant(0.01)))
+$volume
+Mad(Mul(WMA(Sub($amount,$volume),50),Abs($pbmrq)),30)
+Add($amount,$pettm)
+$pettm
+Mul(Constant(-0.5),$vwap)
+Var(Add(Add(Add(Constant(-10.0),Cov($isst,Med($amount,10),20)),Constant(-0.01)),Constant(-10.0)),40)
+$pettm
+Sum(Sum(Mul(Constant(2.0),Add(Mul(Var($pbmrq,20),Mul($preclose,Min(Add($isst,Constant(0.5)),20))),$low)),10),50)
+Add(Constant(-0.01),Log(Sub(Mul(Abs(EMA(Greater($psttm,$close),20)),$turn),Mul(Sub($high,Constant(0.01)),Constant(1.0)))))
+$volume
+Mul(Constant(-0.01),$preclose)
+Sum($preclose,40)
+$preclose
+Med(Add(Sub(Greater(Constant(30.0),$close),$psttm),Constant(10.0)),20)
+Sub($pctchg,Mul(Constant(-0.01),$turn))
+$pettm
+Greater(Abs($volume),$psttm)
+Greater(Mul(Mul(Constant(-30.0),$high),Constant(-2.0)),Abs($high))
+$pctchg
+Sub(Less(Constant(-30.0),$psttm),Abs(Sub(Div(Ref($volume,40),$pettm),Constant(-1.0))))
+Div(Constant(-0.01),Min(Sub($close,Mul(Div(Sub(Sub($psttm,$preclose),$amount),$pctchg),$turn)),10))
+Sub(Add(Constant(-0.01),$psttm),$pbmrq)
+Sub(Constant(0.01),$psttm)
+$pettm
+$preclose
+Mul(Constant(1.0),$low)
+Add(Constant(1.0),$preclose)
+Abs(Add(Constant(-0.5),Greater(WMA($open,40),$close)))
+Sub(Constant(5.0),Greater($preclose,$amount))
+Mul(Constant(-10.0),WMA($amount,20))
+Sub($pctchg,$close)
+Add(Less(Constant(1.0),Log($low)),Cov(Cov($close,$high,50),$high,30))
+Mad(Add(Mul($psttm,$close),$pctchg),30)
+Sub(Greater($amount,Constant(0.01)),$isst)
+Sub(Constant(10.0),Sub($volume,Mul(Add($isst,$vwap),Div(Sub($turn,Less($pbmrq,$close)),$open))))
+Greater($turn,Corr($high,Add(Less(Mul(Div(Div(Constant(5.0),Abs($pcfncfttm)),$pcfncfttm),$pcfncfttm),$turn),$pettm),40))
+$amount
+Sum(Abs(Sub(Less(Constant(-1.0),Div($isst,$pctchg)),$vwap)),10)
+EMA(Add(Constant(0.5),$turn),20)
+Mul(Sub($preclose,Add(Add(Sum(Delta($open,40),20),Constant(-10.0)),Constant(0.01))),Constant(-30.0))
+$turn
+$pettm
+Add(Constant(5.0),Log(Abs($pbmrq)))
+Mul(Sub(Constant(-30.0),$close),$turn)
+Less(Div(Div(Greater(Constant(30.0),Add($psttm,$preclose)),$pettm),Constant(-0.5)),Abs($preclose))
+Div(Constant(-2.0),$vwap)
+Mul(Constant(30.0),Div($pbmrq,Sub(Abs(Sub($preclose,Log(WMA($pcfncfttm,10)))),Add(Constant(-0.5),$pctchg))))
+$psttm
+$volume
+Mul($high,Constant(-30.0))
+$open
+Sub(Abs(Less($turn,$isst)),Add($amount,Constant(-0.01)))
+Cov($turn,$psttm,20)
+$amount
+Mul(Less(Constant(-1.0),$pettm),$pctchg)
+$volume
+Cov($pcfncfttm,$close,10)
+Sub(Constant(2.0),$amount)
+Mul(Constant(0.01),Cov(Div(Div($psttm,$pctchg),Constant(10.0)),$volume,50))
+$high
+$amount
+Mul(Constant(0.5),$vwap)
+$close
+Add(Constant(-30.0),Sub($psttm,$psttm))
+$pcfncfttm
+Sub(Constant(-0.01),Mul($pcfncfttm,Log($amount)))
+$open
+Sub(Constant(0.01),Abs($psttm))
+Add(Std($preclose,10),$preclose)
+Med(Sub(Greater(Constant(1.0),Sum($amount,20)),$high),20)
+$amount
+Mul(Greater($amount,$turn),Constant(0.01))
+$low
+$preclose
+Log(Mul(Constant(-2.0),Sub($vwap,$preclose)))
+Div(Constant(-0.01),Sum($pbmrq,20))
+Abs($vwap)
+Mul(Constant(5.0),Abs($turn))
+WMA($close,50)
+$isst
+$pcfncfttm
+Add(Greater(Constant(10.0),$pcfncfttm),$pbmrq)
+Mul(Constant(-0.01),$isst)
+Sub(Constant(-1.0),Abs(Sub(Abs($pettm),$amount)))
+$turn
+Med($open,10)
+$turn
+$psttm
+Sub(Sub(Constant(5.0),Mad(Med($volume,40),10)),$high)
+Sub(Greater(Constant(5.0),$pctchg),Div($pbmrq,Greater(Abs($vwap),Constant(-1.0))))
+Add(Constant(0.01),$low)
+Add($low,Constant(-10.0))
+$close
+Std($pettm,20)
+Std($low,30)
+$turn
+$open
+$pctchg
+Add(Mad($pettm,30),$close)
+$preclose
+$pctchg
+Sub($pcfncfttm,$high)
+Add(Mad(Sub(Abs(Sub(Sub(Constant(-0.01),$psttm),$pettm)),Constant(0.5)),20),$vwap)
+Sub(Mul(Constant(-30.0),$close),$isst)
+Mul(Mul(Add(Sub(Constant(-10.0),Sub($psttm,Constant(10.0))),Abs($amount)),$low),Constant(-0.5))
+Min($psttm,20)
+WMA($preclose,10)
+Add(Less(Constant(0.01),Log($open)),$pbmrq)
+Abs(Sub(Log(Less(Min(Mul(Constant(2.0),$pctchg),10),Med($volume,40))),$close))
+$pcfncfttm
+$pcfncfttm
+$isst
+Mul(Constant(-1.0),$preclose)
+$close
+$volume
+Mul(Constant(-0.5),Sub(Sub(Greater($volume,Add(Add(Std(Ref($volume,50),40),Constant(-1.0)),Constant(0.01))),$volume),Constant(-10.0)))
+Mul(Constant(10.0),WMA($preclose,50))
+Abs($open)
+Log(Add($psttm,Constant(-1.0)))
+$volume
+$volume
+$pbmrq
+Sub(WMA($turn,50),$turn)
+Div(Greater(Constant(5.0),Add(Mul(Abs(Add(Var($turn,20),$high)),Log(Abs($high))),$pettm)),$isst)
+Mul(Sub(Greater(Constant(-1.0),$pcfncfttm),$pbmrq),$vwap)
+Sub(Greater(Constant(-2.0),Sub(Var($vwap,20),Constant(-0.01))),Sub($pcfncfttm,$volume))
+$turn
+Div(Add(Constant(0.01),$volume),Constant(-1.0))
+Sub(Med(Mul(Greater($volume,Constant(10.0)),$close),20),Constant(-0.5))
+$pctchg
+Med(Mul(Constant(10.0),$turn),10)
+Min(Min($pcfncfttm,20),10)
+$psttm
+$pcfncfttm
+$preclose
+Sub(Sub(Constant(-0.01),Less($pbmrq,$low)),Constant(-1.0))
+$volume
+Mul(Mul(Less(Mul($close,$close),$pcfncfttm),Constant(-5.0)),$pbmrq)
+$high
+Med($volume,20)
+Sub(Sub(Constant(-10.0),$volume),Ref($high,40))
+Mul(Constant(-30.0),$turn)
+$vwap
+$preclose
+Med(Add(Constant(-1.0),Greater(Sum($volume,40),$preclose)),40)
+Sub(Abs(Sub(Min(Min($isst,20),20),Div(Sub($open,Constant(-0.5)),$pcfncfttm))),Constant(0.5))
+Sum($low,20)
+WMA(Max(Mul(Constant(-0.01),$pcfncfttm),50),20)
+$preclose
+$close
+$preclose
+Sub($vwap,$amount)
+Add(Constant(0.5),Mad($volume,10))
+Sub(Less(Less(Constant(-1.0),$volume),Add($pbmrq,Add($low,Abs(Div(Constant(-10.0),$low))))),$close)
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_hs300_200_5_20240104003126/22528_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.0929      |
+|    eval_cnt             | 574         |
+|    significant          | 144         |
+|    size                 | 200         |
+| rollout/                |             |
+|    ep_len_mean          | 6.16        |
+|    ep_rew_mean          | -0.0268     |
+| test/                   |             |
+|    ic                   | 0.0245      |
+|    rank_ic              | 0.0184      |
+| time/                   |             |
+|    fps                  | 0           |
+|    iterations           | 11          |
+|    time_elapsed         | 25473       |
+|    total_timesteps      | 22528       |
+| train/                  |             |
+|    approx_kl            | 0.015221789 |
+|    clip_fraction        | 0.24        |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.79       |
+|    explained_variance   | 5.96e-07    |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.243      |
+|    n_updates            | 100         |
+|    policy_gradient_loss | -0.0349     |
+|    value_loss           | 0.129       |
+-----------------------------------------
+Mul(Constant(-1.0),Sub(Std($close,10),$high))
+WMA($pettm,20)
+Less(Add($pettm,$preclose),Sub(Constant(30.0),Log($amount)))
+$isst
+Div(Max($isst,20),Greater(Constant(10.0),$turn))
+$psttm
+Sub($isst,Add($amount,Constant(5.0)))
+$close
+Div(Greater($amount,Constant(-10.0)),$volume)
+Var(Sub(Greater(Constant(0.5),$low),Add(Cov($vwap,$close,20),$preclose)),50)
+$close
+Min(Std($preclose,30),10)
+Div(Constant(-30.0),$pctchg)
+$close
+Ref(Sub(Less(Var($low,10),Constant(0.5)),Mul($turn,Mul(Constant(-30.0),$amount))),40)
+Med(Sub(Constant(0.01),$low),40)
+Mul(Less(Sub(Cov(Sub(Constant(10.0),$psttm),$volume,20),Constant(2.0)),Constant(2.0)),$volume)
+Sub(Log($volume),$pctchg)
+$low
+Mul(Constant(-30.0),$pcfncfttm)
+Add(Constant(-0.01),$close)
+EMA($preclose,10)
+$pcfncfttm
+Sub($turn,Less($volume,Sub($isst,Constant(-0.01))))
+EMA(Add(Constant(30.0),Med($pcfncfttm,20)),20)
+Add(Constant(-1.0),$preclose)
+Sub($amount,Div(Constant(-30.0),Mul(Var(Med($high,20),20),$volume)))
+$turn
+Add(Constant(0.01),$pctchg)
+$turn
+$amount
+Div(Constant(-0.01),Less($isst,$high))
+$low
+$amount
+$volume
+Med(Std(Add(Constant(0.5),Max($pctchg,20)),40),40)
+Sub(Constant(30.0),Sub($volume,Sub($volume,Constant(-5.0))))
+Sub(EMA(Sub(Constant(-5.0),Add($vwap,Div($turn,Constant(5.0)))),20),Constant(10.0))
+$turn
+Mul(Less(Constant(-2.0),Med($psttm,30)),$pettm)
+Sub(Constant(30.0),$pcfncfttm)
+Sub(Constant(10.0),$preclose)
+Less(Sum($amount,40),$pctchg)
+$amount
+Add($volume,Sub($pcfncfttm,Constant(-1.0)))
+Sub(Constant(-10.0),Sub(Less(Less(Mad($pctchg,20),Constant(-2.0)),Add(Ref($amount,20),Sub(Add($low,$volume),$preclose))),$pcfncfttm))
+Sub(Std(Mul($high,Constant(-0.5)),20),Mul($high,Cov($amount,$amount,40)))
+Sub(Constant(-0.01),$amount)
+$pctchg
+WMA($low,50)
+Sub($open,Constant(-30.0))
+$pcfncfttm
+$open
+Greater(Sub(Sub($amount,Constant(5.0)),Constant(-0.01)),$preclose)
+Med(Var(Add(Constant(0.01),$pcfncfttm),30),20)
+Div(Log(Less(Sub($low,$amount),$psttm)),Log($pbmrq))
+$isst
+$preclose
+$psttm
+WMA($psttm,50)
+Corr(Sub(Div(Less(Greater(Constant(-1.0),$high),$pbmrq),$amount),Constant(-10.0)),Cov($pctchg,Div(Constant(-0.01),Med($close,20)),40),40)
+Mul(Constant(-2.0),Std($vwap,40))
+Min($low,20)
+$close
+Sub(Greater(WMA(Mul(Constant(0.01),$psttm),20),Constant(0.01)),$open)
+Mul(Sub(Constant(-0.01),$pctchg),$close)
+Add(Constant(-5.0),$preclose)
+Sub(Less(Constant(-5.0),$psttm),$preclose)
+Sub(Constant(5.0),$turn)
+Add(Cov(Min($close,10),Ref(Mul(Constant(-2.0),$volume),50),40),Sum($turn,30))
+Sub(Constant(-0.5),$amount)
+Add(Mul(Constant(0.01),$turn),Sub($psttm,Mul(Add($high,Corr($open,Add($turn,Constant(0.01)),20)),$pbmrq)))
+$volume
+Mul(Constant(-1.0),Add($volume,$preclose))
+$pbmrq
+Div(Sub(Greater(Mul($close,Constant(-10.0)),$volume),Constant(0.01)),Constant(-0.01))
+Add(Constant(0.5),$amount)
+$open
+$pctchg
+Div(Constant(30.0),Std(Sub(Add(Mad($amount,20),Div(Constant(5.0),Std($low,40))),Constant(-5.0)),10))
+$low
+Div(Cov(Div($open,Sub($pettm,$high)),$pettm,20),Constant(-10.0))
+Sub(Constant(0.5),$turn)
+WMA($high,30)
+Corr($amount,$amount,30)
+Div(Constant(-2.0),$turn)
+$vwap
+Cov($pettm,$low,10)
+$isst
+Sub(Add($pctchg,Mul(Constant(1.0),$pctchg)),$amount)
+Mean($amount,10)
+Min(Med(WMA(Mul(Constant(2.0),Cov(Med($pctchg,50),$isst,40)),40),20),10)
+$preclose
+Sub(Less(Constant(-1.0),$psttm),$turn)
+Sub(Constant(1.0),Greater($isst,$turn))
+$psttm
+WMA(Med(Div($amount,Constant(-10.0)),20),10)
+Sub($preclose,$high)
+$pcfncfttm
+Sub($low,Cov($turn,$pctchg,20))
+Sub(Less(Constant(1.0),Div(Abs($preclose),Constant(-0.01))),$low)
+EMA(Var(Sub($pctchg,$pettm),30),40)
+$isst
+Sub(Constant(0.01),Add($volume,Constant(2.0)))
+Greater($isst,Log(Std(Less(Add($preclose,Constant(-2.0)),Sub($pettm,$pettm)),50)))
+$volume
+Add(Constant(-10.0),WMA($close,10))
+Add(Div(Constant(-30.0),$preclose),Constant(-30.0))
+Std(Add(Constant(5.0),$pettm),20)
+Div(Mul(Abs(Var($psttm,20)),$turn),$psttm)
+Abs(Mul(Constant(1.0),Sum(Mul(Div($pbmrq,Constant(0.5)),Constant(10.0)),40)))
+EMA($amount,30)
+$pctchg
+$low
+Greater(Var(Mul(Div(Constant(-0.01),Log($vwap)),EMA($turn,30)),20),$close)
+$amount
+Var(Div(Constant(-1.0),$turn),10)
+$preclose
+Mul(Constant(0.5),$pctchg)
+Abs($pctchg)
+Add(Constant(10.0),Sub(Add($preclose,Constant(1.0)),Less(Add($pbmrq,Max($close,20)),Constant(-1.0))))
+Div(Less(Greater(Constant(-30.0),Delta($high,30)),$amount),Div($pcfncfttm,Mul($amount,$high)))
+Mul($pctchg,$psttm)
+Cov(Less(Sub(Constant(5.0),Sub(Mul(Add($low,$volume),$amount),Mul($pettm,Constant(-30.0)))),$turn),$pctchg,20)
+Log(Sub(Constant(-10.0),Mul(Less($vwap,$pcfncfttm),$preclose)))
+$turn
+$close
+Add(Sum(Add(Constant(0.5),Add(Div($pbmrq,Constant(1.0)),$open)),30),$pctchg)
+Sub(Constant(-2.0),$pettm)
+$high
+Sub($pbmrq,$psttm)
+Mul(Sub(Constant(2.0),$close),$pctchg)
+Sub(Add(Constant(-10.0),$pettm),Sub($psttm,$amount))
+WMA(Sub(Mad(Var($pbmrq,20),20),Less(Constant(-10.0),Med(Greater($vwap,$amount),20))),20)
+$turn
+Div(Constant(-30.0),Mean($turn,20))
+Div(Constant(-1.0),Abs($close))
+Mul(Sub(Var(Corr($psttm,Less($high,$preclose),20),20),$psttm),$amount)
+$pcfncfttm
+Mul($close,$amount)
+$close
+EMA(Sub(Constant(-0.01),$close),40)
+$turn
+Std($psttm,10)
+$preclose
+Mul(Constant(0.5),$pettm)
+Abs($close)
+Add(Cov(Min(Sub(Constant(0.5),Sub($psttm,$pctchg)),40),Abs($pettm),50),$low)
+Abs($close)
+Div($pcfncfttm,$high)
+$preclose
+$amount
+Mul(Constant(-30.0),EMA($pcfncfttm,20))
+Sub(Constant(-30.0),$preclose)
+Med(Add(Constant(1.0),$preclose),20)
+Sub(Sum(Log(Mul(WMA(Sub(Constant(-0.5),Log(Sub(Sum($pettm,20),$amount))),20),$turn)),20),Constant(0.5))
+Div(Mul(Constant(10.0),$amount),Constant(-10.0))
+$pcfncfttm
+Mul($close,Mul($open,Constant(1.0)))
+$pettm
+$turn
+Cov(Mul(Add(Div(Constant(1.0),$amount),$isst),$preclose),$volume,20)
+Mul(Constant(-2.0),$pcfncfttm)
+Sub($preclose,Constant(1.0))
+Sub(Constant(0.5),Mul(Mad($high,50),$amount))
+Mul(Constant(-2.0),$pettm)
+Log(Mul(Div(Mul(Sub(Mul($psttm,$vwap),Med($close,30)),Constant(-30.0)),$low),$isst))
+$volume
+$volume
+Div(Mul($high,Abs(Med($amount,40))),Sum(Div($pettm,Max(Div(Med($volume,20),Constant(0.5)),30)),50))
+Sub(Constant(-1.0),Sub(Mul($close,Constant(30.0)),Constant(30.0)))
+$close
+Min(Sub(Less(Less(Constant(0.01),$open),$volume),$pettm),30)
+$volume
+$open
+Max($psttm,30)
+$preclose
+Div(Constant(-30.0),Sub($high,Constant(-10.0)))
+Mul(Constant(-1.0),$pettm)
+$close
+Log(Div(Constant(5.0),$isst))
+EMA(Add(Constant(2.0),Mul(Mul(Sub($vwap,Constant(-0.01)),$high),$high)),20)
+Div(Constant(-0.01),$amount)
+Add($low,$turn)
+Mul(Mul(Add(Constant(-30.0),$preclose),Constant(1.0)),Constant(-1.0))
+Min(Sub(Constant(-0.01),Abs($pctchg)),20)
+Abs(Mul($turn,$pctchg))
+Sub(Constant(-1.0),Mad($pctchg,20))
+$pcfncfttm
+Sub(Constant(30.0),Less(Abs($close),EMA(Max($amount,20),20)))
+$open
+Var($vwap,30)
+Delta(Greater(Log(Div(Std(Add(Log(Div(Sub(Constant(5.0),$isst),$preclose)),$turn),40),Min($psttm,30))),$preclose),20)
+Mul($volume,$isst)
+Div(Sub($preclose,EMA($psttm,20)),Greater(Constant(-1.0),Div(Add(Mul($preclose,$amount),Constant(-30.0)),Constant(-30.0))))
+Mul(Constant(-10.0),$low)
+Add(Abs(EMA(Mul(Greater(Mad($volume,40),Sub($pettm,$preclose)),Greater($pcfncfttm,Constant(10.0))),20)),Mul($pctchg,$pcfncfttm))
+Div(Constant(0.5),$amount)
+$pettm
+Cov($psttm,Mul(Var(Greater($psttm,EMA(Abs($vwap),50)),20),$turn),50)
+Sub(Constant(-1.0),Add(Mul(Sub(Sum(Log(Sub($turn,Std($psttm,20))),40),Mean($pettm,10)),$low),Constant(0.01)))
+$amount
+$pbmrq
+$turn
+Sub(Constant(1.0),$pettm)
+Add(Constant(-2.0),$turn)
+Div(Constant(10.0),$preclose)
+Add(Constant(-5.0),Sum($pettm,20))
+Mul(Constant(-2.0),Std(WMA($amount,30),10))
+Sub(Sub(Constant(-10.0),$turn),$pctchg)
+Abs($pcfncfttm)
+Div(Constant(10.0),Mul($turn,$psttm))
+Med($preclose,20)
+Min(EMA(Add(Greater(Constant(-10.0),Sub($preclose,$pettm)),$pbmrq),30),20)
+$vwap
+Mul(Constant(10.0),$pcfncfttm)
+Add(Constant(-2.0),Abs($psttm))
+Add(Constant(-10.0),$preclose)
+Less(Med(Mul(Constant(30.0),$pbmrq),40),Add($pettm,Constant(0.01)))
+Div(Less(Constant(2.0),$volume),$volume)
+Sub(Div(Add(Constant(0.01),$pcfncfttm),Greater(Constant(0.5),$psttm)),$pctchg)
+$isst
+$open
+$pbmrq
+Var($isst,30)
+$amount
+Mul(Constant(0.5),Abs($turn))
+Sub(Constant(1.0),Sub($high,$isst))
+WMA(Sub(Constant(-0.01),$low),10)
+Abs(Mul(Constant(-0.01),$vwap))
+Mul($pctchg,Med($high,20))
+Div(Constant(-0.01),Add($isst,Sub($preclose,Constant(1.0))))
+Mad($psttm,20)
+Sub(Constant(-1.0),$isst)
+Mul(Constant(-10.0),$amount)
+Mul(Constant(5.0),$close)
+$vwap
+Abs(Mad($volume,30))
+$pctchg
+Sub($turn,$low)
+Sub(Constant(10.0),$psttm)
+Log(Sub(Constant(-30.0),Mul(WMA($low,20),$close)))
+$high
+$preclose
+$pcfncfttm
+$close
+$vwap
+$volume
+Mul(Greater(Constant(1.0),$amount),Log(Add($amount,$pctchg)))
+Sum($psttm,40)
+Add(Constant(0.01),$turn)
+$pctchg
+Mul(Min(Less($high,Corr($isst,Div($psttm,$close),20)),50),$turn)
+Sub(Constant(0.01),$low)
+Div($pcfncfttm,Sub(Add($high,$preclose),Abs(Abs($pettm))))
+Div(Less($pctchg,Constant(10.0)),Abs($pcfncfttm))
+$psttm
+Max(Sum(Sub(Constant(1.0),$preclose),20),20)
+Sub(Cov($isst,$pcfncfttm,50),Constant(-0.5))
+$pbmrq
+Div(Constant(0.01),$open)
+Mul(Constant(-30.0),$open)
+$pctchg
+Med(Max(Sub(Constant(0.01),$psttm),20),40)
+$preclose
+$vwap
+Mul(Greater(Constant(1.0),Add(Sub(Mul(Div(Sub($psttm,$preclose),Less(Constant(1.0),$close)),$preclose),$high),Constant(-0.5))),Delta($pettm,40))
+$pettm
+Var($volume,40)
+$amount
+$volume
+Mul(Min($pcfncfttm,40),$close)
+Delta($amount,50)
+Div($amount,Constant(-1.0))
+Std(Mul(Constant(-0.5),WMA($pbmrq,50)),40)
+Corr(Mul($turn,$volume),Sub(Add(Constant(0.01),$close),Constant(-2.0)),50)
+Var($pettm,40)
+Mean(Add(Constant(-1.0),$pettm),30)
+$close
+$pctchg
+Mul(Constant(-30.0),$psttm)
+Sub(Constant(-30.0),$volume)
+Add(Mul(Constant(-5.0),$turn),Constant(-0.5))
+Div(Constant(-0.5),$pettm)
+Add(Constant(0.01),$preclose)
+Div(Constant(1.0),$isst)
+$close
+$open
+WMA(Add(Less(Constant(0.5),Mul(Sum($preclose,20),$turn)),Std($isst,20)),20)
+Corr($preclose,$amount,40)
+Mul(Constant(-2.0),Sum($turn,10))
+Sub(Constant(-30.0),Sub($turn,$preclose))
+$pctchg
+Sum($isst,20)
+$open
+Max($preclose,30)
+$isst
+Sub(Sub(Constant(-5.0),$pcfncfttm),$high)
+Var($pctchg,30)
+Mul(Constant(1.0),$pctchg)
+$pcfncfttm
+Greater($close,Mad(Mul(Constant(-10.0),$psttm),50))
+$turn
+Med($volume,20)
+Add(Sum(Mul(Abs(Mul(Constant(-2.0),$vwap)),Constant(0.01)),10),Less(Constant(-0.01),$turn))
+Mean(Sub(Constant(1.0),Max($volume,20)),20)
+Mean(Sub(Constant(1.0),$amount),40)
+Sub(Sub(Mul(Constant(-5.0),$high),Mul(Mul($amount,Cov($turn,$psttm,30)),$isst)),Mul($pettm,$pcfncfttm))
+Sub(Constant(5.0),Abs($low))
+Mul($pctchg,Constant(1.0))
+Add(Constant(-0.5),Std($preclose,10))
+Mean(WMA($turn,20),20)
+Var(Log($volume),20)
+$close
+Abs(Cov(Div(Constant(-10.0),$turn),$open,50))
+$low
+Log(Sub(Constant(5.0),Log($volume)))
+Add(Constant(10.0),Sub(Add(Less(Div($vwap,$turn),$close),Abs(Sub($turn,Constant(-30.0)))),Constant(10.0)))
+Med($isst,10)
+$amount
+$pcfncfttm
+$high
+Add(Log(Sub(Less(Constant(30.0),$volume),$amount)),$preclose)
+Med(Mul(Mul(Max($close,20),$preclose),Mul(Sub($close,$isst),$close)),20)
+Add(Sub(Greater(Constant(0.01),$pctchg),Sub($high,Constant(5.0))),Corr(Abs(Abs($vwap)),$pcfncfttm,30))
+$pettm
+$amount
+Mul(Constant(-10.0),Max(Div($high,$close),30))
+Mul(Constant(-0.01),Med($pettm,10))
+$pettm
+Div(Greater(Less(Greater(Constant(-1.0),Sub($volume,Constant(-30.0))),$low),$amount),$pcfncfttm)
+$pbmrq
+$pctchg
+Ref(Sub(Constant(-10.0),Less(Log($preclose),$amount)),20)
+$pcfncfttm
+Min(Abs(Mul(Constant(2.0),$open)),40)
+Mul(Constant(-1.0),Med($pbmrq,20))
+Mul($pettm,$volume)
+Mul(Constant(2.0),Div(Add($pettm,$low),Mul($high,Var(Div(Constant(10.0),Abs(Ref($pcfncfttm,30))),40))))
+Saving model checkpoint to /Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_hs300_200_5_20240104003126/24576_steps
+-----------------------------------------
+| pool/                   |             |
+|    best_ic_ret          | 0.0998      |
+|    eval_cnt             | 778         |
+|    significant          | 168         |
+|    size                 | 200         |
+| rollout/                |             |
+|    ep_len_mean          | 5.69        |
+|    ep_rew_mean          | 0.0439      |
+| test/                   |             |
+|    ic                   | 0.0265      |
+|    rank_ic              | 0.0249      |
+| time/                   |             |
+|    fps                  | 0           |
+|    iterations           | 12          |
+|    time_elapsed         | 32420       |
+|    total_timesteps      | 24576       |
+| train/                  |             |
+|    approx_kl            | 0.010804189 |
+|    clip_fraction        | 0.159       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.72       |
+|    explained_variance   | 1.13e-06    |
+|    learning_rate        | 0.001       |
+|    loss                 | -0.256      |
+|    n_updates            | 110         |
+|    policy_gradient_loss | -0.0213     |
+|    value_loss           | 0.0862      |
+-----------------------------------------
+/Users/yangguangyu/anaconda3/envs/quant_dev/lib/python3.9/site-packages/joblib/externals/loky/backend/resource_tracker.py:314: UserWarning: resource_tracker: There appear to be 3 leaked folder objects to clean up at shutdown
+  warnings.warn(
+/Users/yangguangyu/anaconda3/envs/quant_dev/lib/python3.9/site-packages/joblib/externals/loky/backend/resource_tracker.py:330: UserWarning: resource_tracker: /var/folders/xj/8b3m4m7n4xsgjxqhl9c106k40000gn/T/joblib_memmapping_folder_48966_34b7c904b6534d8cac7af3819a4c0c23_873636b046e8462c92832aeace9ae088: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn(f"resource_tracker: {name}: {e!r}")
+/Users/yangguangyu/anaconda3/envs/quant_dev/lib/python3.9/site-packages/joblib/externals/loky/backend/resource_tracker.py:330: UserWarning: resource_tracker: /var/folders/xj/8b3m4m7n4xsgjxqhl9c106k40000gn/T/joblib_memmapping_folder_48966_1d9c1abe497c4136922080f49c1009a0_947c1d2d472846d8bcbcb1064f6268c3: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn(f"resource_tracker: {name}: {e!r}")
+/Users/yangguangyu/anaconda3/envs/quant_dev/lib/python3.9/site-packages/joblib/externals/loky/backend/resource_tracker.py:330: UserWarning: resource_tracker: /var/folders/xj/8b3m4m7n4xsgjxqhl9c106k40000gn/T/joblib_memmapping_folder_48966_7b31c331022a4a319c18396c2b8a48d0_412b20c1d2274245bc0083bcfe91dee1: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn(f"resource_tracker: {name}: {e!r}")
+/Users/yangguangyu/anaconda3/envs/quant_dev/lib/python3.9/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
