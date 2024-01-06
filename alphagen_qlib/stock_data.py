@@ -78,7 +78,6 @@ class StockData:
         print(f"instruments: {self._instrument}")
         df = self._load_exprs(features)
         print(f"raw df: {df}")
-        print(f"preprocessed df: {df}")
         df = df.stack().unstack(level=1)
         print(f"df after stack: {df}")
         dates = df.index.levels[0]  # type: ignore
@@ -169,6 +168,7 @@ class StockDataLP(StockData):
         df = self._load_exprs(features)
         print(f"raw df: {df}")
         df = self.process_data(df)
+        self.clean_df = df
         print(f"preprocessed df: {df}")
         df = df.stack().unstack(level=1)
         print(f"df after stack: {df}")

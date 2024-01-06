@@ -66,7 +66,7 @@ class TopKSwapNStrategy(BaseSignalStrategy, Strategy):
                 to_open.append(stock_id)
             else:
                 break
-
+        print(f"to buy: {to_buy}   to_open: {to_open}   to_buy: {to_buy}")
         return to_buy + to_open, to_sell
 
     def generate_trade_decision(self, execute_result=None):
