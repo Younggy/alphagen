@@ -1,0 +1,47 @@
+[37601:MainThread](2024-01-19 22:48:32,339) INFO - qlib.Initialization - [config.py:416] - default_conf: client.
+[37601:MainThread](2024-01-19 22:48:32,554) INFO - qlib.Initialization - [__init__.py:74] - qlib successfully initialized based on client settings.
+[37601:MainThread](2024-01-19 22:48:32,554) INFO - qlib.Initialization - [__init__.py:76] - data_path={'__DEFAULT_FREQ': PosixPath('/Users/yangguangyu/.qlib/qlib_data/crypto_data_1d')}
+instruments: all
+[37601:MainThread](2024-01-19 22:48:36,687) INFO - qlib.timer - [log.py:127] - Time cost: 0.004s | DropnaProcessor Done
+raw df:                              $open     $close  ...  $usd_price_pct   $usd_volume
+datetime   instrument                          ...                              
+2020-09-23 ADA-USDT       0.089360   0.079830  ...        0.938951  5.010764e+08
+           ADADOWN-USDT  12.558000  15.368000  ...        1.133689  2.290763e+05
+           ADAUP-USDT     3.124000   2.290000  ...        0.884823  2.908924e+05
+           AION-USDT      0.091000   0.081700  ...        0.888668  1.047517e+06
+           ALGO-USDT      0.327400   0.287300  ...        0.873055  1.319994e+08
+...                            ...        ...  ...             ...           ...
+2022-01-30 YGG-USDT       2.738000   2.951000  ...        0.946467  4.215674e+07
+           ZEC-USDT      88.800003  91.199997  ...        0.969904  1.836406e+08
+           ZEN-USDT      36.759998  38.950001  ...        0.970920  2.690346e+07
+           ZIL-USDT       0.044060   0.045290  ...        0.976162  2.642470e+07
+           ZRX-USDT       0.530100   0.544300  ...        0.980814  2.987117e+07
+
+[125834 rows x 23 columns]
+[37601:MainThread](2024-01-19 22:48:36,687) ERROR - qlib.workflow - [utils.py:41] - An exception has been raised[ValueError: zero-size array to reduction operation fmin which has no identity].
+  File "/Users/yangguangyu/Projects/QuantLearning/research/alphagen/train_maskable_ppo.py", line 278, in <module>
+    fire.Fire(fire_helper)
+  File "/Users/yangguangyu/anaconda3/envs/quant_dev/lib/python3.9/site-packages/fire/core.py", line 141, in Fire
+    component_trace = _Fire(component, args, parsed_flag_args, context, name)
+  File "/Users/yangguangyu/anaconda3/envs/quant_dev/lib/python3.9/site-packages/fire/core.py", line 475, in _Fire
+    component, remaining_args = _CallAndUpdateTrace(
+  File "/Users/yangguangyu/anaconda3/envs/quant_dev/lib/python3.9/site-packages/fire/core.py", line 691, in _CallAndUpdateTrace
+    component = fn(*varargs, **kwargs)
+  File "/Users/yangguangyu/Projects/QuantLearning/research/alphagen/train_maskable_ppo.py", line 270, in fire_helper
+    main(_seed,
+  File "/Users/yangguangyu/Projects/QuantLearning/research/alphagen/train_maskable_ppo.py", line 143, in main
+    data_train = CryptoDataLP(instrument=instruments,
+  File "/Users/yangguangyu/Projects/QuantLearning/research/alphagen/alphagen_qlib/stock_data.py", line 249, in __init__
+    super().__init__(
+  File "/Users/yangguangyu/Projects/QuantLearning/research/alphagen/alphagen_qlib/stock_data.py", line 91, in __init__
+    self.data, self._dates, self._stock_ids = self._get_data()
+  File "/Users/yangguangyu/Projects/QuantLearning/research/alphagen/alphagen_qlib/stock_data.py", line 272, in _get_data
+    df = self.process_data(df)
+  File "/Users/yangguangyu/Projects/QuantLearning/research/alphagen/alphagen_qlib/stock_data.py", line 291, in process_data
+    proc.fit(df)
+  File "/Users/yangguangyu/anaconda3/envs/quant_dev/lib/python3.9/site-packages/qlib/data/dataset/processor.py", line 227, in fit
+    self.min_val = np.nanmin(df[cols].values, axis=0)
+  File "<__array_function__ internals>", line 180, in nanmin
+  File "/Users/yangguangyu/anaconda3/envs/quant_dev/lib/python3.9/site-packages/numpy/lib/nanfunctions.py", line 343, in nanmin
+    res = np.fmin.reduce(a, axis=axis, out=out, **kwargs)
+ValueError: zero-size array to reduction operation fmin which has no identity

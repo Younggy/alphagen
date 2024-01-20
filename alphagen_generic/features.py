@@ -1,7 +1,7 @@
 from alphagen.data.expression import Feature, Ref
 from alphagen_qlib.stock_data import FeatureType
 
-
+""" cn stock
 high = Feature(FeatureType.HIGH)
 low = Feature(FeatureType.LOW)
 volume = Feature(FeatureType.VOLUME)
@@ -18,3 +18,23 @@ pettm = Feature(FeatureType.PETTM)
 preclose = Feature(FeatureType.PRECLOSE)
 psttm = Feature(FeatureType.PSTTM)
 turn = Feature(FeatureType.TURN)
+"""
+
+high = Feature(FeatureType.HIGH)
+low = Feature(FeatureType.LOW)
+volume = Feature(FeatureType.VOLUME)
+open_ = Feature(FeatureType.OPEN)
+close = Feature(FeatureType.CLOSE)
+quote_volume = Feature(FeatureType.QUOTE_VOLUME)
+trade_num = Feature(FeatureType.TRADE_NUM)
+taker_buy_quote_asset_volume = Feature(FeatureType.TAKER_BUY_QUOTE_ASSET_VOLUME)
+taker_buy_base_asset_volume = Feature(FeatureType.TAKER_BUY_BASE_ASSET_VOLUME)
+circulating_supply = Feature(FeatureType.CIRCULATING_SUPPLY)
+circulating_mcap = Feature(FeatureType.CIRCULATING_MCAP)
+num_market_pairs = Feature(FeatureType.NUM_MARKET_PAIRS)
+pct_diff_abs = Feature(FeatureType.PCT_DIFF_ABS)
+total_mcap = Feature(FeatureType.TOTAL_MCAP)
+turnover_rate = Feature(FeatureType.TURNOVER_RATE)
+usd_price = Feature(FeatureType.USD_PRICE)
+usd_price_pct = Feature(FeatureType.USD_PRICE_PCT)
+usd_volume = Feature(FeatureType.USD_VOLUME)

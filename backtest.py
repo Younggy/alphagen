@@ -206,3 +206,9 @@ if __name__ == "__main__":
     weighted_sum = data_df.mul(weights).sum(axis=1)
     data_df['Weighted_Sum'] = weighted_sum
     qlib_backtest.run(data_df, f"/Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/new_zz500_200_5_20231231190942/{code}_{timestamp}")
+
+    import xgboost as xgb
+    regressor = xgb.XGBRegressor(gamma=0.0,n_estimators=150,base_score=0.7,colsample_bytree=1,learning_rate=0.05)
+    xgbModel = regressor.fit(X_train, y_train, eval_set=[(X_train, y_train), (X_test, y_test)], verbose=True)
+    evals_result = regressor.evals_result()
+    evals_result

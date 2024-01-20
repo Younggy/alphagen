@@ -15,15 +15,14 @@ from alphagen.rl.env.wrapper import AlphaEnv
 from alphagen.rl.policy import LSTMSharedNet, TransformerSharedNet
 from alphagen.utils.random import reseed_everything
 from alphagen.rl.env.core import AlphaEnvCore
-from alphagen_qlib.stock_data import StockData, StockDataLP
+from alphagen_qlib.stock_data import StockData, StockDataLP, CryptoDataLP, FeatureType
 from alphagen_qlib.calculator import QLibStockDataCalculator
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
 from qlib.data.dataset.processor import fetch_df_by_index, get_group_columns
 from qlib.data.dataset.processor import ZScoreNorm, Fillna, DropnaProcessor, MinMaxNorm, CSZFillna
 import joblib
-LOGDIR = '/Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen'
-
+LOGDIR = '/Users/yangguangyu/Projects/QuantLearning/research/test_result/alphagen/crypto'
 
 
 class CustomCallback(BaseCallback):
@@ -111,13 +110,14 @@ def main(
     close = Feature(FeatureType.CLOSE)
     target = Ref(close, -20) / close - 1
 
-    # minmax_proc = MinMaxNorm(fit_start_time="2015-01-01", fit_end_time='2018-12-31')
-    # dropna_proc = DropnaProcessor()
-    # csfillna_proc = CSZFillna()
-    # learn_processors = [dropna_proc, minmax_proc]
-    # infer_processors = [csfillna_proc, dropna_proc, minmax_proc]
-    learn_processors, infer_processors = [], []
+    minmax_proc = MinMaxNorm(fit_start_time="2021-01-01", fit_end_time='2021-12-31')
+    dropna_proc = DropnaProcessor()
+    csfillna_proc = CSZFillna()
+    learn_processors = [dropna_proc, minmax_proc]
+    infer_processors = [csfillna_proc, dropna_proc, minmax_proc]
+    # learn_processors, infer_processors = [], []
 
+    """ CN Stock
     # You can re-implement AlphaCalculator instead of using QLibStockDataCalculator.
     data_train = StockDataLP(instrument=instruments,
                              start_time='2015-01-01',
@@ -137,9 +137,32 @@ def main(
                             end_time='2023-06-30',
                             device=device,
                             processors=infer_processors)
+    
+    """
+    features = list(FeatureType)
+    data_train = CryptoDataLP(instrument=instruments,
+                              start_time='2021-01-01',
+                              end_time='2021-12-31',
+                              device=device,
+                              features=features,
+                              processors=learn_processors,
+                              for_train=True)
+    print(f"train data: {data_train.data}, {data_train.data.shape}")
+    data_valid = CryptoDataLP(instrument=instruments,
+                              start_time='2022-01-01',
+                              end_time='2022-12-31',
+                              device=device,
+                              features=features,
+                              processors=infer_processors)
+    print(f"valid data: {data_valid.data}, {data_valid.data.shape}")
+    data_test = CryptoDataLP(instrument=instruments,
+                             start_time='2023-01-01',
+                             end_time='2023-09-01',
+                             device=device,
+                             features=features,
+                             processors=infer_processors)
     print(f"test data: {data_test.data}, {data_test.data.shape}")
 
-    # joblib.dump(minmax_proc, f'{name_prefix}_{timestamp}_minmax.pkl')
     calculator_train = QLibStockDataCalculator(data_train, target)
     calculator_valid = QLibStockDataCalculator(data_valid, target)
     calculator_test = QLibStockDataCalculator(data_test, target)
@@ -154,6 +177,8 @@ def main(
 
     name_prefix = f"new_{instruments}_{pool_capacity}_{seed}"
     timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+
+    joblib.dump(minmax_proc, f'{name_prefix}_{timestamp}_minmax.pkl')
 
     checkpoint_callback = CustomCallback(
         save_freq=100,
@@ -186,7 +211,7 @@ def main(
     #     verbose=1,
     # )
     model = MaskablePPO(
-        'MlpPolicy',
+        'CnnPolicy',
         env,
         policy_kwargs=dict(
             features_extractor_class=TransformerSharedNet,

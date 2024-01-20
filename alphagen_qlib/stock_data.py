@@ -6,7 +6,7 @@ import torch
 from qlib.log import get_module_logger, TimeInspector
 import qlib.data.dataset.processor as processor_module
 
-
+""" baostk 股票数据
 class FeatureType(IntEnum):
     OPEN = 0
     CLOSE = 1
@@ -23,6 +23,49 @@ class FeatureType(IntEnum):
     PSTTM = 12
     TURN = 13
     ISST = 14
+
+"""
+
+""" 加密货币 
+class FeatureType(IntEnum):
+    OPEN = 0
+    CLOSE = 1
+    HIGH = 2
+    LOW = 3
+    VOLUME = 4
+    QUOTE_VOLUME = 5
+    TRADE_NUM = 6
+    TAKER_BUY_BASE_ASSET_VOLUME = 7
+    TAKER_BUY_QUOTE_ASSET_VOLUME = 8
+"""
+
+""" 加密货币基本面 """
+
+
+class FeatureType(IntEnum):
+    OPEN = 0
+    CLOSE = 1
+    HIGH = 2
+    LOW = 3
+    VOLUME = 4
+    QUOTE_VOLUME = 5
+    TRADE_NUM = 6
+    TAKER_BUY_BASE_ASSET_VOLUME = 7
+    TAKER_BUY_QUOTE_ASSET_VOLUME = 8
+    CIRCULATING_SUPPLY = 9
+    CIRCULATING_MCAP = 10
+    # CMC_RANK = 11
+    # MAX_SUPPLY = 12
+    NUM_MARKET_PAIRS = 11
+    PCT_DIFF_ABS = 12
+    # SELF_REPORTED_CIRCULATING_SUPPLY = 15
+    # SELF_REPORTED_MAEKTE_CAP = 16
+    TOTAL_MCAP = 13
+    TURNOVER_RATE = 14
+    # TVL_RATIO = 19
+    USD_PRICE = 15
+    USD_PRICE_PCT = 16
+    USD_VOLUME = 17
 
 
 class StockData:
@@ -161,6 +204,65 @@ class StockDataLP(StockData):
             device=device
         )
 
+    def _get_data(self) -> Tuple[torch.Tensor, pd.Index, pd.Index]:
+        features = ['$' + f.name.lower() for f in self._features]
+        print(f"instruments: {self._instrument}")
+        df = self._load_exprs(features)
+        print(f"raw df: {df}")
+        df = self.process_data(df)
+        self.clean_df = df
+        print(f"preprocessed df: {df}")
+        df = df.stack().unstack(level=1)
+        print(f"df after stack: {df}")
+        dates = df.index.levels[0]  # type: ignore
+        stock_ids = df.columns
+        values = df.values
+        print(f"features: {features}")
+        print(f"dates: {dates}")
+        print(f"stock ids: {stock_ids}")
+        values = values.reshape((-1, len(features), values.shape[-1]))  # type: ignore
+        print(f"values: {values}, {values.shape}")
+        return torch.tensor(values, dtype=torch.float, device=self.device), dates, stock_ids
+
+    def process_data(self, df: pd.DataFrame) -> pd.DataFrame:
+        for proc in self.processors:
+            with TimeInspector.logt(f"{proc.__class__.__name__}"):
+                if self.with_fit:
+                    proc.fit(df)
+                df = proc(df)
+        return df
+
+
+class CryptoDataLP(StockData):
+    def __init__(self,
+                 instrument: Union[str, List[str]],
+                 start_time: str,
+                 end_time: str,
+                 max_backtrack_days: int = 100,
+                 max_future_days: int = 30,
+                 features: Optional[List[FeatureType]] = None,
+                 device: torch.device = torch.device('cuda:0'),
+                 processors: List[processor_module.Processor] = [],
+                 for_train: bool = False) -> None:
+        self.processors = processors
+        self.with_fit = for_train
+        super().__init__(
+            instrument=instrument,
+            start_time=start_time,
+            end_time=end_time,
+            max_backtrack_days=max_backtrack_days,
+            max_future_days=max_future_days,
+            features=features,
+            device=device
+        )
+
+    @classmethod
+    def _init_qlib(cls) -> None:
+        if cls._qlib_initialized:
+            return
+        import qlib
+        qlib.init(provider_uri="~/.qlib/qlib_data/crypto_data_1d")
+        cls._qlib_initialized = True
 
     def _get_data(self) -> Tuple[torch.Tensor, pd.Index, pd.Index]:
         features = ['$' + f.name.lower() for f in self._features]
@@ -178,6 +280,7 @@ class StockDataLP(StockData):
         print(f"features: {features}")
         print(f"dates: {dates}")
         print(f"stock ids: {stock_ids}")
+        print(f"values: {values}, {values.shape}")
         values = values.reshape((-1, len(features), values.shape[-1]))  # type: ignore
         print(f"values: {values}, {values.shape}")
         return torch.tensor(values, dtype=torch.float, device=self.device), dates, stock_ids
