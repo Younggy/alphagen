@@ -108,7 +108,7 @@ def main(
     # device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
     device = torch.device("cpu")
     close = Feature(FeatureType.CLOSE)
-    target = Ref(close, -20) / close - 1
+    target = Ref(close, -7) / close - 1
 
     minmax_proc = MinMaxNorm(fit_start_time="2021-01-01", fit_end_time='2021-12-31')
     dropna_proc = DropnaProcessor()

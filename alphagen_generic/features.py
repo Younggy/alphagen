@@ -38,3 +38,24 @@ turnover_rate = Feature(FeatureType.TURNOVER_RATE)
 usd_price = Feature(FeatureType.USD_PRICE)
 usd_price_pct = Feature(FeatureType.USD_PRICE_PCT)
 usd_volume = Feature(FeatureType.USD_VOLUME)
+
+EXPR_MAP = {
+    "$high": "high",
+    "$low": "low",
+    "$volume": "volume",
+    "$open": "open_",
+    "$close": "close",
+    "$quote_volume": "quote_volume",
+    "$trade_num": "trade_num",
+    "$taker_buy_base_asset_volume": "taker_buy_base_asset_volume",
+    "$taker_buy_quote_asset_volume": "taker_buy_quote_asset_volume",
+    "$circulating_supply": "circulating_supply",
+    "$circulating_mcap": "circulating_mcap",
+    "$num_market_pairs": "num_market_pairs",
+    "$pct_diff_abs": "pct_diff_abs",
+    "$total_mcap": "total_mcap",
+    "$turnover_rate": "turnover_rate",
+    "$usd_price": "usd_price",
+    "$usd_price_pct": "usd_price_pct",
+    "$usd_volume": "usd_volume",
+}    
